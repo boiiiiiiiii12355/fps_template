@@ -8,8 +8,7 @@ class_name Player
 @onready var coyoteTimer = $CoyoteTime
 @export var view : Camera3D
 @export var camera_dist = 0
-
-
+var default_camera_pos
 
 var height = 2 #the model is 2 meter tall
 
@@ -17,19 +16,17 @@ var height = 2 #the model is 2 meter tall
 func _ready():
 	mySkin.set_sorting_offset(1)
 	#get_viewport().get_camera_3d()
+	default_camera_pos = view.transform.origin
 	camera = get_node(stats.camPath)
 	print(stats.vel)
 	
 	stats.on_floor = false
 	spring.add_excluded_object(self.get_rid())
 	
-	
 func _process(delta):
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
-	
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
 	spring.spring_length = 0
-	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputKeys()
 		
@@ -44,7 +41,6 @@ func _process(delta):
 	move_and_slide_own()
 	stats.vel = velocity
 	
-	
 	if stats.wasOnFloor && !stats.on_floor:
 		print("start timer")
 		coyoteTimer.start()
@@ -56,9 +52,20 @@ func _process(delta):
 			stats.shouldJump = false
 			#print("timer stopped")
 			pass
+	headbob_time += delta * stats.vel.length() * float(stats.on_floor)
+	view.transform.origin = camera_bob(headbob_time) + default_camera_pos
 	
 	
-		
+var headbob_time = 0
+var headbob_frequency = 2
+var headbob_amplitude = 0.04
+
+func camera_bob(headbob_time):
+	var headbob_position = Vector3.ZERO
+	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
+	headbob_position.x = cos(headbob_time * headbob_frequency / 2) * headbob_amplitude
+	return headbob_position
+	
 func clearCoyote():
 	coyoteTimer.stop()
 	stats.shouldJump = false

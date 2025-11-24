@@ -26,9 +26,9 @@ size = Vector3(1, 0.8, 1)
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view", "flashlight")]
 script = ExtResource("1_a7j60")
 spring = NodePath("TwistPivot/PitchPivot")
-view = NodePath("TwistPivot/PitchPivot/view")
+view = NodePath("TwistPivot/view")
 stats = ExtResource("2_graem")
-flashlight = NodePath("TwistPivot/player_flashlight")
+flashlight = NodePath("TwistPivot/CSGBox3D/player_flashlight")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -42,20 +42,24 @@ shape = SubResource("BoxShape3D_jijlf")
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="player_flashlight" type="SpotLight3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108115315, 0)
-shadow_enabled = true
-distance_fade_enabled = true
-spot_range = 179.1791
-spot_angle = 60.24044
-
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 spring_length = 8.0
-margin = 0.5
+margin = 0.0
 
-[node name="view" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.999828, 0.018551618, 0, -0.018551618, 0.999828, 0, 0.58971167, -0.08103269)
-fov = 53.898613
+[node name="CSGBox3D" type="CSGBox3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32810095, -0.077456, -0.77471447)
+size = Vector3(0.1, 0.1, 0.3)
+
+[node name="player_flashlight" type="SpotLight3D" parent="TwistPivot/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040566623, -0.019805789, -0.19729853)
+distance_fade_enabled = true
+distance_fade_begin = 750.53
+spot_range = 179.1791
+spot_angle = 49.97
+
+[node name="view" type="Camera3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.999828, 0.018551618, 0, -0.018551618, 0.999828, 0, 0.22920871, -0.08103269)
+fov = 70.0
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")

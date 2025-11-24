@@ -17,14 +17,13 @@ sky = SubResource("Sky_nfut8")
 tonemap_mode = 2
 glow_enabled = true
 fog_enabled = true
+fog_light_energy = 0.14
 fog_sun_scatter = 0.48
 fog_density = 0.0684
-volumetric_fog_emission_energy = 15.95
-volumetric_fog_gi_inject = 0.56
-volumetric_fog_anisotropy = 0.0
-volumetric_fog_length = 171.92
-volumetric_fog_detail_spread = 0.7071069
-volumetric_fog_ambient_inject = 0.37
+volumetric_fog_enabled = true
+volumetric_fog_length = 146.58
+volumetric_fog_detail_spread = 0.6155722
+volumetric_fog_ambient_inject = 0.05
 
 [sub_resource type="BoxMesh" id="BoxMesh_k83rx"]
 size = Vector3(2000, 0.5, 2000)
