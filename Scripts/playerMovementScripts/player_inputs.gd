@@ -3,6 +3,8 @@ class_name PlayerInputs
 #CODE THAT PARSES USER INPUT
 #just organized like this for organization's sake
 @export var stats: Resource
+@export var flashlight : SpotLight3D
+var flashlight_toggle = false
 var camera : Node3D
 
 
@@ -57,5 +59,11 @@ func InputKeys():
 	else:
 		stats.forwardmove = clamp(stats.forwardmove, -4096, 4096)
 	
-
-
+	#auxilary actions ie: flashlight
+	if Input.is_action_just_pressed("flashlight_toggle") and flashlight:
+		if flashlight.visible:
+			flashlight.visible = false
+		elif ! flashlight.visible: 
+			flashlight.visible = true
+		print("toggle")
+		

@@ -4,7 +4,6 @@ extends PlayerState
 
 # If we get a message asking us to jump, we jump.
 func enter(msg := {}) -> void:
-	print("AIR")
 	stats.on_floor = false
 	if msg.has("do_jump"):
 		#player.clearCoyote()

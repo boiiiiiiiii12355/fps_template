@@ -18,16 +18,17 @@ material = SubResource("StandardMaterial3D_65t5e")
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jijlf"]
-size = Vector3(1, 1.9042969, 1)
+size = Vector3(1, 1.9001465, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view", "flashlight")]
 script = ExtResource("1_a7j60")
 spring = NodePath("TwistPivot/PitchPivot")
 view = NodePath("TwistPivot/PitchPivot/view")
 stats = ExtResource("2_graem")
+flashlight = NodePath("TwistPivot/player_flashlight")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -35,7 +36,7 @@ visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95458984, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9373779, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
@@ -43,9 +44,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="player_flashlight" type="SpotLight3D" parent="TwistPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108115315, 0)
+shadow_enabled = true
 distance_fade_enabled = true
-spot_range = 15.815676
-spot_angle = 52.610245
+spot_range = 179.1791
+spot_angle = 60.24044
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 spring_length = 8.0

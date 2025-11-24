@@ -4,19 +4,27 @@
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jym6u"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_mdvn2"]
-sky_material = SubResource("ProceduralSkyMaterial_jym6u")
+[sub_resource type="Sky" id="Sky_nfut8"]
+sky_material = SubResource("ProceduralSkyMaterial_5e6ql")
 
-[sub_resource type="Environment" id="Environment_mkgyb"]
+[sub_resource type="Environment" id="Environment_ii602"]
 background_mode = 1
-background_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
-sky = SubResource("Sky_mdvn2")
+sky = SubResource("Sky_nfut8")
 tonemap_mode = 2
 glow_enabled = true
+fog_enabled = true
+fog_sun_scatter = 0.48
+fog_density = 0.0684
+volumetric_fog_emission_energy = 15.95
+volumetric_fog_gi_inject = 0.56
+volumetric_fog_anisotropy = 0.0
+volumetric_fog_length = 171.92
+volumetric_fog_detail_spread = 0.7071069
+volumetric_fog_ambient_inject = 0.37
 
 [sub_resource type="BoxMesh" id="BoxMesh_k83rx"]
 size = Vector3(2000, 0.5, 2000)
@@ -32,7 +40,7 @@ clearcoat_enabled = true
 [node name="Level" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mkgyb")
+environment = SubResource("Environment_ii602")
 
 [node name="floor" type="StaticBody3D" parent="."]
 
@@ -42,9 +50,10 @@ mesh = SubResource("BoxMesh_k83rx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
 transform = Transform3D(1, 2.98023e-08, 0, 2.98023e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_8a2re")
+debug_fill = false
 
 [node name="player" parent="." instance=ExtResource("1_rsegt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.88685036, 0.2610712, 2.3552427)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.727738, 10.168703, 0.9867406)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09027, 0)
@@ -55,13 +64,43 @@ script = ExtResource("4_ivjvi")
 
 [node name="layout" type="Node3D" parent="."]
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5571384, 2.9104614, 4.8549805)
+use_collision = true
+size = Vector3(2.7109985, 2.9957275, 5.8549805)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.665079, 2.0349612, 4.8549805)
+use_collision = true
+size = Vector3(0.4951172, 4.8251953, 5.8549805)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.337762, 2.0349612, 4.8549805)
+use_collision = true
+size = Vector3(0.4951172, 4.8251953, 5.8549805)
+
 [node name="CSGBox3D" type="CSGBox3D" parent="layout"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.350315, 0.40570068, 7.978961)
 use_collision = true
 size = Vector3(41.70063, 0.30114746, 36.719788)
 material = SubResource("StandardMaterial3D_5e6ql")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="layout"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3325396, 1.9125977, 2.4274902)
+[node name="CSGBox3D6" type="CSGBox3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6065445, 2.0902734, 2.0304809)
 use_collision = true
-size = Vector3(0.4951172, 4.8251953, 5.8549805)
+size = Vector3(4.143402, 4.8251953, 0.22003174)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="layout/CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 0.3776792, -0.92593664, 0, 0.92593664, 0.3776792, -0.48386765, 0.102217436, -5.496212)
+use_collision = true
+size = Vector3(2.6205292, 12.152832, 0.22003174)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4413705, 1.9125977, 2.03919)
+use_collision = true
+size = Vector3(4.143402, 4.8251953, 0.22003174)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="layout"]
+transform = Transform3D(1, 0, 0, 0, -0.009511948, 0.9999548, 0, -0.9999548, -0.009511948, -7.680325, 3.6853273, 8.423078)
+shadow_enabled = true
+spot_angle = 30.44913
