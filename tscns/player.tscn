@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://hynsll4jq3n2"]
 
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
+[ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
-[ext_resource type="Script" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
-[ext_resource type="Script" path="res://Scripts/playerMovementScripts/Crouched.gd" id="9_1hcmd"]
+[ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
+[ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
+[ext_resource type="Script" uid="uid://chp77x488ykfs" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
+[ext_resource type="Script" uid="uid://1d3cycomfleh" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
+[ext_resource type="Script" uid="uid://cur17euoajhrj" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
+[ext_resource type="Script" uid="uid://wt31xw6ef8ks" path="res://Scripts/playerMovementScripts/Crouched.gd" id="9_1hcmd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -17,35 +17,43 @@ albedo_texture = ExtResource("3_imbja")
 material = SubResource("StandardMaterial3D_65t5e")
 size = Vector3(1, 2, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e6d52"]
-margin = 0.001
-size = Vector3(1, 2, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_jijlf"]
+size = Vector3(1, 1.9042969, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view")]
 script = ExtResource("1_a7j60")
+spring = NodePath("TwistPivot/PitchPivot")
+view = NodePath("TwistPivot/PitchPivot/view")
 stats = ExtResource("2_graem")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_e6d52")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95458984, 0)
+shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="player_flashlight" type="SpotLight3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.108115315, 0)
+distance_fade_enabled = true
+spot_range = 15.815676
+spot_angle = 52.610245
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 spring_length = 8.0
 margin = 0.5
 
 [node name="view" type="Camera3D" parent="TwistPivot/PitchPivot"]
-transform = Transform3D(1, 0, 0, 0, 0.965925, -0.258819, 0, 0.258819, 0.965925, 0, 0, -1)
-fov = 110.0
+transform = Transform3D(1, 0, 0, 0, 0.999828, 0.018551618, 0, -0.018551618, 0.999828, 0, 0.58971167, -0.08103269)
+fov = 53.898613
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")

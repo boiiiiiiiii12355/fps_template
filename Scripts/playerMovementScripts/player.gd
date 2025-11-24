@@ -4,10 +4,10 @@ class_name Player
 @onready var myShape = $CollisionShape3D
 @onready var mySkin = $MeshInstance3D
 @onready var bonker = $Headbonk
-@onready var spring = $TwistPivot/PitchPivot
+@export var spring : SpringArm3D
 @onready var coyoteTimer = $CoyoteTime
-@onready var view = $TwistPivot/PitchPivot/view
-
+@export var view : Camera3D
+@export var camera_dist = 0
 
 
 
@@ -25,9 +25,10 @@ func _ready():
 	
 	
 func _process(delta):
+	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
-	spring.spring_length = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
+	spring.spring_length = 0
 	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputKeys()

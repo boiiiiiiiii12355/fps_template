@@ -2,8 +2,7 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-
-	print("RUN")
+	pass
 	
 func physics_update(delta: float) -> void:
 	Move(delta)
