@@ -47,15 +47,17 @@ spring_length = 8.0
 margin = 0.0
 
 [node name="CSGBox3D" type="CSGBox3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32810095, -0.077456, -0.77471447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32810095, -0.077456, -0.584905)
 size = Vector3(0.1, 0.1, 0.3)
 
 [node name="player_flashlight" type="SpotLight3D" parent="TwistPivot/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040566623, -0.019805789, -0.19729853)
+visible = false
+shadow_enabled = true
 distance_fade_enabled = true
 distance_fade_begin = 750.53
-spot_range = 179.1791
-spot_angle = 49.97
+spot_range = 67.210976
+spot_angle = 31.93981
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
 transform = Transform3D(1, 0, 0, 0, 0.999828, 0.018551618, 0, -0.018551618, 0.999828, 0, 0.22920871, -0.08103269)
