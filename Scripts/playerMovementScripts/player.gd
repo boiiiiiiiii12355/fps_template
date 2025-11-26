@@ -27,6 +27,7 @@ func _process(delta):
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
 	spring.spring_length = 0
+	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputKeys()
 		
@@ -52,12 +53,15 @@ func _process(delta):
 			stats.shouldJump = false
 			#print("timer stopped")
 			pass
+	
+		
+	#bunch of camera effects when moving
 	headbob_time += delta * stats.vel.length() * float(stats.on_floor)
 	view.transform.origin = camera_bob(headbob_time) + default_camera_pos
+	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
 	
-	
-var headbob_time = 0
-var headbob_frequency = 2
+var headbob_time = 0.0
+var headbob_frequency = 2.0
 var headbob_amplitude = 0.04
 
 func camera_bob(headbob_time):
@@ -65,6 +69,19 @@ func camera_bob(headbob_time):
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
 	headbob_position.x = cos(headbob_time * headbob_frequency / 2) * headbob_amplitude
 	return headbob_position
+	
+@export var cam_tilt_init = 10.0
+@export var tilt_magnitude = .2	
+func movement_tilt():
+	var tilt_ratio = stats.sidemove / 4096.0
+	var tilt_equation = tilt_ratio * tilt_magnitude
+	if stats.sidemove > cam_tilt_init or stats.sidemove < -cam_tilt_init:
+		return tilt_equation
+	else:
+		return 0.0
+	
+func camera_jump_land():
+	pass
 	
 func clearCoyote():
 	coyoteTimer.stop()
