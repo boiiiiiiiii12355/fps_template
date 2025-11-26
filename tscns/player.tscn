@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=19 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
@@ -9,6 +9,11 @@
 [ext_resource type="Script" uid="uid://1d3cycomfleh" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
 [ext_resource type="Script" uid="uid://cur17euoajhrj" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
 [ext_resource type="Script" uid="uid://wt31xw6ef8ks" path="res://Scripts/playerMovementScripts/Crouched.gd" id="9_1hcmd"]
+[ext_resource type="Script" uid="uid://dqx5w761ag6l3" path="res://tscns/player_sounds.gd" id="10_y3dw1"]
+[ext_resource type="AudioStream" uid="uid://k40il752iwyl" path="res://sounds/footsteps/concrete1.wav" id="11_2rxho"]
+[ext_resource type="AudioStream" uid="uid://cugflayudql7w" path="res://sounds/footsteps/concrete2.wav" id="12_cbyhw"]
+[ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
+[ext_resource type="AudioStream" uid="uid://l4e1i8kwoyxf" path="res://sounds/footsteps/concrete4.wav" id="14_wemna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -23,10 +28,11 @@ size = Vector3(1, 1.9001465, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view", "flashlight")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view", "player_sound", "flashlight")]
 script = ExtResource("1_a7j60")
 spring = NodePath("TwistPivot/PitchPivot")
 view = NodePath("TwistPivot/view")
+player_sound = NodePath("soundctrl")
 stats = ExtResource("2_graem")
 flashlight = NodePath("TwistPivot/CSGBox3D/player_flashlight")
 
@@ -87,6 +93,21 @@ script = ExtResource("8_uw634")
 
 [node name="Crouched" type="Node" parent="standingMachine"]
 script = ExtResource("9_1hcmd")
+
+[node name="soundctrl" type="Node" parent="." groups=["sound_ctrl"]]
+script = ExtResource("10_y3dw1")
+
+[node name="Concrete1" type="AudioStreamPlayer" parent="soundctrl"]
+stream = ExtResource("11_2rxho")
+
+[node name="Concrete2" type="AudioStreamPlayer" parent="soundctrl"]
+stream = ExtResource("12_cbyhw")
+
+[node name="Concrete3" type="AudioStreamPlayer" parent="soundctrl"]
+stream = ExtResource("13_hpxkm")
+
+[node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
+stream = ExtResource("14_wemna")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1, 0)

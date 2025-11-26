@@ -15,29 +15,30 @@ sky_material = SubResource("ProceduralSkyMaterial_5e6ql")
 [sub_resource type="Environment" id="Environment_ii602"]
 background_mode = 1
 sky = SubResource("Sky_nfut8")
+reflected_light_source = 2
 tonemap_mode = 2
 ssr_max_steps = 63
 glow_enabled = true
+glow_bloom = 0.5
+glow_blend_mode = 1
 fog_enabled = true
-fog_light_energy = 0.14
-fog_sun_scatter = 0.48
-fog_density = 0.0684
+fog_light_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
 volumetric_fog_enabled = true
-volumetric_fog_albedo = Color(0.48570347, 0.48570353, 0.48570347, 1)
-volumetric_fog_anisotropy = -0.18
-volumetric_fog_length = 146.58
-volumetric_fog_detail_spread = 0.5
-volumetric_fog_ambient_inject = 1.29
+volumetric_fog_length = 288.23
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rr07l"]
 
 [node name="Level" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ii602")
 
 [node name="player" parent="." instance=ExtResource("1_rsegt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.026638, 0.008731246, -34.25534)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.026638, 44.917717, -34.25534)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09027, 0)

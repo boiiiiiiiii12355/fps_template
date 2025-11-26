@@ -9,7 +9,7 @@ class_name Player
 @export var view : Camera3D
 @export var camera_dist = 0
 var default_camera_pos
-
+var randm = RandomNumberGenerator.new()
 var height = 2 #the model is 2 meter tall
 
 
@@ -39,6 +39,7 @@ func _process(delta):
 
 	
 	velocity = stats.vel
+	stored_velocity()
 	move_and_slide_own()
 	stats.vel = velocity
 	
@@ -46,6 +47,9 @@ func _process(delta):
 		print("start timer")
 		coyoteTimer.start()
 	
+	if stats.on_floor and stats.shouldJump == false:
+		fall_impact()
+		
 	if(stats.on_floor):
 		stats.shouldJump = true
 	else:
@@ -56,14 +60,46 @@ func _process(delta):
 	
 		
 	#bunch of camera effects when moving
-	headbob_time += delta * stats.vel.length() * float(stats.on_floor)
-	view.transform.origin = camera_bob(headbob_time) + default_camera_pos
+	var req_view_transform = default_camera_pos + fall_cam_bob 
+	view.transform.origin = lerp(view.transform.origin, req_view_transform + (camera_bob(step_time) * 3), change_magnitude)
 	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
 	
-var headbob_time = 0.0
-var headbob_frequency = 2.0
-var headbob_amplitude = 0.04
+	if velocity.length():
+		step_time += (delta * stats.vel.length() * float(stats.on_floor))
+	else:
+		step_time = 0
+		
+	if view.transform.origin.y < 0.26 and step_sound_trigg == false:
+		step_sounds()
+		step_sound_trigg = true
+	elif view.transform.origin.y > 0.26:
+		step_sound_trigg = false
 
+
+var step_sound_trigg = false
+@export var player_sound : Node
+func step_sounds():
+	player_sound.play_sound("Concrete" + str(randm.randi_range(1, 4)), global_position)
+
+var change_magnitude = 0.1
+var fall_displacement = .02
+var fall_cam_bob = Vector3.ZERO
+func fall_impact():
+	player_sound.play_sound("Concrete4", global_position)
+	fall_cam_bob.y = (-fall_displacement * abs(stored_vel.y))
+	print(velocity.length())
+	change_magnitude = 1
+	await get_tree().create_timer(0.05).timeout
+	fall_cam_bob.y = 0
+	change_magnitude = 0.1
+
+var stored_vel = Vector3.ZERO
+func stored_velocity():
+	if velocity:
+		stored_vel = velocity
+var step_time = 0.0
+var headbob_frequency = 2.5
+var headbob_amplitude = 0.04
 func camera_bob(headbob_time):
 	var headbob_position = Vector3.ZERO
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
@@ -71,7 +107,7 @@ func camera_bob(headbob_time):
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0
-@export var tilt_magnitude = .2	
+@export var tilt_magnitude = .2
 func movement_tilt():
 	var tilt_ratio = stats.sidemove / 4096.0
 	var tilt_equation = tilt_ratio * tilt_magnitude
