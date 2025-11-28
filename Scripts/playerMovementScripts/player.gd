@@ -107,7 +107,7 @@ func camera_bob(headbob_time):
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0
-@export var tilt_magnitude = .2
+@export var tilt_magnitude = .1
 func movement_tilt():
 	var tilt_ratio = stats.sidemove / 4096.0
 	var tilt_equation = tilt_ratio * tilt_magnitude
