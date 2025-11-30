@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://c41sndaibm3u2"]
+[gd_scene load_steps=10 format=3 uid="uid://c41sndaibm3u2"]
 
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="1_rsegt"]
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
 [ext_resource type="PackedScene" uid="uid://b5isbpmf0ws11" path="res://maps/test_whiteroom.blend" id="4_nfut8"]
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
-[ext_resource type="PackedScene" uid="uid://bkf2n306vi7m0" path="res://maps/quit.blend" id="5_ii602"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="6_e6wci"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
@@ -53,9 +52,6 @@ script = ExtResource("4_ivjvi")
 [node name="layout" type="Node3D" parent="."]
 
 [node name="test_whiteroom" parent="." instance=ExtResource("4_nfut8")]
-
-[node name="quit" parent="." instance=ExtResource("5_ii602")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.235924, 1.0393187, -44.750008)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
