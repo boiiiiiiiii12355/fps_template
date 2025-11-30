@@ -69,10 +69,11 @@ func _process(delta):
 	else:
 		step_time = 0
 		
-	if view.transform.origin.y < 0.26 and step_sound_trigg == false:
+	var step_boundary = camera_bob(0).y + default_camera_pos.y
+	if view.transform.origin.y < step_boundary and step_sound_trigg == false:
 		step_sounds()
 		step_sound_trigg = true
-	elif view.transform.origin.y > 0.26:
+	elif view.transform.origin.y > step_boundary:
 		step_sound_trigg = false
 
 
@@ -97,6 +98,7 @@ var stored_vel = Vector3.ZERO
 func stored_velocity():
 	if velocity:
 		stored_vel = velocity
+		
 var step_time = 0.0
 var headbob_frequency = 2.5
 var headbob_amplitude = 0.04
@@ -107,7 +109,7 @@ func camera_bob(headbob_time):
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0
-@export var tilt_magnitude = .2
+@export var tilt_magnitude = .1
 func movement_tilt():
 	var tilt_ratio = stats.sidemove / 4096.0
 	var tilt_equation = tilt_ratio * tilt_magnitude
