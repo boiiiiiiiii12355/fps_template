@@ -7,17 +7,23 @@
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 
-[sub_resource type="Sky" id="Sky_v52cq"]
+[sub_resource type="Sky" id="Sky_ii602"]
 sky_material = SubResource("ProceduralSkyMaterial_rlf6c")
 
-[sub_resource type="Environment" id="Environment_fxq32"]
-sky = SubResource("Sky_v52cq")
+[sub_resource type="Environment" id="Environment_v52cq"]
+background_mode = 1
+sky = SubResource("Sky_ii602")
+reflected_light_source = 2
 tonemap_mode = 2
-sdfgi_enabled = true
+ssr_max_steps = 63
 glow_enabled = true
+glow_bloom = 0.1
+glow_blend_mode = 1
 fog_enabled = true
-volumetric_fog_length = 17.45
-volumetric_fog_ambient_inject = 2.74
+fog_light_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+volumetric_fog_enabled = true
+volumetric_fog_emission = Color(0.50534403, 0.5053441, 0.50534403, 1)
+volumetric_fog_length = 288.23
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rlf6c"]
 bounce = 0.36
@@ -31,19 +37,20 @@ font_size = 56
 [node name="main_menu" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.843785, -0.53447866, 0.048574947, -0.19500476, 0.38965702, 0.90007806, -0.50000006, 0.75, -0.43301266, 26.486874, 0, -22.823797)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fxq32")
+environment = SubResource("Environment_v52cq")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.696414, -0.3335228, -0.63542914, -1.5773853e-08, 0.8854423, -0.46474928, 0.7176403, 0.32365793, 0.6166344, 1.5877932, 0.3221166, 1.2069167)
+transform = Transform3D(0.696414, -0.3335228, -0.6354291, -1.5773853e-08, 0.8854423, -0.46474934, 0.7176403, 0.32365793, 0.6166345, 23.080158, 0.3221166, -11.107342)
 fov = 67.09207
 
 [node name="test_whiteroom" parent="." instance=ExtResource("1_rlf6c")]
 
 [node name="physics" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.492367, 0, -12.314259)
 
 [node name="RigidBody3D" type="RigidBody3D" parent="physics"]
 transform = Transform3D(0.52181375, -0.6050023, -0.60140073, 0.3964946, 0.79622376, -0.45696795, 0.75531626, 0, 0.65536064, 3.981546, 2.6407852, 0.031794548)
