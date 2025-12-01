@@ -37,7 +37,7 @@ font_size = 56
 [node name="main_menu" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.843785, -0.53447866, 0.048574947, -0.19500476, 0.38965702, 0.90007806, -0.50000006, 0.75, -0.43301266, 26.486874, 0, -22.823797)
+transform = Transform3D(-0.84843856, -0.52568215, 0.061727613, -0.2751631, 0.53769094, 0.7969778, -0.4521474, 0.6592016, -0.60084605, 26.486874, 0, -22.823797)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
