@@ -77,6 +77,7 @@ debug_shape_thickness = 1
 
 [node name="pickup_area" type="Node3D" parent="TwistPivot/view"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.017184138, -0.9030465)
+rotation_edit_mode = 1
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")

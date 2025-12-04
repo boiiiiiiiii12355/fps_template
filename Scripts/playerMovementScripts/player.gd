@@ -201,6 +201,7 @@ func get_delta_time() -> float:
 
 func pickup(object : RigidBody3D):
 	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
-	object.angular_velocity = (object.angular_velocity - view.rotation)
+	var pickup_rotation = (pickup_hold_area.global_transform.basis.get_rotation_quaternion() - object.global_transform.basis.get_rotation_quaternion()).get_euler() * pickup_speed
 	object.linear_velocity = pickup_velocity
+	object.angular_velocity = pickup_rotation
 	

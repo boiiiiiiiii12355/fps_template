@@ -6,31 +6,31 @@
 bounce = 0.32
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6wbh"]
-size = Vector3(0.22027588, 0.21435547, 0.40386963)
+size = Vector3(0.22027588, 0.23510742, 0.43940735)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_prm06"]
 
 [node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light")]
+rotation_edit_mode = 1
 collision_layer = 4
-mass = 0.006
 physics_material_override = SubResource("PhysicsMaterial_b6wbh")
 script = ExtResource("1_prm06")
 light = NodePath("Light")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, -0.0007324219, -0.04067993)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, -0.0012617707, -0.04346466)
 shape = SubResource("BoxShape3D_b6wbh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929196, 0, 0, 0, 0.42929196, 0, 0, 0, 0.3998539, 0, 0, -0.04401818)
+transform = Transform3D(0.42929196, 0, 0, 0, -0.4292908, -0.0009211631, 0, 0.0009889811, -0.3998528, 0, 0.00042733224, -0.039509952)
 size = Vector3(0.2, 0.2, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929196, 0, 0, 0, 0.42929196, 0, 0, 0, 0.3998539, 0, 0, 0.124572545)
+transform = Transform3D(0.42929196, 0, 0, 0, -0.4292908, -0.0009211631, 0, 0.0009889811, -0.3998528, 0, 3.894147e-05, -0.20810021)
 size = Vector3(0.5, 0.5, 0.157)
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.9999967, 0, 0.00256557, 0, 1, 0, -0.00256557, 0, -0.9999967, 0, 0, 0.34387383)
+transform = Transform3D(-0.9999967, 0, 0.0025655697, 5.91043e-06, -0.9999974, 0.002303742, 0.002565563, 0.0023037496, 0.9999941, 0, -0.00046627372, -0.42740092)
 light_energy = 3.759
 shadow_enabled = true
 
