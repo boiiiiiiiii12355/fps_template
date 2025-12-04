@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cklj8dhur3el0"]
+
+[ext_resource type="Script" uid="uid://cewrjvrtmyl33" path="res://Scripts/procedual_walk.gd" id="1_kbiaw"]
+
+[node name="procedual_walk_test" type="Node3D"]
+script = ExtResource("1_kbiaw")

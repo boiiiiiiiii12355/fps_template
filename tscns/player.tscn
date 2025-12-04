@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=21 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
+[ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
@@ -14,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://cugflayudql7w" path="res://sounds/footsteps/concrete2.wav" id="12_cbyhw"]
 [ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
 [ext_resource type="AudioStream" uid="uid://l4e1i8kwoyxf" path="res://sounds/footsteps/concrete4.wav" id="14_wemna"]
+[ext_resource type="Script" uid="uid://lpvtdujdvkds" path="res://Scripts/inventory.gd" id="15_cbyhw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -23,53 +25,58 @@ material = SubResource("StandardMaterial3D_65t5e")
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jijlf"]
-size = Vector3(1, 1.9001465, 1)
+size = Vector3(1, 1.6545105, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("spring", "view", "player_sound", "flashlight")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_sound", "view", "inventory", "interact_ray", "pickup_hold_area")]
+rotation_edit_mode = 1
+collision_layer = 0
 script = ExtResource("1_a7j60")
+mySkin = NodePath("MeshInstance3D")
+myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
-view = NodePath("TwistPivot/view")
+camera_spine = NodePath("TwistPivot")
 player_sound = NodePath("soundctrl")
 stats = ExtResource("2_graem")
-flashlight = NodePath("TwistPivot/CSGBox3D/player_flashlight")
+view = NodePath("TwistPivot/view")
+inventory = NodePath("Inventory")
+interact_ray = NodePath("TwistPivot/view/interact_ray")
+pickup_hold_area = NodePath("TwistPivot/view/pickup_area")
+
+[node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9373779, 0)
+[node name="map_colision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4200805, 0)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
-spring_length = 8.0
-margin = 0.0
-
-[node name="CSGBox3D" type="CSGBox3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32810095, -0.077456, -0.584905)
-size = Vector3(0.1, 0.1, 0.3)
-
-[node name="player_flashlight" type="SpotLight3D" parent="TwistPivot/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040566623, -0.019805789, -0.19729853)
 visible = false
-light_energy = 2.702
-shadow_enabled = true
-distance_fade_enabled = true
-distance_fade_begin = 750.53
-spot_range = 67.210976
-spot_angle = 31.93981
+spring_length = 8.0
+margin = 8.0
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22920871, -0.08103269)
-rotation_edit_mode = 1
 fov = 70.0
+
+[node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
+target_position = Vector3(0, 0, -2.018)
+collision_mask = 4
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_thickness = 1
+
+[node name="pickup_area" type="Node3D" parent="TwistPivot/view"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.017184138, -0.9030465)
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")
@@ -109,10 +116,12 @@ stream = ExtResource("13_hpxkm")
 [node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
 stream = ExtResource("14_wemna")
 
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("15_cbyhw")
+
 [node name="Headbonk" type="ShapeCast3D" parent="."]
-transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1.0444163, 0)
 shape = SubResource("BoxShape3D_4pade")
-target_position = Vector3(0, -1.3, 0)
 
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.15

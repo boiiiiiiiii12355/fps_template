@@ -15,7 +15,6 @@ func play_sound(sound_name : String, pos):
 		if sound:
 			sound.pitch_scale = randf_range(1, 2)
 			sound.play()
-			print("sound played " + str(sound_name))
 			
 var sound_list : Array[Object]
 func _init():

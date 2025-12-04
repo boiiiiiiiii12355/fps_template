@@ -2,8 +2,12 @@ extends CharacterBody3D
 class_name PlayerInputs
 #CODE THAT PARSES USER INPUT
 #just organized like this for organization's sake
-@export var stats: Resource
-@export var flashlight : SpotLight3D
+@export var stats : Resource
+@export var view : Camera3D
+@export var inventory : Node
+@export var interact_ray : RayCast3D
+@export var pickup_hold_area : Node3D
+@export var pickup_speed = 20
 var flashlight_toggle = false
 var camera : Node3D
 
@@ -33,6 +37,13 @@ func InputMouse(event):
 	
 	stats.xlook = clamp(stats.xlook, stats.ply_maxlookangle_down, stats.ply_maxlookangle_up)
 	
+func interact_check():
+	if interact_ray.is_colliding():
+		var object = interact_ray.get_collider().get_parent()
+		return object
+	else:
+		return null
+		
 func ViewAngles(delta):
 	camera.rotation_degrees.x = stats.xlook
 	camera.rotation_degrees.y = stats.ylook
@@ -59,11 +70,20 @@ func InputKeys():
 	else:
 		stats.forwardmove = clamp(stats.forwardmove, -4096, 4096)
 	
-	#auxilary actions ie: flashlight
-	if Input.is_action_just_pressed("flashlight_toggle") and flashlight:
-		if flashlight.visible:
-			flashlight.visible = false
-		elif ! flashlight.visible: 
-			flashlight.visible = true
-		print("toggle")
+	#auxilary actions
+	if Input.is_action_just_pressed("click"):
+		pass
+	
+	if Input.is_action_just_pressed("interact") and interact_check():
+		interact_check().object_function()
+	elif Input.is_action_just_pressed("interact"):
+		print("nothing here...")
 		
+	if Input.is_action_pressed("pickup") and interact_check():
+		pickup_target = interact_check()
+	elif !Input.is_action_just_pressed("pickup"):
+		pickup_target = null
+		
+var pickup_target 
+func pickup(object):
+	pass

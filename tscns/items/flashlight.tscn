@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://ce7skwe0nlajq"]
+
+[ext_resource type="Script" uid="uid://dttfxp5jqimxa" path="res://Scripts/item_scripts/flashlight.gd" id="1_prm06"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6wbh"]
+bounce = 0.32
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b6wbh"]
+size = Vector3(0.22027588, 0.21435547, 0.40386963)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_prm06"]
+
+[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light")]
+collision_layer = 4
+mass = 0.006
+physics_material_override = SubResource("PhysicsMaterial_b6wbh")
+script = ExtResource("1_prm06")
+light = NodePath("Light")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000579834, -0.0007324219, -0.04067993)
+shape = SubResource("BoxShape3D_b6wbh")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(0.42929196, 0, 0, 0, 0.42929196, 0, 0, 0, 0.3998539, 0, 0, -0.04401818)
+size = Vector3(0.2, 0.2, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.42929196, 0, 0, 0, 0.42929196, 0, 0, 0, 0.3998539, 0, 0, 0.124572545)
+size = Vector3(0.5, 0.5, 0.157)
+
+[node name="Light" type="SpotLight3D" parent="."]
+transform = Transform3D(-0.9999967, 0, 0.00256557, 0, 1, 0, -0.00256557, 0, -0.9999967, 0, 0, 0.34387383)
+light_energy = 3.759
+shadow_enabled = true
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_prm06")

@@ -1,13 +1,13 @@
 extends PlayerInputs
 class_name Player
 
-@onready var myShape = $CollisionShape3D
-@onready var mySkin = $MeshInstance3D
 @onready var bonker = $Headbonk
+@export var mySkin : MeshInstance3D
+@export var myShape : CollisionShape3D
 @export var spring : SpringArm3D
-@onready var coyoteTimer = $CoyoteTime
-@export var view : Camera3D
 @export var camera_dist = 0
+@export var camera_spine : Node3D
+@onready var coyoteTimer = $CoyoteTime
 var default_camera_pos
 var randm = RandomNumberGenerator.new()
 var height = 2 #the model is 2 meter tall
@@ -19,15 +19,16 @@ func _ready():
 	default_camera_pos = view.transform.origin
 	camera = get_node(stats.camPath)
 	print(stats.vel)
-	
+	spring.spring_length = 0
+	spring.margin = 8
 	stats.on_floor = false
 	spring.add_excluded_object(self.get_rid())
 	
 func _process(delta):
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
-	spring.spring_length = 0
 	
+		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputKeys()
 		
@@ -58,12 +59,14 @@ func _process(delta):
 			#print("timer stopped")
 			pass
 	
+	if pickup_target:
+		pickup(pickup_target)
 		
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob 
 	view.transform.origin = lerp(view.transform.origin, req_view_transform + (camera_bob(step_time) * 3), change_magnitude)
 	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
-	
+		
 	if velocity.length():
 		step_time += (delta * stats.vel.length() * float(stats.on_floor))
 	else:
@@ -73,9 +76,12 @@ func _process(delta):
 	if view.transform.origin.y < step_boundary and step_sound_trigg == false:
 		step_sounds()
 		step_sound_trigg = true
+		
 	elif view.transform.origin.y > step_boundary:
 		step_sound_trigg = false
+		
 
+		
 
 var step_sound_trigg = false
 @export var player_sound : Node
@@ -90,15 +96,15 @@ func fall_impact():
 	fall_cam_bob.y = (-fall_displacement * abs(stored_vel.y))
 	print(velocity.length())
 	change_magnitude = 1
-	await get_tree().create_timer(0.05).timeout
-	fall_cam_bob.y = 0
+	await get_tree().create_timer(0.001).timeout
 	change_magnitude = 0.1
-
+	fall_cam_bob.y = 0
+	
 var stored_vel = Vector3.ZERO
 func stored_velocity():
 	if velocity:
 		stored_vel = velocity
-		
+
 var step_time = 0.0
 var headbob_frequency = 2.5
 var headbob_amplitude = 0.04
@@ -109,18 +115,18 @@ func camera_bob(headbob_time):
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0
-@export var tilt_magnitude = .1
+@export var tilt_magnitude = 0.1
 func movement_tilt():
-	var tilt_ratio = stats.sidemove / 4096.0
-	var tilt_equation = tilt_ratio * tilt_magnitude
-	if stats.sidemove > cam_tilt_init or stats.sidemove < -cam_tilt_init:
-		return tilt_equation
+	if stats.sidemove:
+		var tilt_ratio = stats.sidemove / 4096.0
+		var tilt_equation = tilt_ratio * tilt_magnitude
+		if stats.sidemove > cam_tilt_init or stats.sidemove < -cam_tilt_init:
+			return tilt_equation
+		else:
+			return 0.0
 	else:
 		return 0.0
-	
-func camera_jump_land():
-	pass
-	
+		
 func clearCoyote():
 	coyoteTimer.stop()
 	stats.shouldJump = false
@@ -137,7 +143,6 @@ func CheckVelocity():
 
 
 
-		
 
 ## Perform a move-and-slide along the set velocity vector. If the body collides
 ## with another, it will slide along the other body rather than stop immediately.
@@ -193,3 +198,9 @@ func get_delta_time() -> float:
 		return get_physics_process_delta_time()
 
 	return get_process_delta_time()
+
+func pickup(object : RigidBody3D):
+	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
+	object.angular_velocity = (object.angular_velocity - view.rotation)
+	object.linear_velocity = pickup_velocity
+	

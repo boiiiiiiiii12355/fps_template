@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
 [ext_resource type="PackedScene" uid="uid://b5isbpmf0ws11" path="res://maps/test_whiteroom.blend" id="4_nfut8"]
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
-[ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="6_e6wci"]
+[ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_ii602"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -33,7 +33,7 @@ volumetric_fog_length = 288.23
 [node name="Level" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660254, -0.43301278, 0.24999999, 0.12784947, 0.29160404, 0.94795656, -0.4833783, 0.8529168, -0.19717607, 41.36327, 24.608982, -34.54713)
+transform = Transform3D(-0.8660255, -0.4330128, 0.25000006, 0.17998216, 0.19650981, 0.9638415, -0.46648315, 0.8797068, -0.09224792, 41.36327, 24.608982, -34.54713)
 light_energy = 0.314
 shadow_enabled = true
 
@@ -54,6 +54,7 @@ script = ExtResource("4_ivjvi")
 
 [node name="test_whiteroom" parent="." instance=ExtResource("4_nfut8")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="objects" type="Node3D" parent="test_whiteroom"]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("6_e6wci")]
+[node name="flashlight" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
+transform = Transform3D(1, 0, 0, 0, 0.6739672, 0.73876125, 0, -0.73876125, 0.6739672, 38.293205, 0.878248, -34.73154)

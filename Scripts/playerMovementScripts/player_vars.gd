@@ -34,7 +34,7 @@ class_name playerVariables
 @export var ply_stepsize = 8
 
 @export var ply_maxspeed = 16
-@export var ply_crouchspeed = 10
+@export var ply_crouchspeed = 5
 var speed = ply_maxspeed
 
 @export var canJumpWhileCrouched = true

@@ -8,10 +8,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Slot 3" type="RichTextLabel" parent="Control"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 609.0
 offset_right = 357.0
-offset_bottom = 649.0
-text = "hand : flashlight"
+offset_bottom = 635.0
+text = "3"
+
+[node name="Slot 2" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 583.0
+offset_right = 357.0
+offset_bottom = 609.0
+text = "2"
+
+[node name="Slot 1" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 557.0
+offset_right = 357.0
+offset_bottom = 583.0
+text = "1"
