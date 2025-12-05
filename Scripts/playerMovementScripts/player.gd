@@ -8,6 +8,7 @@ class_name Player
 @export var camera_dist = 0
 @export var camera_spine : Node3D
 @onready var coyoteTimer = $CoyoteTime
+var pickup_point 
 var default_camera_pos
 var randm = RandomNumberGenerator.new()
 var height = 2 #the model is 2 meter tall
@@ -15,6 +16,7 @@ var height = 2 #the model is 2 meter tall
 
 func _ready():
 	mySkin.set_sorting_offset(1)
+	pickup_point = pickup_hold_area.get_child(0)
 	#get_viewport().get_camera_3d()
 	default_camera_pos = view.transform.origin
 	camera = get_node(stats.camPath)
@@ -201,7 +203,8 @@ func get_delta_time() -> float:
 
 func pickup(object : RigidBody3D):
 	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
-	var pickup_rotation = (pickup_hold_area.global_transform.basis.get_rotation_quaternion() - object.global_transform.basis.get_rotation_quaternion()).get_euler() * pickup_speed
+	var pickup_rotate = (camera_spine.global_rotation - object.global_rotation)* 5
+	print(pickup_hold_area.global_rotation)
+	print(object.global_rotation)
 	object.linear_velocity = pickup_velocity
-	object.angular_velocity = pickup_rotation
-	
+	object.angular_velocity = pickup_rotate

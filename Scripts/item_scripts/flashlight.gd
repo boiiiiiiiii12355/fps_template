@@ -1,4 +1,4 @@
-extends RigidBody3D
+extends physics_item
 
 @export var light : SpotLight3D
 func object_function():
