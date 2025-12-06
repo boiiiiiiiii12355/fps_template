@@ -201,10 +201,8 @@ func get_delta_time() -> float:
 
 	return get_process_delta_time()
 
+
 func pickup(object : RigidBody3D):
 	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
-	var pickup_rotate = (camera_spine.global_rotation - object.global_rotation)* 5
-	print(pickup_hold_area.global_rotation)
-	print(object.global_rotation)
 	object.linear_velocity = pickup_velocity
-	object.angular_velocity = pickup_rotate
+	object.set_target_rotation(pickup_point.global_position)
