@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://1d3cycomfleh" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
 [ext_resource type="Script" uid="uid://cur17euoajhrj" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
 [ext_resource type="Script" uid="uid://wt31xw6ef8ks" path="res://Scripts/playerMovementScripts/Crouched.gd" id="9_1hcmd"]
-[ext_resource type="Script" uid="uid://dqx5w761ag6l3" path="res://tscns/player_sounds.gd" id="10_y3dw1"]
+[ext_resource type="Script" uid="uid://dqx5w761ag6l3" path="res://Scripts/player_sounds.gd" id="10_y3dw1"]
 [ext_resource type="AudioStream" uid="uid://k40il752iwyl" path="res://sounds/footsteps/concrete1.wav" id="11_2rxho"]
 [ext_resource type="AudioStream" uid="uid://cugflayudql7w" path="res://sounds/footsteps/concrete2.wav" id="12_cbyhw"]
 [ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
@@ -44,8 +44,6 @@ inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/view/pickup_area")
 
-[node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
@@ -54,6 +52,18 @@ mesh = SubResource("BoxMesh_usx7c")
 [node name="map_colision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
+
+[node name="item_belt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6972423, -3.257394e-05)
+
+[node name="slot_1" type="Node3D" parent="item_belt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36140108, 0.08769083, -0.31370425)
+
+[node name="slot_2" type="Node3D" parent="item_belt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08769083, -0.31370425)
+
+[node name="slot_3" type="Node3D" parent="item_belt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38896626, 0.08769083, -0.31370425)
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4200805, 0)
@@ -81,6 +91,8 @@ rotation_edit_mode = 1
 [node name="point area" type="Node3D" parent="TwistPivot/view/pickup_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
+
+[node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")
@@ -120,8 +132,13 @@ stream = ExtResource("13_hpxkm")
 [node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
 stream = ExtResource("14_wemna")
 
-[node name="Inventory" type="Node" parent="."]
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "item_belt", "slot1_phys", "slot2_phys", "slot3_phys")]
 script = ExtResource("15_cbyhw")
+hud = NodePath("../HUD")
+item_belt = NodePath("../item_belt")
+slot1_phys = NodePath("../item_belt/slot_1")
+slot2_phys = NodePath("../item_belt/slot_2")
+slot3_phys = NodePath("../item_belt/slot_3")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1.0444163, 0)

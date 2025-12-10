@@ -1,19 +1,43 @@
-[gd_scene format=3 uid="uid://dppu81f8q0do2"]
+[gd_scene load_steps=2 format=3 uid="uid://dppu81f8q0do2"]
 
-[node name="HUD" type="Control"]
+[ext_resource type="Script" uid="uid://ceqy010g5orms" path="res://Scripts/ui_stuff/hud.gd" id="1_drfnf"]
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "selector")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_drfnf")
+slot_1 = NodePath("inventory/Slot 1")
+slot_2 = NodePath("inventory/Slot 2")
+slot_3 = NodePath("inventory/Slot 3")
+selector = NodePath("inventory/selector")
 
-[node name="Control" type="Control" parent="."]
+[node name="inventory" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -2.0
+offset_top = 7.0
+offset_right = 38.0
+offset_bottom = 47.0
 
-[node name="Slot 3" type="RichTextLabel" parent="Control"]
+[node name="background" type="ColorRect" parent="inventory"]
+layout_mode = 0
+offset_top = 549.0
+offset_right = 408.0
+offset_bottom = 650.0
+color = Color(0.29586652, 0.29586652, 0.29586634, 0.21568628)
+
+[node name="selector" type="ColorRect" parent="inventory"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 557.0
+offset_right = 386.0
+offset_bottom = 582.0
+color = Color(0, 0, 0, 0.5058824)
+
+[node name="Slot 3" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 609.0
@@ -21,7 +45,7 @@ offset_right = 357.0
 offset_bottom = 635.0
 text = "3"
 
-[node name="Slot 2" type="RichTextLabel" parent="Control"]
+[node name="Slot 2" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 583.0
@@ -29,7 +53,7 @@ offset_right = 357.0
 offset_bottom = 609.0
 text = "2"
 
-[node name="Slot 1" type="RichTextLabel" parent="Control"]
+[node name="Slot 1" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 557.0

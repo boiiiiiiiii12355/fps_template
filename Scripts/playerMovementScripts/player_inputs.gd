@@ -8,6 +8,7 @@ class_name PlayerInputs
 @export var interact_ray : RayCast3D
 @export var pickup_hold_area : Node3D
 @export var pickup_speed = 20
+@export var selected_inventory_slot : int = 1
 var flashlight_toggle = false
 var camera : Node3D
 
@@ -75,15 +76,46 @@ func InputKeys():
 		pass
 	
 	if Input.is_action_just_pressed("interact") and interact_check():
-		interact_check().object_function()
+		var object : Object = interact_check()
+		if object.is_in_group("interactable"):
+			object.object_function()
+			
 	elif Input.is_action_just_pressed("interact"):
 		print("nothing here...")
 		
-	if Input.is_action_pressed("pickup") and interact_check():
-		pickup_target = interact_check()
-	elif !Input.is_action_just_pressed("pickup"):
-		pickup_target = null
+
 		
-var pickup_target 
-func pickup(object):
+	#inventory actions
+	if Input.is_action_just_pressed("pickup") and interact_check():
+		var object : Object = interact_check()
+		if object.is_in_group("pickable"):
+			pickup(object)
+		else:
+			hold_target = object
+	elif !Input.is_action_pressed("pickup"):
+		hold_target = null
+		
+	if Input.is_action_just_pressed("drop"):
+		drop(selected_inventory_slot)
+		
+	if Input.is_action_just_pressed("scroll_up"):
+		selected_inventory_slot -= 1
+	elif Input.is_action_just_pressed("scroll_down"):
+		selected_inventory_slot += 1
+	inventory.hud.update_inventory_select(selected_inventory_slot)
+	
+	if selected_inventory_slot <= 1:
+		selected_inventory_slot = 1
+	elif selected_inventory_slot >= 3:
+		selected_inventory_slot = 3
+		
+
+var hold_target 
+func hold(object):
 	pass
+
+func pickup(object : Object):
+	pass
+
+func drop(slot : int):
+	inventory.drop(selected_inventory_slot)

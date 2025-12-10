@@ -10,31 +10,32 @@ size = Vector3(0.22027588, 0.23510742, 0.43940735)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_prm06"]
 
-[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light")]
+[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light") groups=["interactable", "pickable"]]
 collision_layer = 4
+collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_b6wbh")
 script = ExtResource("1_prm06")
 light = NodePath("Light")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.025461592, 0, -0.99967575, 0, 1, 0, 0.99967575, 0, 0.025461592, -0.10007021, -0.0012617707, -0.0075037777)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.10007021, -0.0012617707, -0.0075037777)
 shape = SubResource("BoxShape3D_b6wbh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.01093046, -0.0009886605, 0.39972314, -7.563882e-12, -0.42929083, -0.0009211632, 0.42915285, 2.5180918e-05, -0.010180887, -0.1040384, 0.00042733224, -0.007982731)
+transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, -0.1040384, 0.00042733224, -0.007982731)
 size = Vector3(0.2, 0.2, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.01093046, -0.0009886605, 0.39972314, -7.563882e-12, -0.42929083, -0.0009211632, 0.42915285, 2.5180918e-05, -0.010180887, 0.0644972, 3.8941478e-05, -0.012275308)
+transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, -0.09860435, 3.8941478e-05, -0.23266989)
 size = Vector3(0.5, 0.5, 0.157)
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.028026234, -0.0023030026, -0.9996046, 5.910442e-06, -0.99999744, 0.0023037419, -0.9996072, 5.86571e-05, 0.028026173, 0.28372678, -0.00046627372, -0.017859057)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09884742, -0.00046627372, -0.32838616)
 light_energy = 3.759
 shadow_enabled = true
 
 [node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.025461592, 0, -0.99967575, 0, 1, 0, 0.99967575, 0, 0.025461592, -0.14353554, 0, -0.0069767386)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.14353554, 0, -0.0069767386)
 collision_layer = 4
 collision_mask = 0
 

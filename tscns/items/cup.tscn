@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3yq7v8qc8slb"]
+
+[ext_resource type="PackedScene" uid="uid://5pcv4kq0q8cl" path="res://model/cup.blend" id="1_2ml6r"]
+[ext_resource type="Script" uid="uid://dvjpavx8v8quw" path="res://Scripts/item_scripts/physics_item.gd" id="1_tid86"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_tid86"]
+bounce = 0.46
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tid86"]
+height = 0.93029785
+radius = 0.50341797
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tid86"]
+radius = 0.8168506
+
+[node name="Cup" type="RigidBody3D" groups=["interactable"]]
+collision_layer = 4
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_tid86")
+script = ExtResource("1_tid86")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.038635254, 0)
+shape = SubResource("CylinderShape3D_tid86")
+
+[node name="cup" parent="." instance=ExtResource("1_2ml6r")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_tid86")

@@ -61,8 +61,8 @@ func _process(delta):
 			#print("timer stopped")
 			pass
 	
-	if pickup_target:
-		pickup(pickup_target)
+	if hold_target:
+		hold(hold_target)
 		
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob 
@@ -202,7 +202,11 @@ func get_delta_time() -> float:
 	return get_process_delta_time()
 
 
-func pickup(object : RigidBody3D):
+func hold(object : RigidBody3D):
 	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
 	object.linear_velocity = pickup_velocity
 	object.set_target_rotation(pickup_point.global_position)
+
+func pickup(object : Object):
+	print("picked up  " + str(object))
+	inventory.pickup(object, (selected_inventory_slot - 1))

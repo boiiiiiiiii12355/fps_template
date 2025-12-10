@@ -1,8 +1,8 @@
 extends RigidBody3D
 class_name physics_item
 
-var speed: float = 0.1
-
+var speed: float = 1
+@export var item_name : String = "undefined_physics_item"
 func object_function():
 	print("no function defined")
 
@@ -14,6 +14,14 @@ func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D
 	if forward_dir.dot(target_dir) > 1e-4:
 		state.angular_velocity = local_speed * forward_dir.cross(target_dir) / state.step
 	
+func picked_up(slot, slot_node):
+	global_position = lerp(global_position, slot_node.global_position, 0.1)
+	await global_position == slot_node.global_position
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
+	global_rotation = slot_node.global_rotation
+	global_rotation.x = -90
+	global_position = slot_node.global_position
 	
 func _integrate_forces(state):
 	if target_point:
