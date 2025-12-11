@@ -8,36 +8,39 @@ bounce = 0.32
 [sub_resource type="BoxShape3D" id="BoxShape3D_b6wbh"]
 size = Vector3(0.22027588, 0.23510742, 0.43940735)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_prm06"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_prm06"]
+size = Vector3(0.245, 0.247, 0.5)
 
-[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light") groups=["interactable", "pickable"]]
+[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light", "pickup_area") groups=["interactable", "pickable"]]
 collision_layer = 4
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_b6wbh")
 script = ExtResource("1_prm06")
 light = NodePath("Light")
+pickup_area = NodePath("pickup_area")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.10007021, -0.0012617707, -0.0075037777)
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.0052054226, -0.0012617707, 0.10885356)
 shape = SubResource("BoxShape3D_b6wbh")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, -0.1040384, 0.00042733224, -0.007982731)
+transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, 0.0012372285, 0.00042733224, 0.10837461)
 size = Vector3(0.2, 0.2, 1)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, -0.09860435, 3.8941478e-05, -0.23266989)
+transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, 0.0066712797, 3.8941478e-05, 0.2651016)
 size = Vector3(0.5, 0.5, 0.157)
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.09884742, -0.00046627372, -0.32838616)
+transform = Transform3D(-0.99997926, 0, 0.006440319, 0, 1, 0, -0.006440319, 0, -0.99997926, 0.006428212, -0.00046627372, 0.3027494)
 light_energy = 3.759
 shadow_enabled = true
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.14353554, 0, -0.0069767386)
+[node name="pickup_area" type="Area3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.03825991, 0, 0.1093806)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("SphereShape3D_prm06")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
+transform = Transform3D(0.9999986, 0, 0, 0, 1, 0, 0, 0, 0.9999986, 0.038971007, 0, -0.008524889)
+shape = SubResource("BoxShape3D_prm06")

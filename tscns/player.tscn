@@ -42,7 +42,7 @@ stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
-pickup_hold_area = NodePath("TwistPivot/view/pickup_area")
+pickup_hold_area = NodePath("TwistPivot/pickup_area")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -54,16 +54,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="item_belt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6972423, -3.257394e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23237908, -3.257394e-05)
 
 [node name="slot_1" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36140108, 0.08769083, -0.31370425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36140108, 0.08769083, -0.0012069046)
 
 [node name="slot_2" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08769083, -0.31370425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08769083, -0.0012069046)
 
 [node name="slot_3" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38896626, 0.08769083, -0.31370425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38896626, 0.08769083, -0.0012069046)
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4200805, 0)
@@ -72,6 +72,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4200805, 0)
 visible = false
 spring_length = 8.0
 margin = 8.0
+
+[node name="equip_area" type="Node3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23742786, -0.3756044, -0.586645)
+
+[node name="pickup_area" type="Node3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
+rotation_edit_mode = 1
+
+[node name="point area" type="Node3D" parent="TwistPivot/pickup_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
+rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
 fov = 70.0
@@ -83,14 +94,6 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_thickness = 1
-
-[node name="pickup_area" type="Node3D" parent="TwistPivot/view"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
-rotation_edit_mode = 1
-
-[node name="point area" type="Node3D" parent="TwistPivot/view/pickup_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
-rotation_edit_mode = 1
 
 [node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 
@@ -132,10 +135,11 @@ stream = ExtResource("13_hpxkm")
 [node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
 stream = ExtResource("14_wemna")
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "item_belt", "slot1_phys", "slot2_phys", "slot3_phys")]
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "item_belt", "equip_pos", "slot1_phys", "slot2_phys", "slot3_phys")]
 script = ExtResource("15_cbyhw")
 hud = NodePath("../HUD")
 item_belt = NodePath("../item_belt")
+equip_pos = NodePath("../TwistPivot/equip_area")
 slot1_phys = NodePath("../item_belt/slot_1")
 slot2_phys = NodePath("../item_belt/slot_2")
 slot3_phys = NodePath("../item_belt/slot_3")

@@ -73,7 +73,8 @@ func InputKeys():
 	
 	#auxilary actions
 	if Input.is_action_just_pressed("click"):
-		pass
+		if inventory.inventory_array[selected_inventory_slot - 1] != null:
+			inventory.inventory_array[selected_inventory_slot - 1].object_function()
 	
 	if Input.is_action_just_pressed("interact") and interact_check():
 		var object : Object = interact_check()
