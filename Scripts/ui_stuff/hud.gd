@@ -14,10 +14,20 @@ func _physics_process(delta: float) -> void:
 	
 func update_inventory_display():
 	player_inventory = get_parent().inventory.inventory_array
-	slot_1.text = "1 :" + str(player_inventory[0])
-	slot_2.text = "2 :" + str(player_inventory[1])
-	slot_3.text = "3 :" + str(player_inventory[2])
-
+	if player_inventory[0]:
+		slot_1.text = "1 :" + player_inventory[0].item_name
+	else:
+		slot_1.text = "1 :empty"
+	if player_inventory[1]:
+		slot_2.text = "2 :" + player_inventory[1].item_name
+	else:
+		slot_2.text = "2 :empty"
+	if player_inventory[2]:
+		slot_3.text = "3 :" + player_inventory[2].item_name
+	else:
+		slot_3.text = "3 :empty"
+		
+		
 func update_inventory_select(slot : int):
 	if slot == 1:
 		req_selector_position = slot_1.global_position

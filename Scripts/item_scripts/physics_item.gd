@@ -20,7 +20,7 @@ func item_equip(equip_pos):
 	
 func picked_up(slot, slot_node):
 	pickup_area.monitorable = false
-	global_position = lerp(global_position, slot_node.global_position, 0.5)
+	global_position = slot_node.global_position
 	linear_velocity = Vector3.ZERO
 	global_rotation = slot_node.global_rotation
 	global_rotation.x = -90

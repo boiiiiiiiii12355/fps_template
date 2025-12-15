@@ -99,6 +99,13 @@ func InputKeys():
 	if Input.is_action_just_pressed("drop"):
 		drop(selected_inventory_slot)
 		
+	if Input.is_action_just_pressed("slot_1"):
+		selected_inventory_slot = 1
+	elif Input.is_action_just_pressed("slot_2"):
+		selected_inventory_slot = 2
+	elif Input.is_action_just_pressed("slot_3"):
+		selected_inventory_slot = 3
+	
 	if Input.is_action_just_pressed("scroll_up"):
 		selected_inventory_slot -= 1
 	elif Input.is_action_just_pressed("scroll_down"):

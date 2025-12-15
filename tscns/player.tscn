@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=22 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
 [ext_resource type="AudioStream" uid="uid://l4e1i8kwoyxf" path="res://sounds/footsteps/concrete4.wav" id="14_wemna"]
 [ext_resource type="Script" uid="uid://lpvtdujdvkds" path="res://Scripts/inventory.gd" id="15_cbyhw"]
+[ext_resource type="PackedScene" uid="uid://b80vkxdyc415v" path="res://char_models/player_body.blend" id="17_wemna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -57,16 +58,16 @@ shape = SubResource("BoxShape3D_jijlf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23237908, -3.257394e-05)
 
 [node name="slot_1" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.36140108, 0.08769083, -0.0012069046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13857374, 0.6655419, 0.009075254)
 
 [node name="slot_2" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08769083, -0.0012069046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0848636, 0.69943947, -0.07878679)
 
 [node name="slot_3" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38896626, 0.08769083, -0.0012069046)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17349774, 0.6584255, 0.0021955073)
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4200805, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3894548, 0.038282115)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -74,7 +75,7 @@ spring_length = 8.0
 margin = 8.0
 
 [node name="equip_area" type="Node3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23742786, -0.3756044, -0.586645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08422494, -0.04567027, -0.30017683)
 
 [node name="pickup_area" type="Node3D" parent="TwistPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
@@ -85,6 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16207075, 0)
 fov = 70.0
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
@@ -151,3 +153,6 @@ shape = SubResource("BoxShape3D_4pade")
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
+
+[node name="player_body" parent="." instance=ExtResource("17_wemna")]
+transform = Transform3D(-0.543, 0, -8.199072e-08, 0, 0.543, 0, 8.199072e-08, 0, -0.543, 0, 0.7464319, 0.07087284)

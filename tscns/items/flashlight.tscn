@@ -1,46 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://ce7skwe0nlajq"]
+[gd_scene load_steps=6 format=3 uid="uid://ce7skwe0nlajq"]
 
 [ext_resource type="Script" uid="uid://dttfxp5jqimxa" path="res://Scripts/item_scripts/flashlight.gd" id="1_prm06"]
+[ext_resource type="PackedScene" uid="uid://dr312dsgdbxf3" path="res://model/flashlight.blend" id="2_hk5sf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6wbh"]
 bounce = 0.32
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_b6wbh"]
-size = Vector3(0.22027588, 0.23510742, 0.43940735)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hk5sf"]
+radius = 0.021
+height = 0.15844922
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prm06"]
-size = Vector3(0.245, 0.247, 0.5)
+size = Vector3(0.108, 0.092, 0.14428076)
 
 [node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light", "pickup_area") groups=["interactable", "pickable"]]
 collision_layer = 4
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_b6wbh")
+continuous_cd = true
 script = ExtResource("1_prm06")
 light = NodePath("Light")
+item_name = "flashlight"
 pickup_area = NodePath("pickup_area")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0.0052054226, -0.0012617707, 0.10885356)
-shape = SubResource("BoxShape3D_b6wbh")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, 0.0012372285, 0.00042733224, 0.10837461)
-size = Vector3(0.2, 0.2, 1)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
-transform = Transform3D(0.42929202, 0, 0, 0, 0.42929196, 0, 0, 0, 0.39985386, 0.0066712797, 3.8941478e-05, 0.2651016)
-size = Vector3(0.5, 0.5, 0.157)
+transform = Transform3D(1, 0, 0, 0, -0.0019547883, -0.9999981, 0, 0.9999981, -0.0019547883, 0.00020346977, -0.00022322388, 0.118559964)
+shape = SubResource("CapsuleShape3D_hk5sf")
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(-0.99997926, 0, 0.006440319, 0, 1, 0, -0.006440319, 0, -0.99997926, 0.006428212, -0.00046627372, 0.3027494)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.082918e-06, -0.00046627372, 0.22003111)
 light_energy = 3.759
 shadow_enabled = true
 
 [node name="pickup_area" type="Area3D" parent="."]
-transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, -0.03825991, 0, 0.1093806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03825991, 0, 0.1093806)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
-transform = Transform3D(0.9999986, 0, 0, 0, 1, 0, 0, 0, 0.9999986, 0.038971007, 0, -0.008524889)
+transform = Transform3D(0.99999154, 0, 0, 0, 1, 0, 0, 0, 0.99999154, 0.038970977, -0.00044897944, 0.007292822)
 shape = SubResource("BoxShape3D_prm06")
+
+[node name="flashlight" parent="." instance=ExtResource("2_hk5sf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1167999)

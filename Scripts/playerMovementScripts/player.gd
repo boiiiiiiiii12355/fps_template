@@ -26,7 +26,7 @@ func _ready():
 	stats.on_floor = false
 	spring.add_excluded_object(self.get_rid())
 	
-func _process(delta):
+func _physics_process(delta: float) -> void:
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
 	
@@ -66,7 +66,7 @@ func _process(delta):
 		
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob 
-	view.transform.origin = lerp(view.transform.origin, req_view_transform + (camera_bob(step_time) * 3), change_magnitude)
+	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)
 	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
 		
 	if velocity.length():
@@ -113,7 +113,7 @@ var headbob_amplitude = 0.04
 func camera_bob(headbob_time):
 	var headbob_position = Vector3.ZERO
 	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
-	headbob_position.x = cos(headbob_time * headbob_frequency / 2) * headbob_amplitude
+	headbob_position.x = cos(headbob_time * headbob_frequency) * headbob_amplitude
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0

@@ -20,7 +20,6 @@ func _ready() -> void:
 	slot_phy_init()
 	
 func _physics_process(delta: float) -> void:
-	item_belt.global_rotation.y = inventory_owner.camera_spine.global_rotation.y
 	for i in inventory_array.size():
 		if inventory_array[i] != null and (i + 1) != inventory_owner.selected_inventory_slot:
 			inventory_array[i].picked_up(i, slot_phys_array[i])
@@ -35,14 +34,14 @@ func pickup(object : Object, slot : int):
 		
 var throw_speed = 10
 func drop(slot : int):
-	print(get_tree())
-	var throw_velocity = (inventory_owner.pickup_point.global_position - inventory_owner.pickup_hold_area.global_position) * throw_speed
-	inventory_array[slot - 1].global_position = inventory_owner.view.global_position
-	inventory_array[slot - 1].linear_velocity =  throw_velocity
-	inventory_array[slot - 1].pickup_area.monitorable = true
-	inventory_array[slot - 1].set_target_rotation(inventory_owner.pickup_point.global_position)
-	inventory_array[slot - 1] = null
-	hud.update_inventory_display()
+	if inventory_array[slot - 1] != null:
+		var throw_velocity = (inventory_owner.pickup_point.global_position - inventory_owner.pickup_hold_area.global_position) * throw_speed
+		inventory_array[slot - 1].global_position = inventory_owner.view.global_position
+		inventory_array[slot - 1].linear_velocity =  throw_velocity
+		inventory_array[slot - 1].pickup_area.monitorable = true
+		inventory_array[slot - 1].set_target_rotation(inventory_owner.pickup_point.global_position)
+		inventory_array[slot - 1] = null
+		hud.update_inventory_display()
 
 func slot_phy_init():
 	slot_phys_array.resize(3)
