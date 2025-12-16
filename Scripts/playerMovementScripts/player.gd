@@ -66,9 +66,9 @@ func _physics_process(delta: float) -> void:
 		hold(hold_target)
 	
 	player_animations.chest_point_at($TwistPivot/view/chest_point_target.global_position)
-	player_animations.walk_anim_update(velocity.length(), velocity.length() / 100000)
+	player_animations.walk_anim_update(velocity.length(), 1)
 	#bunch of camera effects when moving
-	var req_view_transform = default_camera_pos + fall_cam_bob 
+	var req_view_transform = default_camera_pos + fall_cam_bob
 	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)
 	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
 		
