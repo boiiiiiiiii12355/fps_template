@@ -1,11 +1,12 @@
 extends Node3D
 
-#may change depending on blender format
-var skeleton : Skeleton3D = self.get_child(0).get_child(0)
-var head
+@export var camera_point : Node3D
+@export var animation_tree : AnimationTree
 
-func _ready() -> void:
-	head = skeleton.get
-
-func head_point_to():
-	pass
+func chest_point_at(r_position):
+	camera_point.global_position = r_position
+	
+var local_vel_mag : float = 0
+func walk_anim_update(velocity_magnitude : float, speed : float):
+	local_vel_mag = lerp(local_vel_mag, velocity_magnitude, 0.2)
+	animation_tree.set("parameters/walk/blend_position", local_vel_mag)

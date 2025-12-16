@@ -66,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		hold(hold_target)
 	
 	player_animations.chest_point_at($TwistPivot/view/chest_point_target.global_position)
-	player_animations.walk_anim_update(velocity.length())
+	player_animations.walk_anim_update(velocity.length(), velocity.length() / 100000)
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob 
 	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)
@@ -120,9 +120,9 @@ func camera_bob(headbob_time):
 	return headbob_position
 	
 @export var cam_tilt_init = 10.0
-@export var tilt_magnitude = 0.1
+@export var tilt_magnitude = 0.1 
 func movement_tilt():
-	if stats.sidemove:
+	if stats.sidemove and tilt_magnitude:
 		var tilt_ratio = stats.sidemove / 4096.0
 		var tilt_equation = tilt_ratio * tilt_magnitude
 		if stats.sidemove > cam_tilt_init or stats.sidemove < -cam_tilt_init:
@@ -145,8 +145,6 @@ func CheckVelocity():
 
 	elif stats.vel.length() < -stats.ply_maxvelocity:
 		stats.vel = stats.vel.normalized() * stats.ply_maxvelocity
-
-
 
 
 ## Perform a move-and-slide along the set velocity vector. If the body collides
