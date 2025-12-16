@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cdimgdgbchilt"]
+
+[ext_resource type="PackedScene" uid="uid://b80vkxdyc415v" path="res://char_models/player_body.blend" id="1_pkeqm"]
+[ext_resource type="Script" uid="uid://66lqec4wjkx4" path="res://Scripts/player_animations.gd" id="2_en67s"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_en67s"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_74kp5"]
+animation = &"rigAction"
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_cd5m8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8n0mu"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_qm4x0"]
+graph_offset = Vector2(-544.6565, 8.595566)
+nodes/arm/node = SubResource("AnimationNodeAnimation_74kp5")
+nodes/arm/position = Vector2(-380, 60)
+nodes/leg/node = SubResource("AnimationNodeAnimation_8n0mu")
+nodes/leg/position = Vector2(-380, 240)
+"nodes/full walk/node" = SubResource("AnimationNodeAdd2_cd5m8")
+"nodes/full walk/position" = Vector2(-80, 80)
+node_connections = [&"output", 0, &"full walk", &"full walk", 0, &"arm", &"full walk", 1, &"leg"]
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_4d5fo"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_en67s")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeBlendTree_qm4x0")
+blend_point_1/pos = 1.0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k4ijd"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_6nbey"]
+states/End/position = Vector2(523, 98)
+states/walk/node = SubResource("AnimationNodeBlendSpace1D_4d5fo")
+states/walk/position = Vector2(364, 98)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_k4ijd")]
+graph_offset = Vector2(-128, 5)
+
+[node name="player_body" node_paths=PackedStringArray("look_at_point", "animation_tree") instance=ExtResource("1_pkeqm")]
+script = ExtResource("2_en67s")
+look_at_point = NodePath("camera_point")
+animation_tree = NodePath("AnimationTree")
+
+[node name="chest_look_at" type="LookAtModifier3D" parent="rig/Skeleton3D" index="1"]
+target_node = NodePath("../../../camera_point")
+bone_name = "MCH-spine.003"
+bone = 100
+forward_axis = 3
+primary_rotation_axis = 2
+transition_type = 10
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.2425
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.89989173
+secondary_damp_threshold = 1.0
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_6nbey")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walk/blend_position = -0.020979047
+"parameters/walk/1/full walk/add_amount" = 0.5
+
+[node name="camera_point" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.040259123, 2.5761077, 3.8649533)

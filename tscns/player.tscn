@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
+[ext_resource type="PackedScene" uid="uid://cdimgdgbchilt" path="res://tscns/player_body.tscn" id="3_wemna"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
 [ext_resource type="Script" uid="uid://chp77x488ykfs" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
@@ -16,7 +17,6 @@
 [ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
 [ext_resource type="AudioStream" uid="uid://l4e1i8kwoyxf" path="res://sounds/footsteps/concrete4.wav" id="14_wemna"]
 [ext_resource type="Script" uid="uid://lpvtdujdvkds" path="res://Scripts/inventory.gd" id="15_cbyhw"]
-[ext_resource type="PackedScene" uid="uid://b80vkxdyc415v" path="res://char_models/player_body.blend" id="17_wemna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -31,19 +31,23 @@ size = Vector3(1, 1.6545105, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_sound", "view", "inventory", "interact_ray", "pickup_hold_area")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_animations", "player_sound", "view", "inventory", "interact_ray", "pickup_hold_area")]
 collision_layer = 0
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
+player_animations = NodePath("player_body")
 player_sound = NodePath("soundctrl")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
+
+[node name="player_body" parent="." instance=ExtResource("3_wemna")]
+transform = Transform3D(-0.536, 0, -4.685861e-08, 0, 0.536, 0, 4.685861e-08, 0, -0.536, 0, 0, 0.106)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -67,7 +71,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0848636, 0.69943947, -0.07
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17349774, 0.6584255, 0.0021955073)
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3894548, 0.038282115)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3885835, 0.05940129)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -86,7 +90,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.16207075, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24618316, 0)
 fov = 70.0
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
@@ -96,6 +100,9 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_thickness = 1
+
+[node name="chest_point_target" type="Node3D" parent="TwistPivot/view"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009134531, -1.408687)
 
 [node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 
@@ -153,6 +160,3 @@ shape = SubResource("BoxShape3D_4pade")
 [node name="CoyoteTime" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
-
-[node name="player_body" parent="." instance=ExtResource("17_wemna")]
-transform = Transform3D(-0.543, 0, -8.199072e-08, 0, 0.543, 0, 8.199072e-08, 0, -0.543, 0, 0.7464319, 0.07087284)
