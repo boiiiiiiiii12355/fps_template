@@ -77,27 +77,10 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_time = 0
 		
-	var step_boundary = camera_bob(0).y + default_camera_pos.y
-	if view.transform.origin.y < step_boundary and step_sound_trigg == false:
-		step_sounds()
-		step_sound_trigg = true
-		
-	elif view.transform.origin.y > step_boundary:
-		step_sound_trigg = false
-		
-
-		
-
-var step_sound_trigg = false
-@export var player_sound : Node
-func step_sounds():
-	player_sound.play_sound("Concrete" + str(randm.randi_range(1, 4)), global_position)
-
 var change_magnitude = 0.1
 var fall_displacement = .02
 var fall_cam_bob = Vector3.ZERO
 func fall_impact():
-	player_sound.play_sound("Concrete4", global_position)
 	fall_cam_bob.y = (-fall_displacement * abs(stored_vel.y))
 	print(velocity.length())
 	change_magnitude = 1
