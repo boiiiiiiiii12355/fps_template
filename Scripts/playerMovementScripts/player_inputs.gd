@@ -48,7 +48,8 @@ func interact_check():
 func ViewAngles(delta):
 	camera.rotation_degrees.x = stats.xlook
 	camera.rotation_degrees.y = stats.ylook
-	
+
+var movement_local_dir = Vector2.ZERO
 func InputKeys():
 	stats.sidemove += int(stats.ply_sidespeed) * (int(Input.get_action_strength("move_left") * 50))
 	stats.sidemove -= int(stats.ply_sidespeed) * (int(Input.get_action_strength("move_right") * 50))
@@ -57,6 +58,7 @@ func InputKeys():
 	stats.forwardmove -= int(stats.ply_backspeed) * (int(Input.get_action_strength("move_back") * 50))
 	
 	# Clamp that shit so it doesn't go too high
+	movement_local_dir = Vector2.ZERO
 	if Input.is_action_just_released("move_left") or Input.is_action_just_released("move_right"):
 		stats.sidemove = 0
 	else:
@@ -66,11 +68,21 @@ func InputKeys():
 		stats.upmove = 0
 	else:
 		stats.upmove = clamp(stats.upmove, -4096, 4096)
+		
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_back"):
 		stats.forwardmove = 0
 	else:
 		stats.forwardmove = clamp(stats.forwardmove, -4096, 4096)
-	
+		
+	var local_dir_x = 0
+	var local_dir_y = 0
+	if stats.sidemove:
+		local_dir_x = stats.sidemove / abs(stats.sidemove)
+	if stats.forwardmove:
+		local_dir_y = stats.forwardmove / abs(stats.forwardmove)
+		
+	movement_local_dir += Vector2(local_dir_x, local_dir_y)
+		
 	#auxilary actions
 	if Input.is_action_just_pressed("click"):
 		if inventory.inventory_array[selected_inventory_slot - 1] != null:

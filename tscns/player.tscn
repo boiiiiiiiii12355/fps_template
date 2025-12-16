@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
-[ext_resource type="PackedScene" uid="uid://cdimgdgbchilt" path="res://tscns/player_body.tscn" id="3_wemna"]
+[ext_resource type="PackedScene" uid="uid://bfbuqtw1qjq77" path="res://tscns/player_body.tscn" id="3_wemna"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
 [ext_resource type="Script" uid="uid://chp77x488ykfs" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
@@ -31,7 +31,7 @@ size = Vector3(1, 1.6545105, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(1, 0.8, 1)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_animations", "player_sound", "view", "inventory", "interact_ray", "pickup_hold_area")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_animations", "view", "inventory", "interact_ray", "pickup_hold_area")]
 collision_layer = 0
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
@@ -39,15 +39,15 @@ myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
 player_animations = NodePath("player_body")
-player_sound = NodePath("soundctrl")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
 
-[node name="player_body" parent="." instance=ExtResource("3_wemna")]
-transform = Transform3D(-0.536, 0, -4.685861e-08, 0, 0.536, 0, 4.685861e-08, 0, -0.536, 0, 0, 0.106)
+[node name="player_body" parent="." node_paths=PackedStringArray("camera_spine") instance=ExtResource("3_wemna")]
+transform = Transform3D(0.536, 0, 0, 0, 0.536, 0, 0, 0, 0.536, 0, 0, 0.106)
+camera_spine = NodePath("../TwistPivot")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
