@@ -1,7 +1,6 @@
 extends Node
 
 func _ready() -> void:
-	print(self.get_children())
 	_init()
 
 func play_sound(sound_name : String, pos):
