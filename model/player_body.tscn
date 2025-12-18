@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ulykyo0pe22e"]
-
-[ext_resource type="PackedScene" uid="uid://b80vkxdyc415v" path="res://char_models/player_body.blend" id="1_cwmuc"]
-
-[node name="player_body" instance=ExtResource("1_cwmuc")]
-
-[node name="SkeletonIK3D" type="SkeletonIK3D" parent="rig/Skeleton3D" index="0"]

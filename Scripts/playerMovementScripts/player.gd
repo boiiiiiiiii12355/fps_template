@@ -27,6 +27,7 @@ func _ready():
 	stats.on_floor = false
 	spring.add_excluded_object(self.get_rid())
 	
+@export var chest_point_target : Node3D
 func _physics_process(delta: float) -> void:
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
@@ -65,7 +66,7 @@ func _physics_process(delta: float) -> void:
 	if hold_target:
 		hold(hold_target)
 	
-	player_animations.chest_point_at($TwistPivot/view/chest_point_target.global_position)
+	player_animations.chest_point_at(chest_point_target.global_position)
 	player_animations.walk_anim_update(movement_local_dir)
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob

@@ -13,9 +13,9 @@ func chest_point_at(r_position):
 func turn_body_to_cam():
 	print(chest_tracker.rotation.y)
 	if chest_tracker.rotation.y > 0.4:
-		self.rotation.y += 0.01
+		self.rotation.y += 0.1
 	elif chest_tracker.rotation.y < -0.6:
-		self.rotation.y -= 0.01
+		self.rotation.y -= 0.1
 
 		
 var local_vel_mag : Vector2 = Vector2.ZERO

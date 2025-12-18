@@ -11,6 +11,6 @@ ply_friction = 1
 ply_gravity = 40
 ply_jumpheight = 2
 ply_stepsize = 5
-ply_maxspeed = 5
+ply_maxspeed = 4
 ply_crouchspeed = 3
 camPath = NodePath("TwistPivot")
