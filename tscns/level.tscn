@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c41sndaibm3u2"]
+[gd_scene load_steps=12 format=3 uid="uid://c41sndaibm3u2"]
 
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="1_rsegt"]
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
 [ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_ii602"]
 [ext_resource type="PackedScene" uid="uid://d3yq7v8qc8slb" path="res://tscns/items/cup.tscn" id="6_e6wci"]
+[ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="7_0eik5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -63,8 +64,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.475685, 0.98439914, -35.26
 [node name="flashlight" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
 transform = Transform3D(1, 0, 0, 0, 0.6739672, 0.73876125, 0, -0.73876125, 0.6739672, 38.293205, 0.878248, -34.73154)
 
-[node name="flashlight2" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.428764, 3.528273, -34.94979)
-
-[node name="flashlight3" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.38961, 3.6108346, -34.01527)
+[node name="p2000" parent="." instance=ExtResource("7_0eik5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.736626, 0.25726917, -34.616074)

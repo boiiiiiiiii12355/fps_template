@@ -91,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30004764, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20768249, 0)
 fov = 70.0
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
@@ -103,7 +103,7 @@ collide_with_bodies = false
 debug_shape_thickness = 1
 
 [node name="chest_point_target" type="Node3D" parent="TwistPivot/view"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.113334656, -1.408687)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.595)
 
 [node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 

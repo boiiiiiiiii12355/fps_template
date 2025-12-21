@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bly1cw0xtom6u"]
+
+[ext_resource type="PackedScene" uid="uid://bjhdsjf0el4r4" path="res://model/P2000.blend" id="1_138c2"]
+[ext_resource type="Script" uid="uid://dm05urle0w041" path="res://Scripts/weapon_scripts/p_2000.gd" id="1_sfpw3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_138c2"]
+bounce = 0.09
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sfpw3"]
+size = Vector3(0.055, 0.181, 0.301)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j8x68"]
+size = Vector3(0.065, 0.176, 0.364)
+
+[node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("pickup_area") groups=["pickable"]]
+collision_layer = 0
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_138c2")
+script = ExtResource("1_sfpw3")
+item_name = "P2000"
+pickup_area = NodePath("pickup_area")
+
+[node name="P2000" parent="." instance=ExtResource("1_138c2")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01074183, -0.032782644, 0.041066468)
+shape = SubResource("BoxShape3D_sfpw3")
+
+[node name="pickup_area" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012529254, -0.029415503, 0.036615185)
+shape = SubResource("BoxShape3D_j8x68")
