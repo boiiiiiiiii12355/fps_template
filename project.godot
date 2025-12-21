@@ -134,7 +134,7 @@ slot_3={
 
 [physics]
 
-3d/default_gravity=10.0
+3d/physics_engine="Jolt Physics"
 
 [rendering]
 

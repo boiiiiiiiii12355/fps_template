@@ -64,5 +64,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.475685, 0.98439914, -35.26
 [node name="flashlight" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
 transform = Transform3D(1, 0, 0, 0, 0.6739672, 0.73876125, 0, -0.73876125, 0.6739672, 38.293205, 0.878248, -34.73154)
 
-[node name="p2000" parent="." instance=ExtResource("7_0eik5")]
+[node name="p2000" parent="test_whiteroom/objects" instance=ExtResource("7_0eik5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.736626, 0.25726917, -34.616074)

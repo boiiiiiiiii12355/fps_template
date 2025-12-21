@@ -2,7 +2,7 @@ extends Node3D
 
 @export var skeleton : Skeleton3D
 @export var camera_point : Node3D
-@export var body_point : Node3D
+@export var legs_point : Node3D
 @export var animation_tree : AnimationTree
 @export var chest_tracker : Node3D
 @export var head_tracker : BoneAttachment3D
@@ -15,7 +15,8 @@ func chest_point_at(r_position):
 	turn_body_to_cam()
 	
 func turn_body_to_cam():
-	pass
+	legs_point.global_position.x = lerp(legs_point.global_position.x, camera_point.global_position.x, 0.1)
+	legs_point.global_position.z = lerp(legs_point.global_position.z, camera_point.global_position.z, 0.1)
 	
 var local_vel_mag : Vector2 = Vector2.ZERO
 func walk_anim_update(velocity_magnitude : Vector2):
