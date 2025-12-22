@@ -1,14 +1,17 @@
 extends PlayerState
 
+var player_animation : player_animations
 var try_uncrouch = false
 
 func enter(msg := {}) -> void:
 	print("crouching")
+	player_animation = get_parent().get_parent().player_animations
 	stats.crouching = true
 	try_uncrouch = false
 	stats.speed = stats.ply_crouchspeed 
 	
 func physics_update(delta: float) -> void:
+	player_animation.crouch_enter()
 	if(Input.is_action_just_released("crouch")):
 		try_uncrouch = true
 		
