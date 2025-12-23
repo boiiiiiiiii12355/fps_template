@@ -21,13 +21,16 @@ func turn_body_to_cam():
 	self.look_at(legs_point.global_position)
 
 func crouch_enter():
-	animation_tree.set("parameters/movement/crouch_enter_oneshot/request", "fire")
+	animation_tree.set("parameters/movement/crouch_enter_oneshot/request", 1)
 	animation_tree.set("parameters/movement/run_to_crouch/blend_amount", 1)
+	self.position.y = .5
 	
 func crouch_exit():
 	animation_tree.set("parameters/movement/run_to_crouch/blend_amount", 0)
+	self.position.y = 0
 	
 var local_vel_mag : Vector2 = Vector2.ZERO
 func walk_anim_update(velocity_magnitude : Vector2):
 	local_vel_mag = lerp(local_vel_mag, velocity_magnitude, 0.2)
 	animation_tree.set("parameters/movement/run/blend_position", local_vel_mag)
+	animation_tree.set("parameters/movement/crouch/blend_position", local_vel_mag)
