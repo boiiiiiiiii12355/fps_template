@@ -47,8 +47,11 @@ pickup_hold_area = NodePath("TwistPivot/pickup_area")
 player_animations = NodePath("player_body")
 
 [node name="player_body" parent="." node_paths=PackedStringArray("camera_spine") instance=ExtResource("3_wemna")]
-transform = Transform3D(0.536, 0, 0, 0, 0.536, 0, 0, 0, 0.536, 0, 0, 0.106)
+transform = Transform3D(0.536, 0, 0, 0, 0.536, 0, 0, 0, 0.536, 0, 0, 0)
 camera_spine = NodePath("../TwistPivot")
+
+[node name="debug_cam" type="Camera3D" parent="."]
+transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.26520085, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -59,18 +62,6 @@ mesh = SubResource("BoxMesh_usx7c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
-[node name="item_belt" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23237908, -3.257394e-05)
-
-[node name="slot_1" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13857374, 0.6655419, 0.009075254)
-
-[node name="slot_2" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0848636, 0.69943947, -0.07878679)
-
-[node name="slot_3" type="Node3D" parent="item_belt"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.17349774, 0.6584255, 0.0021955073)
-
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3885835, 0.05940129)
 
@@ -80,10 +71,10 @@ spring_length = 8.0
 margin = 8.0
 
 [node name="equip_area" type="Node3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08422494, -0.04567027, -0.30017683)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08422494, 0.0017762184, -0.37906247)
 
 [node name="pickup_area" type="Node3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1010226, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="point area" type="Node3D" parent="TwistPivot/pickup_area"]
@@ -92,6 +83,7 @@ rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20768249, 0)
+current = true
 fov = 70.0
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
@@ -114,8 +106,9 @@ initial_state = NodePath("Run")
 [node name="Run" type="Node" parent="activityMachine"]
 script = ExtResource("5_mty1n")
 
-[node name="Air" type="Node" parent="activityMachine"]
+[node name="Air" type="Node" parent="activityMachine" node_paths=PackedStringArray("player_model")]
 script = ExtResource("6_vmmom")
+player_model = NodePath("../../player_body")
 
 [node name="standingMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")
@@ -145,14 +138,10 @@ stream = ExtResource("13_hpxkm")
 [node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
 stream = ExtResource("14_wemna")
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "item_belt", "equip_pos", "slot1_phys", "slot2_phys", "slot3_phys")]
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "equip_pos")]
 script = ExtResource("15_cbyhw")
 hud = NodePath("../HUD")
-item_belt = NodePath("../item_belt")
 equip_pos = NodePath("../TwistPivot/equip_area")
-slot1_phys = NodePath("../item_belt/slot_1")
-slot2_phys = NodePath("../item_belt/slot_2")
-slot3_phys = NodePath("../item_belt/slot_3")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1.0444163, 0)

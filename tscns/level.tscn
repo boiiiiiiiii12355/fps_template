@@ -43,7 +43,7 @@ shadow_enabled = true
 environment = SubResource("Environment_ii602")
 
 [node name="player" parent="." instance=ExtResource("1_rsegt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.156487, 0.7635095, -30.341026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.156487, 0.00089240074, -30.341026)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09027, 0)
@@ -56,13 +56,13 @@ script = ExtResource("4_ivjvi")
 
 [node name="test_whiteroom" parent="." instance=ExtResource("4_nfut8")]
 
-[node name="objects" type="Node3D" parent="test_whiteroom"]
+[node name="objects" type="Node3D" parent="test_whiteroom" groups=["physics_objects"]]
 
 [node name="Cup" parent="test_whiteroom/objects" instance=ExtResource("6_e6wci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.475685, 0.98439914, -35.26987)
 
 [node name="flashlight" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
-transform = Transform3D(1, 0, 0, 0, 0.6739672, 0.73876125, 0, -0.73876125, 0.6739672, 38.293205, 0.878248, -34.73154)
+transform = Transform3D(0.9283562, 0, 0.37169185, 0.01831904, 0.99878466, -0.045754552, -0.37124017, 0.049285553, 0.927228, 38.43769, 0.009931117, -31.676605)
 
 [node name="p2000" parent="test_whiteroom/objects" instance=ExtResource("7_0eik5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.736626, 0.25726917, -34.616074)
+transform = Transform3D(0.01438096, -0.41761768, -0.908509, 0.9998965, 0.0060063666, 0.013066584, 0, -0.908603, 0.41766092, 37.919327, 0.050372273, -31.91239)

@@ -7,30 +7,32 @@
 bounce = 0.09
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sfpw3"]
-size = Vector3(0.055, 0.181, 0.301)
+size = Vector3(0.03482422, 0.17537695, 0.28179297)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8x68"]
-size = Vector3(0.065, 0.176, 0.364)
+size = Vector3(0.16627441, 0.176, 0.364)
 
-[node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("pickup_area") groups=["pickable"]]
+[node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("weapon_model", "pickup_area") groups=["pickable"]]
 collision_layer = 0
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_138c2")
 script = ExtResource("1_sfpw3")
+weapon_model = NodePath("P2000")
 item_name = "P2000"
 pickup_area = NodePath("pickup_area")
 
 [node name="P2000" parent="." instance=ExtResource("1_138c2")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.03560386)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01074183, -0.032782644, 0.041066468)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, -0.02803418, 0.032498047)
 shape = SubResource("BoxShape3D_sfpw3")
 
 [node name="pickup_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0, 0)
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012529254, -0.029415503, 0.036615185)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012658648, -0.029415503, 0.036615185)
 shape = SubResource("BoxShape3D_j8x68")

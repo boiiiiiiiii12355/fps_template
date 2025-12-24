@@ -33,6 +33,7 @@ config/python="py"
 sound_ctrl="controls sound"
 pickable="a pickable object"
 interactable="a interactable object"
+physics_objects="a group for physics objects to be parented to"
 
 [input]
 

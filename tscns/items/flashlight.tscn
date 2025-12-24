@@ -24,16 +24,16 @@ item_name = "flashlight"
 pickup_area = NodePath("pickup_area")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0019547883, -0.9999981, 0, 0.9999981, -0.0019547883, 0.00020346977, -0.00022322388, 0.118559964)
+transform = Transform3D(1, 0, 0, 0, -0.0019547883, -0.9999981, 0, 0.9999981, -0.0019547883, 0.00020346977, -0.00022322388, 0.0016846284)
 shape = SubResource("CapsuleShape3D_hk5sf")
 
 [node name="Light" type="SpotLight3D" parent="."]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -4.082918e-06, -0.00046627372, 0.22003111)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.082918e-06, -0.00046627372, -0.07978306)
 light_energy = 3.759
 shadow_enabled = true
 
 [node name="pickup_area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03825991, 0, 0.1093806)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03825991, 0, -0.0074947327)
 collision_layer = 4
 collision_mask = 0
 
@@ -42,4 +42,4 @@ transform = Transform3D(0.99999154, 0, 0, 0, 1, 0, 0, 0, 0.99999154, 0.038970977
 shape = SubResource("BoxShape3D_prm06")
 
 [node name="flashlight" parent="." instance=ExtResource("2_hk5sf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.1167999)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -7.543713e-05)
