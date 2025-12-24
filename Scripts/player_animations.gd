@@ -2,12 +2,14 @@ extends Node3D
 class_name player_animations
 
 @export var skeleton : Skeleton3D
+@export var arms_model : Node3D
 @export var camera_point : Node3D
 @export var legs_point : Node3D
 @export var animation_tree : AnimationTree
 @export var chest_tracker : Node3D
 @export var head_tracker : BoneAttachment3D
 @export var camera_spine : Node3D
+var arms_animation_player : AnimationPlayer
 var chest_angle : float = 0.0
 var run_to_crouch = "parameters/movement/run_to_crouch/blend_amount"
 var rtc_blend_amount = 0.0
@@ -18,6 +20,10 @@ var crouch_enter_oneshot = "parameters/movement/crouch_enter_oneshot/request"
 @export var slot2 : Node3D
 @export var slot3 : Node3D
 
+func _ready() -> void:
+	arms_animation_player = arms_model.get_child(1)
+	arms_animation_player.play("look_at_me_hands")
+	
 func _physics_process(delta: float) -> void:
 	animation_tree.set(run_to_crouch, lerp(animation_tree.get(run_to_crouch), rtc_blend_amount, 0.1))
 	
@@ -39,7 +45,7 @@ func crouch_enter():
 func crouch_exit():
 	rtc_blend_amount = 0.0
 	self.position.y = 0
-
+ 
 	
 var local_vel_mag : Vector2 = Vector2.ZERO
 func walk_anim_update(velocity_magnitude : Vector2):

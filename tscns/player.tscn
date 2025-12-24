@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=23 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bfbuqtw1qjq77" path="res://tscns/player_body.tscn" id="3_wemna"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
+[ext_resource type="PackedScene" uid="uid://dmow25mh0gb28" path="res://tscns/viewport_hand.tscn" id="5_r66y1"]
 [ext_resource type="Script" uid="uid://chp77x488ykfs" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
 [ext_resource type="Script" uid="uid://1d3cycomfleh" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
 [ext_resource type="Script" uid="uid://cur17euoajhrj" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
@@ -46,8 +47,8 @@ interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
 player_animations = NodePath("player_body")
 
-[node name="player_body" parent="." node_paths=PackedStringArray("camera_spine") instance=ExtResource("3_wemna")]
-transform = Transform3D(0.536, 0, 0, 0, 0.536, 0, 0, 0, 0.536, 0, 0, 0)
+[node name="player_body" parent="." node_paths=PackedStringArray("arms_model", "camera_spine") instance=ExtResource("3_wemna")]
+arms_model = NodePath("../TwistPivot/viewport_hand")
 camera_spine = NodePath("../TwistPivot")
 
 [node name="debug_cam" type="Camera3D" parent="."]
@@ -81,8 +82,11 @@ rotation_edit_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
+[node name="viewport_hand" parent="TwistPivot" instance=ExtResource("5_r66y1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.69669694, -0.058344126)
+
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20768249, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18001175, -0.063002355)
 current = true
 fov = 70.0
 
