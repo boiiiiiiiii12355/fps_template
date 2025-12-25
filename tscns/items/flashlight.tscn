@@ -31,6 +31,8 @@ shape = SubResource("CapsuleShape3D_hk5sf")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.082918e-06, -0.00046627372, -0.07978306)
 light_energy = 3.759
 shadow_enabled = true
+spot_range = 107.232605
+spot_angle = 25.768723
 
 [node name="pickup_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03825991, 0, -0.0074947327)

@@ -22,14 +22,14 @@ item_name = "P2000"
 pickup_area = NodePath("pickup_area")
 
 [node name="P2000" parent="." instance=ExtResource("1_138c2")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0.03560386)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0.040984385, -0.036456592)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, -0.02803418, 0.032498047)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, 0.012950204, -0.039562404)
 shape = SubResource("BoxShape3D_sfpw3")
 
 [node name="pickup_area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0.040984385, -0.07206045)
 collision_layer = 4
 collision_mask = 0
 

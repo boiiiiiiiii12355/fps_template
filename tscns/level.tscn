@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c41sndaibm3u2"]
+[gd_scene load_steps=11 format=3 uid="uid://c41sndaibm3u2"]
 
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="1_rsegt"]
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
 [ext_resource type="PackedScene" uid="uid://b5isbpmf0ws11" path="res://maps/test_whiteroom.blend" id="4_nfut8"]
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
 [ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_ii602"]
-[ext_resource type="PackedScene" uid="uid://d3yq7v8qc8slb" path="res://tscns/items/cup.tscn" id="6_e6wci"]
 [ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="7_0eik5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
@@ -16,9 +15,8 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_5e6ql")
 
 [sub_resource type="Environment" id="Environment_ii602"]
-background_mode = 1
+background_energy_multiplier = 0.0
 sky = SubResource("Sky_ii602")
-reflected_light_source = 2
 tonemap_mode = 2
 ssr_max_steps = 63
 glow_enabled = true
@@ -26,24 +24,22 @@ glow_bloom = 0.1
 glow_blend_mode = 1
 fog_enabled = true
 fog_light_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
+fog_light_energy = 0.0
 volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
 volumetric_fog_emission = Color(0.50534403, 0.5053441, 0.50534403, 1)
+volumetric_fog_emission_energy = 0.0
 volumetric_fog_length = 288.23
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rr07l"]
 
 [node name="Level" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.8660255, -0.4330128, 0.25000006, 0.17998216, 0.19650981, 0.9638415, -0.46648315, 0.8797068, -0.09224792, 41.36327, 24.608982, -34.54713)
-light_energy = 0.314
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ii602")
 
 [node name="player" parent="." instance=ExtResource("1_rsegt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.156487, 0.00089240074, -30.341026)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.92044, 56.097958, -48.782604)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09027, 0)
@@ -58,11 +54,8 @@ script = ExtResource("4_ivjvi")
 
 [node name="objects" type="Node3D" parent="test_whiteroom" groups=["physics_objects"]]
 
-[node name="Cup" parent="test_whiteroom/objects" instance=ExtResource("6_e6wci")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.475685, 0.98439914, -35.26987)
-
 [node name="flashlight" parent="test_whiteroom/objects" instance=ExtResource("5_ii602")]
-transform = Transform3D(0.9283562, 0, 0.37169185, 0.01831904, 0.99878466, -0.045754552, -0.37124017, 0.049285553, 0.927228, 38.43769, 0.009931117, -31.676605)
+transform = Transform3D(0.6028878, 0, -0.797826, 0, 1, 0, 0.797826, 0, 0.6028878, -143.66843, 56.202103, -52.08455)
 
 [node name="p2000" parent="test_whiteroom/objects" instance=ExtResource("7_0eik5")]
-transform = Transform3D(0.01438096, -0.41761768, -0.908509, 0.9998965, 0.0060063666, 0.013066584, 0, -0.908603, 0.41766092, 37.919327, 0.050372273, -31.91239)
+transform = Transform3D(-0.051429626, 0.9986766, 0, -0.9986766, -0.051429626, 0, 0, 0, 1, -142.17792, 56.130512, -53.336926)

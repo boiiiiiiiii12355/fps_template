@@ -75,7 +75,7 @@ func _physics_process(delta: float) -> void:
 	if velocity.length():
 		step_time += (delta * stats.vel.length() * float(stats.on_floor))
 	else:
-		step_time = 0
+		step_time = 1
 		
 var change_magnitude = 0.1
 var fall_displacement = .02

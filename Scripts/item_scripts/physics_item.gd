@@ -27,10 +27,21 @@ func _integrate_forces(state):
 var req_linear_velocity
 func item_equip(equip_node):
 	reparent(equip_node)
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
 	position = Vector3.ZERO
 	rotation = Vector3.ZERO
-	global_rotation.z = 0
-	
+	if equip_animation_played == false:
+		play_equip_animation()
+		equip_animation_played = true
+		
+var equip_animation_played : bool = false
+func play_equip_animation():
+	#define your own depending on item
+	pass
+
+#this function also runs when item is not equiped. should change name soon
+var owner_animation_ctrl
 func picked_up(slot, slot_node):
 	pickup_area.monitorable = false
 	req_linear_velocity = Vector3.ZERO
@@ -38,7 +49,9 @@ func picked_up(slot, slot_node):
 	position = Vector3.ZERO
 	rotation = Vector3.ZERO
 	reparent(slot_node)
-	
+	if equip_animation_played == true:
+		equip_animation_played = false
+		
 func dropped():
 	print("dropped")
 	reparent(self.get_tree().get_first_node_in_group("physics_objects"))

@@ -9,11 +9,13 @@ class_name player_animations
 @export var chest_tracker : Node3D
 @export var head_tracker : BoneAttachment3D
 @export var camera_spine : Node3D
+var equip_node : Node3D
 var arms_animation_player : AnimationPlayer
 var chest_angle : float = 0.0
-var run_to_crouch = "parameters/movement/run_to_crouch/blend_amount"
 var rtc_blend_amount = 0.0
+var run_to_crouch = "parameters/movement/run_to_crouch/blend_amount"
 var crouch_enter_oneshot = "parameters/movement/crouch_enter_oneshot/request"
+
 #these are variables for physical slot nodes
 
 @export var slot1 : Node3D
@@ -22,6 +24,7 @@ var crouch_enter_oneshot = "parameters/movement/crouch_enter_oneshot/request"
 
 func _ready() -> void:
 	arms_animation_player = arms_model.get_child(1)
+	equip_node = arms_model.get_child(0).get_child(0).get_child(0).get_child(0)
 	arms_animation_player.play("look_at_me_hands")
 	
 func _physics_process(delta: float) -> void:
@@ -52,3 +55,6 @@ func walk_anim_update(velocity_magnitude : Vector2):
 	local_vel_mag = lerp(local_vel_mag, velocity_magnitude, 0.2)
 	animation_tree.set("parameters/movement/run/blend_position", local_vel_mag)
 	animation_tree.set("parameters/movement/crouch/blend_position", local_vel_mag)
+
+func play_equip_animation(name : String):
+	arms_animation_player.play(name)
