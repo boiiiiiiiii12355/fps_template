@@ -56,5 +56,9 @@ func walk_anim_update(velocity_magnitude : Vector2):
 	animation_tree.set("parameters/movement/run/blend_position", local_vel_mag)
 	animation_tree.set("parameters/movement/crouch/blend_position", local_vel_mag)
 
-func play_equip_animation(name : String):
+func play_arm_animation(name : String):
 	arms_animation_player.play(name)
+
+func play_arm_animation_from_start(name : String):
+	arms_animation_player.play(name)
+	arms_animation_player.seek(0)

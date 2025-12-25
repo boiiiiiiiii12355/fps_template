@@ -15,6 +15,7 @@ var height = 2 #the model is 2 meter tall
 
 
 func _ready():
+	preselect_timer.timeout.connect(preselect_timer_end)
 	mySkin.set_sorting_offset(1)
 	pickup_point = pickup_hold_area.get_child(0)
 	#get_viewport().get_camera_3d()
@@ -30,7 +31,7 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
-	
+	preselect_check()
 		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		InputKeys()
@@ -185,11 +186,6 @@ func get_delta_time() -> float:
 
 	return get_process_delta_time()
 
-
-func hold(object : RigidBody3D):
-	var pickup_velocity = (pickup_hold_area.global_position - object.global_position) * pickup_speed
-	object.linear_velocity = pickup_velocity
-	object.set_target_rotation(pickup_point.global_position)
 
 func pickup(object : Object):
 	print("picked up  " + str(object))

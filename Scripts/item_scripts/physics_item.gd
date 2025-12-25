@@ -1,7 +1,9 @@
 extends RigidBody3D
 class_name physics_item
 
+
 var speed: float = 3
+@export var equip_timer : Timer
 @export var item_name : String = "undefined_physics_item"
 @export var pickup_area : Area3D
 func object_function():
@@ -25,35 +27,52 @@ func _integrate_forces(state):
 		req_linear_velocity = null
 		
 var req_linear_velocity
-func item_equip(equip_node):
+@export var equip_rotation = Vector3.ZERO
+@export var equip_position = Vector3.ZERO
+func item_equip(equip_node, arms_anim : AnimationPlayer):
 	reparent(equip_node)
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
-	position = Vector3.ZERO
-	rotation = Vector3.ZERO
+	position = equip_position
+	rotation_degrees = equip_rotation
+	freeze = true
 	if equip_animation_played == false:
+		equip_timer.start()
 		play_equip_animation()
 		equip_animation_played = true
 		
+
+#this function also runs when item is not equiped. should change name soon
+var owner_animation_ctrl
+func picked_up(slot, slot_node, arms_anim : AnimationPlayer):
+	if equip_animation_played == true:
+		equip_timer.start()
+		play_store_animation()
+		equip_animation_played = false
+		
+	elif equip_animation_played == false:
+		freeze = true
+		equip_timer.start()
+		pickup_area.monitorable = false
+		req_linear_velocity = Vector3.ZERO
+		angular_velocity = Vector3.ZERO
+		position = Vector3.ZERO
+		rotation = Vector3.ZERO
+		reparent(slot_node)
+	
+var animation_finished : bool = true
 var equip_animation_played : bool = false
 func play_equip_animation():
 	#define your own depending on item
 	pass
 
-#this function also runs when item is not equiped. should change name soon
-var owner_animation_ctrl
-func picked_up(slot, slot_node):
-	pickup_area.monitorable = false
-	req_linear_velocity = Vector3.ZERO
-	angular_velocity = Vector3.ZERO
-	position = Vector3.ZERO
-	rotation = Vector3.ZERO
-	reparent(slot_node)
-	if equip_animation_played == true:
-		equip_animation_played = false
-		
+func play_store_animation():
+	#define your own depending on item
+	pass
+	
 func dropped():
 	print("dropped")
+	freeze = false
 	reparent(self.get_tree().get_first_node_in_group("physics_objects"))
 	pickup_area.monitorable = true
 	

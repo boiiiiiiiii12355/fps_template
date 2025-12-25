@@ -15,7 +15,7 @@ ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
 sky_material = SubResource("ProceduralSkyMaterial_5e6ql")
 
 [sub_resource type="Environment" id="Environment_ii602"]
-background_energy_multiplier = 0.0
+background_mode = 1
 sky = SubResource("Sky_ii602")
 tonemap_mode = 2
 ssr_max_steps = 63
@@ -23,13 +23,9 @@ glow_enabled = true
 glow_bloom = 0.1
 glow_blend_mode = 1
 fog_enabled = true
-fog_light_color = Color(0.2592937, 0.2592937, 0.2592937, 1)
-fog_light_energy = 0.0
+fog_light_color = Color(0.303603, 0.33155215, 0.3750381, 1)
+fog_sky_affect = 0.0
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.01
-volumetric_fog_emission = Color(0.50534403, 0.5053441, 0.50534403, 1)
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_length = 288.23
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rr07l"]
 

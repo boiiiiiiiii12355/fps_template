@@ -13,15 +13,18 @@ height = 0.15844922
 [sub_resource type="BoxShape3D" id="BoxShape3D_prm06"]
 size = Vector3(0.108, 0.092, 0.14428076)
 
-[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light", "pickup_area") groups=["interactable", "pickable"]]
+[node name="flashlight" type="RigidBody3D" node_paths=PackedStringArray("light", "equip_timer", "pickup_area") groups=["interactable", "pickable"]]
 collision_layer = 4
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_b6wbh")
 continuous_cd = true
 script = ExtResource("1_prm06")
 light = NodePath("Light")
+equip_timer = NodePath("equip_timer")
 item_name = "flashlight"
 pickup_area = NodePath("pickup_area")
+equip_rotation = Vector3(-90, 0, 0)
+equip_position = Vector3(0, -0.06, 0.04)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0019547883, -0.9999981, 0, 0.9999981, -0.0019547883, 0.00020346977, -0.00022322388, 0.0016846284)
@@ -45,3 +48,6 @@ shape = SubResource("BoxShape3D_prm06")
 
 [node name="flashlight" parent="." instance=ExtResource("2_hk5sf")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -7.543713e-05)
+
+[node name="equip_timer" type="Timer" parent="."]
+one_shot = true

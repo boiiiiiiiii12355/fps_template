@@ -8,6 +8,7 @@ class_name PlayerInputs
 @export var interact_ray : RayCast3D
 @export var pickup_hold_area : Node3D
 @export var pickup_speed = 20
+@export var preselected_inventory_slot : int = 1
 @export var selected_inventory_slot : int = 1
 @export var player_animations : Node3D
 var flashlight_toggle = false
@@ -86,7 +87,7 @@ func InputKeys():
 		
 	#auxilary actions
 	if Input.is_action_just_pressed("click"):
-		if inventory.inventory_array[selected_inventory_slot - 1] != null:
+		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
 			inventory.inventory_array[selected_inventory_slot - 1].object_function()
 	
 	if Input.is_action_just_pressed("interact") and interact_check():
@@ -114,23 +115,35 @@ func InputKeys():
 		
 	if Input.is_action_just_pressed("slot_1"):
 		selected_inventory_slot = 1
+		preselected_inventory_slot = selected_inventory_slot
 	elif Input.is_action_just_pressed("slot_2"):
 		selected_inventory_slot = 2
+		preselected_inventory_slot = selected_inventory_slot
 	elif Input.is_action_just_pressed("slot_3"):
 		selected_inventory_slot = 3
+		preselected_inventory_slot = selected_inventory_slot
 	
 	if Input.is_action_just_pressed("scroll_up"):
-		selected_inventory_slot -= 1
+		preselected_inventory_slot -= 1
+		preselect_timer.start()
 	elif Input.is_action_just_pressed("scroll_down"):
-		selected_inventory_slot += 1
-	inventory.hud.update_inventory_select(selected_inventory_slot)
+		preselected_inventory_slot += 1
+		preselect_timer.start()
+	inventory.hud.update_inventory_select(preselected_inventory_slot)
 	
 	if selected_inventory_slot <= 1:
 		selected_inventory_slot = 1
 	elif selected_inventory_slot >= 3:
 		selected_inventory_slot = 3
 		
-
+@export var preselect_timer : Timer
+func preselect_check():
+	if !preselect_timer.is_stopped() and Input.is_action_just_pressed("click"):
+		selected_inventory_slot = preselected_inventory_slot
+	
+func preselect_timer_end():
+	preselected_inventory_slot = selected_inventory_slot
+	
 var hold_target 
 func hold(object):
 	pass
