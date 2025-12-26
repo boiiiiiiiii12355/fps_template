@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bly1cw0xtom6u"]
+[gd_scene load_steps=7 format=3 uid="uid://bly1cw0xtom6u"]
 
 [ext_resource type="PackedScene" uid="uid://bjhdsjf0el4r4" path="res://model/P2000.blend" id="1_138c2"]
 [ext_resource type="Script" uid="uid://dm05urle0w041" path="res://Scripts/weapon_scripts/p_2000.gd" id="1_sfpw3"]
+[ext_resource type="PackedScene" uid="uid://drw77tqr3mh1f" path="res://particle_effects/hit_particles.tscn" id="3_j8x68"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_138c2"]
 bounce = 0.09
@@ -12,13 +13,14 @@ size = Vector3(0.03482422, 0.17537695, 0.28179297)
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8x68"]
 size = Vector3(0.16627441, 0.176, 0.364)
 
-[node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("weapon_model", "muzzle_flash", "equip_timer", "pickup_area") groups=["pickable"]]
+[node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("weapon_model", "muzzle_flash", "gun_ray", "equip_timer", "pickup_area") groups=["pickable"]]
 collision_layer = 0
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_138c2")
 script = ExtResource("1_sfpw3")
 weapon_model = NodePath("P2000")
 muzzle_flash = NodePath("muzzle_flash")
+gun_ray = NodePath("gun_ray")
 equip_timer = NodePath("equip_timer")
 item_name = "P2000"
 pickup_area = NodePath("pickup_area")
@@ -38,6 +40,11 @@ omni_attenuation = 2.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, 0.012950204, -0.039562404)
 shape = SubResource("BoxShape3D_sfpw3")
 
+[node name="gun_ray" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011259448, -0.08016728)
+target_position = Vector3(0, 0, -1000)
+collision_mask = 5
+
 [node name="pickup_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0.040984385, -0.07206045)
 collision_layer = 4
@@ -46,6 +53,9 @@ collision_mask = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012658648, -0.029415503, 0.036615185)
 shape = SubResource("BoxShape3D_j8x68")
+
+[node name="hit_particles" parent="." instance=ExtResource("3_j8x68")]
+top_level = true
 
 [node name="equip_timer" type="Timer" parent="."]
 one_shot = true

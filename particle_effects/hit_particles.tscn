@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://drw77tqr3mh1f"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fp1mm"]
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 1)
+spread = 83.88
+initial_velocity_min = 2.25
+initial_velocity_max = 12.219999
+scale_min = 0.04
+scale_max = 0.26
+scale_over_velocity_max = 206.56999
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.5
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fp1mm"]
+emission_enabled = true
+emission = Color(1, 0.6156863, 0, 1)
+emission_energy_multiplier = 3.04
+normal_enabled = true
+use_particle_trails = true
+
+[sub_resource type="TubeTrailMesh" id="TubeTrailMesh_ydlsm"]
+material = SubResource("StandardMaterial3D_fp1mm")
+radius = 0.028
+radial_steps = 4
+sections = 2
+
+[node name="hit_particles" type="GPUParticles3D"]
+visibility_range_fade_mode = 1
+emitting = false
+amount = 25
+lifetime = 3.15
+one_shot = true
+speed_scale = 2.23
+explosiveness = 0.95
+randomness = 1.0
+fixed_fps = 60
+visibility_aabb = AABB(-11.088854, -61.90943, -0.48683536, 21.07201, 63.107758, 11.95764)
+transform_align = 2
+trail_enabled = true
+trail_lifetime = 0.13
+process_material = SubResource("ParticleProcessMaterial_fp1mm")
+draw_pass_1 = SubResource("TubeTrailMesh_ydlsm")
