@@ -266,3 +266,6 @@ transform = Transform3D(-0.019981349, -0.018658027, 0.106035344, 0.10674323, 0.0
 
 [node name="Bone" parent="arm_rig/Skeleton3D" index="4"]
 transform = Transform3D(-0.019981341, 0.07307938, -0.07906338, 0.10674323, 0.00295024, -0.02424979, -0.014053571, -0.08149581, -0.071775995, 1.5709469, 0.9974059, 0.056179106)
+
+[node name="arms" parent="arm_rig/Skeleton3D" index="5"]
+layers = 2
