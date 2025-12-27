@@ -31,7 +31,7 @@ sections = 2
 [node name="hit_particles" type="GPUParticles3D"]
 visibility_range_fade_mode = 1
 emitting = false
-amount = 25
+amount = 15
 lifetime = 3.15
 one_shot = true
 speed_scale = 2.23

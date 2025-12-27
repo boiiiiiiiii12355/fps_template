@@ -6,9 +6,13 @@ var speed: float = 3
 @export var equip_timer : Timer
 @export var item_name : String = "undefined_physics_item"
 @export var pickup_area : Area3D
+
 func object_function():
 	print("no function defined")
 
+func object_reload():
+	print("object is not reloadable")
+	
 func look_follow(state: PhysicsDirectBodyState3D, current_transform: Transform3D, target_position: Vector3) -> void:
 	var forward_local_axis: Vector3 = Vector3(0, 0, 1)
 	var forward_dir: Vector3 = (current_transform.basis * forward_local_axis).normalized()

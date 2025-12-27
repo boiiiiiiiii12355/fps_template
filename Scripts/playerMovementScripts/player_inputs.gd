@@ -90,6 +90,10 @@ func InputKeys():
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
 			inventory.inventory_array[selected_inventory_slot - 1].object_function()
 	
+	if Input.is_action_just_pressed("reload"):
+		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
+			inventory.inventory_array[selected_inventory_slot - 1].object_reload()
+		
 	if Input.is_action_just_pressed("interact") and interact_check():
 		var object : Object = interact_check()
 		if object.is_in_group("interactable"):
@@ -130,7 +134,7 @@ func InputKeys():
 		preselected_inventory_slot += 1
 		preselect_timer.start()
 	inventory.hud.update_inventory_select(preselected_inventory_slot)
-	
+
 	if selected_inventory_slot <= 1:
 		selected_inventory_slot = 1
 	elif selected_inventory_slot >= 3:

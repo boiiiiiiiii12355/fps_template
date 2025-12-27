@@ -1,8 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c41sndaibm3u2"]
+[gd_scene load_steps=12 format=3 uid="uid://c41sndaibm3u2"]
 
 [ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_oay01"]
-[ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="1_rsegt"]
-[ext_resource type="PackedScene" uid="uid://xkb3p5xx5rpu" path="res://particle_effects/rain.tscn" id="2_0eik5"]
+[ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://char_models/player.tscn" id="1_rsegt"]
 [ext_resource type="Script" uid="uid://ddqiu740gxsg5" path="res://Scripts/Sprite3D.gd" id="4_ivjvi"]
 [ext_resource type="PackedScene" uid="uid://b5xwa1mgwve23" path="res://maps/test_whiteroom.tscn" id="5_0eik5"]
 [ext_resource type="PackedScene" uid="uid://dbuxl77ae86f4" path="res://tscns/world_setup.tscn" id="5_1fjn0"]
@@ -41,10 +40,6 @@ environment = SubResource("Environment_ii602")
 
 [node name="player" parent="." instance=ExtResource("1_rsegt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -141.92044, 56.097958, -48.782604)
-
-[node name="Rain" parent="player" instance=ExtResource("2_0eik5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.2356567, 0)
-randomness = 1.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.09027, 0)

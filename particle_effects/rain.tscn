@@ -8,6 +8,7 @@ spread = 0.0
 initial_velocity_min = 28.84
 initial_velocity_max = 105.759995
 collision_mode = 2
+collision_use_scale = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_if265"]
 transparency = 1
