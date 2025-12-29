@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddx0w3do8w5r7"]
+
+[ext_resource type="PackedScene" uid="uid://ki0n6iqohwaq" path="res://maps/blend_files/sp_drugtrade.blend" id="1_ljpp2"]
+[ext_resource type="CompressedTexture3D" uid="uid://cebevr3kxwony" path="res://maps/baked_particle_colisions/sp_drugtrade.map_particles_collision_data.exr" id="2_70ef0"]
+
+[node name="sp_drugtrade" instance=ExtResource("1_ljpp2")]
+
+[node name="map_particles_collision" type="GPUParticlesCollisionSDF3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42222595, 2.5735474, -1.1147614)
+size = Vector3(8.334442, 6.7926025, 9.66922)
+texture = ExtResource("2_70ef0")

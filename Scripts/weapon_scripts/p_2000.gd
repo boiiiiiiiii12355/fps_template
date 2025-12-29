@@ -17,14 +17,14 @@ func  play_store_animation():
 	get_tree().call_group("player_animations", "play_arm_animation", "p2000_store")
 	
 func object_function():
-	Engine.time_scale = 0.2
+	Engine.time_scale = 0.1
 	if equip_timer.is_stopped() and ammunition:
 		ammunition -= 1
 		animation_player.seek(0)
+		animation_player.play("fire")
 		get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_fire")
 		check_hit()
 		effects()
-		animation_player.play("fire")
 		muzzle_flash.omni_range = 1000
 		await get_tree().create_timer(0.1).timeout
 		muzzle_flash.omni_range = 0
@@ -35,8 +35,7 @@ func object_reload():
 	animation_player.play("gun_rigAction")
 	await animation_player.animation_finished
 	ammunition = mag_size
-	
-@onready var root_node : Level = owner
+
 var hit_particle = preload("res://particle_effects/hit_particles.tscn")
 func check_hit():
 	if gun_ray.get_collider():

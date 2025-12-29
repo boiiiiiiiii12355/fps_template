@@ -6,6 +6,7 @@ var speed: float = 3
 @export var equip_timer : Timer
 @export var item_name : String = "undefined_physics_item"
 @export var pickup_area : Area3D
+@onready var root_node = owner
 
 func object_function():
 	print("no function defined")
@@ -77,7 +78,7 @@ func play_store_animation():
 func dropped():
 	print("dropped")
 	freeze = false
-	reparent(self.get_tree().get_first_node_in_group("physics_objects"))
+	reparent(root_node.objects)
 	pickup_area.monitorable = true
 	
 

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5xwa1mgwve23"]
+
+[ext_resource type="PackedScene" uid="uid://b5isbpmf0ws11" path="res://maps/blend_files/test_whiteroom.blend" id="1_0y1da"]
+[ext_resource type="CompressedTexture3D" uid="uid://0stvelw2j4rq" path="res://maps/baked_particle_colisions/test_whiteroom.GPUParticlesCollisionSDF3D_data.exr" id="2_wtos4"]
+
+[node name="test_whiteroom" instance=ExtResource("1_0y1da")]
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -136.3063, 31.766119, -60.92249)
+size = Vector3(37, 66.524124, 37)
+resolution = 4
+texture = ExtResource("2_wtos4")

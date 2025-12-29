@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://y328sqygbr5y"]
+
+[ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_ajc2c"]
+[ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_28upr"]
+[ext_resource type="PackedScene" uid="uid://ddx0w3do8w5r7" path="res://maps/map_scenes/sp_drugtrade.tscn" id="3_065jd"]
+[ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="4_w68fj"]
+[ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_ind0n"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dip4k"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.10248828, 0.1029329, 0.12159113, 1)
+ground_bottom_color = Color(0.08938975, 0.09116825, 0.16580114, 1)
+ground_horizon_color = Color(0.10248828, 0.1029329, 0.12159113, 1)
+
+[sub_resource type="Sky" id="Sky_x5jma"]
+sky_material = SubResource("ProceduralSkyMaterial_dip4k")
+
+[sub_resource type="Environment" id="Environment_q8biv"]
+background_mode = 2
+sky = SubResource("Sky_x5jma")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="sp_drugtrade_level" type="Node3D" node_paths=PackedStringArray("objects", "particles")]
+script = ExtResource("1_ajc2c")
+objects = NodePath("sp_drugtrade/Objects")
+particles = NodePath("sp_drugtrade/Particles")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_q8biv")
+
+[node name="player" parent="." instance=ExtResource("2_28upr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3020506, 0.051273525, 2.0661771)
+
+[node name="sp_drugtrade" parent="." instance=ExtResource("3_065jd")]
+
+[node name="Particles" type="Node3D" parent="sp_drugtrade"]
+
+[node name="Objects" type="Node3D" parent="sp_drugtrade"]
+
+[node name="p2000" parent="sp_drugtrade/Objects" instance=ExtResource("4_w68fj")]
+transform = Transform3D(0.23067816, -0.90828615, -0.34900406, 0.9730301, 0.21532919, 0.08273908, 0, -0.35867754, 0.93346155, -1.028331, 0.7059522, 1.4330642)
+
+[node name="flashlight" parent="sp_drugtrade/Objects" instance=ExtResource("5_ind0n")]
+transform = Transform3D(-0.5643765, 0, -0.82551754, 0, 1, 0, 0.82551754, 0, -0.5643765, -3.703519, 0.37742805, -1.8786993)
