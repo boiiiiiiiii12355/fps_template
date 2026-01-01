@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjlnu3lmy2mhe"]
+
+[ext_resource type="PackedScene" uid="uid://dkluxc8hn75d5" path="res://maps/blend_files/tram_station.blend" id="1_vlg2k"]
+[ext_resource type="Material" path="res://materials/bricks.tres" id="2_2f2mk"]
+[ext_resource type="Material" uid="uid://bdufpkakpq78e" path="res://materials/floor_tiles.tres" id="2_tyxaw"]
+[ext_resource type="Material" uid="uid://cfuv7dv7kdxc8" path="res://materials/windows.tres" id="4_xlget"]
+
+[node name="tram_station" instance=ExtResource("1_vlg2k")]
+
+[node name="map_floor -" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031110764, -9.536743e-07, -0.036108017)
+surface_material_override/0 = ExtResource("2_tyxaw")
+
+[node name="building -_004" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_2f2mk")
+surface_material_override/1 = ExtResource("4_xlget")
+
+[node name="lights" type="Node3D" parent="." index="9"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lights" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.584785, 12.975349, -33.69876)
+shadow_enabled = true
+shadow_caster_mask = 4294967293
+omni_range = 7.724256
+omni_attenuation = 0.483
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lights" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.584785, 12.975349, -22.95354)
+shadow_enabled = true
+shadow_caster_mask = 4294967293
+omni_range = 7.724256
+omni_attenuation = 0.483

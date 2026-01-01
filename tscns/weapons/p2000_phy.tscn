@@ -13,7 +13,7 @@ size = Vector3(0.03482422, 0.17537695, 0.28179297)
 size = Vector3(0.16627441, 0.176, 0.364)
 
 [node name="p2000" type="RigidBody3D" node_paths=PackedStringArray("weapon_model", "muzzle_flash", "gun_ray", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"]]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_138c2")
 script = ExtResource("1_sfpw3")
@@ -35,6 +35,12 @@ light_size = 0.032
 shadow_enabled = true
 omni_range = 0.0
 omni_attenuation = 2.0
+
+[node name="item_light" type="OmniLight3D" parent="."]
+light_energy = 0.001
+light_size = 0.284
+shadow_enabled = true
+omni_range = 0.197
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, 0.012950204, -0.039562404)

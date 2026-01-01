@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://ona6janl00wj"]
+
+[ext_resource type="PackedScene" uid="uid://bjlnu3lmy2mhe" path="res://maps/map_scenes/tram_station.tscn" id="1_gfy6y"]
+[ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_pd6gb"]
+[ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_4hwk0"]
+[ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="4_2d02k"]
+[ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_3eqgb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2d02k"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.10248828, 0.1029329, 0.12159113, 1)
+ground_bottom_color = Color(0.08938975, 0.09116825, 0.16580114, 1)
+ground_horizon_color = Color(0.10248828, 0.1029329, 0.12159113, 1)
+
+[sub_resource type="Sky" id="Sky_3eqgb"]
+sky_material = SubResource("ProceduralSkyMaterial_2d02k")
+
+[sub_resource type="Environment" id="Environment_uphtb"]
+background_mode = 2
+sky = SubResource("Sky_3eqgb")
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 1.0
+fog_light_energy = 0.29
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0171
+volumetric_fog_emission = Color(0.42749333, 0.427493, 0.42749295, 1)
+
+[node name="tram_station_level" type="Node3D" node_paths=PackedStringArray("objects", "particles")]
+script = ExtResource("1_pd6gb")
+objects = NodePath("tram_station/objects")
+particles = NodePath("tram_station/particles")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uphtb")
+
+[node name="player" parent="." instance=ExtResource("2_4hwk0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.26989, -1.482907, -16.453827)
+
+[node name="tram_station" parent="." instance=ExtResource("1_gfy6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00018501282, 0.83493423, 0.78322697)
+
+[node name="particles" type="Node3D" parent="tram_station"]
+
+[node name="objects" type="Node3D" parent="tram_station"]
+
+[node name="p2000" parent="tram_station/objects" instance=ExtResource("4_2d02k")]
+transform = Transform3D(0.99861765, -0.03412834, -0.03997596, 0.05256258, 0.64839125, 0.75949067, 6.956708e-09, -0.76054204, 0.6492888, -46.20413, -0.6965674, -16.643097)
+
+[node name="flashlight" parent="tram_station/objects" instance=ExtResource("5_3eqgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.809464, 0.19193125, -18.342552)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.97326714, -0.031313583, 0.22753142, 0, 0.9906624, 0.13633806, -0.22967604, -0.13269335, 0.96417916, 0, 23.347904, 0)
+shadow_enabled = true

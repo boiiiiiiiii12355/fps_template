@@ -87,7 +87,7 @@ rotation_edit_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6073305, -0.058344126)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24130428, -0.063002355)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24130428, -0.002889417)
 current = true
 fov = 70.0
 
