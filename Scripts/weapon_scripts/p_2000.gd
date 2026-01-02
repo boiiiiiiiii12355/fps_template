@@ -17,7 +17,6 @@ func  play_store_animation():
 	get_tree().call_group("player_animations", "play_arm_animation", "p2000_store")
 	
 func object_function():
-	Engine.time_scale = 0.1
 	if equip_timer.is_stopped() and ammunition:
 		ammunition -= 1
 		animation_player.seek(0)
@@ -30,7 +29,6 @@ func object_function():
 		muzzle_flash.omni_range = 0
 	
 func object_reload():
-	Engine.time_scale = 1
 	get_tree().call_group("player_animations", "play_arm_animation", "p2000_reload")
 	animation_player.play("gun_rigAction")
 	await animation_player.animation_finished

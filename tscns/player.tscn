@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=24 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
+[ext_resource type="PackedScene" uid="uid://dmopo2slysquu" path="res://char_models/player_body_v2.tscn" id="3_k0k4f"]
 [ext_resource type="PackedScene" uid="uid://bfbuqtw1qjq77" path="res://char_models/player_body.tscn" id="3_wemna"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
@@ -52,6 +53,9 @@ preselect_timer = NodePath("preselect_timer")
 arms_model = NodePath("../TwistPivot/viewport_hand")
 camera_spine = NodePath("../TwistPivot")
 
+[node name="player_third_person" parent="." instance=ExtResource("3_k0k4f")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
 [node name="debug_cam" type="Camera3D" parent="."]
 transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.26520085, 0)
 
@@ -65,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.298054, 0.034916177)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.298054, 0.0309477)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -84,10 +88,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="viewport_hand" parent="TwistPivot" instance=ExtResource("5_r66y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6073305, -0.058344126)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5959067, -0.021216746)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.24130428, -0.002889417)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2214613, -0.0028894097)
+cull_mask = 1048571
 current = true
 fov = 70.0
 

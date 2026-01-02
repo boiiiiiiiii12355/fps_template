@@ -1,6 +1,6 @@
 extends PlayerState
 
-var player_animation : player_animations
+var player_animation : playermodel
 var try_uncrouch = false
 
 func enter(msg := {}) -> void:
