@@ -25,6 +25,7 @@ func  play_store_animation():
 func play_reload_animation():
 	get_tree().call_group("player_animations", "play_arm_animation", "p2000_reload")
 	animation_player.play("gun_rigAction")
+	animation_player.seek(0)
 	
 func play_fire_animation():
 	gun_shot_sound.play(0)
@@ -75,6 +76,6 @@ func effects():
 	var bullet_casing_clone : RigidBody3D = bullet_casing.instantiate()
 	add_child(bullet_casing_clone)
 	bullet_casing_clone.global_position = ejection_area.global_position
-	bullet_casing_clone.linear_velocity = (ejection_dir_node.global_position - bullet_casing_clone.global_position).normalized() * random_number.randf_range(1.0, 3.0)
-	bullet_casing_clone.angular_velocity = Vector3(0, 10, 0)
+	bullet_casing_clone.linear_velocity = (ejection_dir_node.global_position - bullet_casing_clone.global_position).normalized() * random_number.randf_range(2.0, 4.0)
+	bullet_casing_clone.angular_velocity = Vector3(0, random_number.randf_range(10, 100), 0)
 	bullet_casing_clone.reparent(root_node.particles)

@@ -10,6 +10,7 @@ func  play_store_animation():
 func play_reload_animation():
 	get_tree().call_group("player_animations", "play_arm_animation", "p7_quiver_reload")
 	animation_player.play("p7_quiver_reload")
+	animation_player.seek(0)
 	
 func  play_fire_animation():
 	gun_shot_sound.play(0)

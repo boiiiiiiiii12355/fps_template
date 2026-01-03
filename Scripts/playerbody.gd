@@ -28,6 +28,7 @@ func _ready() -> void:
 	arms_animation_player.play("look_at_me_hands")
 	
 func _physics_process(delta: float) -> void:
+	equip_node.get_parent().scale = Vector3(1, 1, 1)
 	animation_tree.set(run_to_crouch, lerp(animation_tree.get(run_to_crouch), rtc_blend_amount, 0.1))
 	
 func chest_point_at(r_position):
