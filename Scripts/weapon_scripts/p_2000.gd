@@ -1,6 +1,7 @@
 extends physics_item
 class_name gun_item_base
 
+@export var gun_shot_sound : AudioStreamPlayer3D
 @export var weapon_model : Node3D
 @export var muzzle_flash : OmniLight3D
 @export var gun_ray : RayCast3D
@@ -26,6 +27,7 @@ func play_reload_animation():
 	animation_player.play("gun_rigAction")
 	
 func play_fire_animation():
+	gun_shot_sound.play(0)
 	animation_player.play("fire")
 	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_fire")
 	

@@ -28,10 +28,10 @@ material = SubResource("StandardMaterial3D_65t5e")
 size = Vector3(1, 2, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jijlf"]
-size = Vector3(1, 1.6545105, 1)
+size = Vector3(0.7, 1.655, 0.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
-size = Vector3(1, 0.8, 1)
+size = Vector3(0.7, 0.4, 0.7)
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "player_animations", "preselect_timer")]
 collision_layer = 0
@@ -162,7 +162,7 @@ equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../player_body")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]
-transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 1.0444163, 0)
+transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.8504385, 0)
 shape = SubResource("BoxShape3D_4pade")
 
 [node name="CoyoteTime" type="Timer" parent="."]
