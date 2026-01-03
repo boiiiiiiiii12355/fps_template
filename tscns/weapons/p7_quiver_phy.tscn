@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtcqajnjlqou5"]
+[gd_scene load_steps=7 format=3 uid="uid://dtcqajnjlqou5"]
 
 [ext_resource type="Script" uid="uid://sx2guadwvc2r" path="res://Scripts/weapon_scripts/p_7_quiver.gd" id="1_pohe6"]
 [ext_resource type="PackedScene" uid="uid://c1tgnaxy1vvkm" path="res://model/p7_quiver.blend" id="2_pohe6"]
+[ext_resource type="AudioStream" uid="uid://cd5xx4ei7iese" path="res://sounds/gunshots/gun_shot.wav" id="3_egya0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_138c2"]
 bounce = 0.09
@@ -12,11 +13,12 @@ size = Vector3(0.03482422, 0.2302666, 0.35789832)
 [sub_resource type="BoxShape3D" id="BoxShape3D_j8x68"]
 size = Vector3(0.16627441, 0.23308691, 0.35871485)
 
-[node name="p7_quiver" type="RigidBody3D" node_paths=PackedStringArray("weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"]]
+[node name="p7_quiver" type="RigidBody3D" node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"]]
 collision_layer = 4
 collision_mask = 5
 physics_material_override = SubResource("PhysicsMaterial_138c2")
 script = ExtResource("1_pohe6")
+gun_shot_sound = NodePath("gunshot")
 weapon_model = NodePath("p7_quiver2")
 muzzle_flash = NodePath("muzzle_flash")
 gun_ray = NodePath("gun_ray")
@@ -76,3 +78,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010633174, 0.040460214, 0.0
 
 [node name="ejection_dir" type="Node3D" parent="ejection_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.031496733, -0.0036101379, 0)
+
+[node name="gunshot" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010719381, -0.027113676)
+stream = ExtResource("3_egya0")
