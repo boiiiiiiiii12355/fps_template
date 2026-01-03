@@ -88,8 +88,14 @@ func InputKeys():
 	#auxilary actions
 	if Input.is_action_just_pressed("click"):
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
-			inventory.inventory_array[selected_inventory_slot - 1].object_function()
+			if inventory.inventory_array[selected_inventory_slot - 1].object_function(true) == "semi_auto":
+				inventory.inventory_array[selected_inventory_slot - 1].object_function(false)
 	
+	if Input.is_action_pressed("click"):
+		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
+			if inventory.inventory_array[selected_inventory_slot - 1].object_function(true) == "full_auto":
+				inventory.inventory_array[selected_inventory_slot - 1].object_function(false)
+				
 	if Input.is_action_just_pressed("reload"):
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
 			inventory.inventory_array[selected_inventory_slot - 1].object_reload()

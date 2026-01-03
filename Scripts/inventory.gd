@@ -52,7 +52,7 @@ func inventory_process():
 			
 		if inventory_array[i] != null and (i) != selected_slot:
 			inventory_array[i].picked_up(i, slot_phys_array[i], arms_animationplayer)
-		elif inventory_array[selected_slot]:
+		elif inventory_array[selected_slot] and arms_animationplayer:
 			inventory_array[selected_slot].item_equip(equip_node, arms_animationplayer)
 			
 			

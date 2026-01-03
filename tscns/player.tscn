@@ -58,6 +58,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0
 
 [node name="debug_cam" type="Camera3D" parent="."]
 transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.26520085, 0)
+current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -88,10 +89,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="viewport_hand" parent="TwistPivot" instance=ExtResource("5_r66y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5959067, -0.021216746)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6280827, 0.09205347)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2214613, -0.0028894097)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15311015, 0.0018022507)
 cull_mask = 1048571
 current = true
 fov = 70.0

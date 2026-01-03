@@ -8,7 +8,7 @@ var speed: float = 3
 @export var pickup_area : Area3D
 @onready var root_node = owner
 
-func object_function():
+func object_function(check : bool):
 	print("no function defined")
 
 func object_reload():
@@ -32,8 +32,8 @@ func _integrate_forces(state):
 		req_linear_velocity = null
 		
 var req_linear_velocity
-@export var equip_rotation = Vector3.ZERO
-@export var equip_position = Vector3.ZERO
+@export var equip_rotation : Vector3
+@export var equip_position : Vector3
 func item_equip(equip_node, arms_anim : AnimationPlayer):
 	reparent(equip_node)
 	linear_velocity = Vector3.ZERO
@@ -72,6 +72,14 @@ func play_equip_animation():
 	pass
 
 func play_store_animation():
+	#define your own depending on item
+	pass
+
+func play_fire_animation():
+	#define your own depending on item
+	pass
+
+func play_reload_animation():
 	#define your own depending on item
 	pass
 	
