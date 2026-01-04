@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cd5xx4ei7iese" path="res://sounds/gunshots/gun_shot.wav" id="3_egya0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_138c2"]
-bounce = 0.09
+bounce = 0.42
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sfpw3"]
 size = Vector3(0.03482422, 0.2302666, 0.35789832)
@@ -16,6 +16,7 @@ size = Vector3(0.16627441, 0.23308691, 0.35871485)
 [node name="p7_quiver" type="RigidBody3D" node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"]]
 collision_layer = 4
 collision_mask = 5
+mass = 2.3
 physics_material_override = SubResource("PhysicsMaterial_138c2")
 script = ExtResource("1_pohe6")
 gun_shot_sound = NodePath("gunshot")
@@ -24,12 +25,13 @@ muzzle_flash = NodePath("muzzle_flash")
 gun_ray = NodePath("gun_ray")
 fire_rate_timer = NodePath("fire_rate")
 mag_size = 30
+base_damage = 30
 ejection_area = NodePath("ejection_area")
 equip_timer = NodePath("equip_timer")
 item_name = "p7-quiver"
 pickup_area = NodePath("pickup_area")
-equip_rotation = Vector3(0, 0, 9.602)
-equip_position = Vector3(0, 0, 0.01)
+equip_rotation = Vector3(0, 3.39, 7.123)
+equip_position = Vector3(0.004, 0, -0.015)
 
 [node name="p7_quiver2" parent="." instance=ExtResource("2_pohe6")]
 transform = Transform3D(1, 0, 0, 0, 0.99999887, 0.0015184359, 0, -0.0015184359, 0.99999887, 0, -0.24394092, 0.118109405)
@@ -55,7 +57,7 @@ shape = SubResource("BoxShape3D_sfpw3")
 [node name="gun_ray" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.03422071, -0.12271314)
 target_position = Vector3(0, 0, -1000)
-collision_mask = 5
+collision_mask = 13
 
 [node name="pickup_area" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0.040984385, -0.07206045)
@@ -70,7 +72,7 @@ shape = SubResource("BoxShape3D_j8x68")
 one_shot = true
 
 [node name="fire_rate" type="Timer" parent="."]
-wait_time = 0.07
+wait_time = 0.06
 one_shot = true
 
 [node name="ejection_area" type="Node3D" parent="."]

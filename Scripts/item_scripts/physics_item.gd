@@ -83,6 +83,10 @@ func play_reload_animation():
 	#define your own depending on item
 	pass
 	
+func item_point(look_at):
+	#just incase a item needs to point
+	
+	pass
 func dropped():
 	print("dropped")
 	freeze = false

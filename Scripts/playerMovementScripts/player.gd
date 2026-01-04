@@ -8,6 +8,7 @@ class_name Player
 @export var camera_dist = 0
 @export var camera_spine : Node3D
 @onready var coyoteTimer = $CoyoteTime
+
 var pickup_point 
 var default_camera_pos
 var randm = RandomNumberGenerator.new()

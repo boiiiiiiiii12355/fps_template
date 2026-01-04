@@ -7,6 +7,7 @@ class_name gun_item_base
 @export var gun_ray : RayCast3D
 @export var fire_rate_timer : Timer
 @export var mag_size : int
+@export var base_damage : int
 var ammunition = mag_size
 var animation_player : AnimationPlayer
 
@@ -44,6 +45,9 @@ func object_function(check : bool):
 	elif check:
 		return fire_type()
 
+func item_point(look_atv : Vector3):
+	gun_ray.look_at(look_atv)
+	
 func fire_type():
 	return "semi_auto"
 	
@@ -55,13 +59,21 @@ func object_reload():
 var hit_particle = preload("res://particle_effects/hit_particles.tscn")
 func check_hit():
 	if gun_ray.get_collider():
+		print(gun_ray.get_collider())
 		var hit_particle_clone = hit_particle.instantiate()
 		root_node.particles.add_child(hit_particle_clone)
-		DrawLine3d.DrawLine(gun_ray.global_position, gun_ray.get_collision_point(), Color.YELLOW, 0.01)
+		DrawLine3d.DrawLine(gun_ray.global_position, gun_ray.get_collision_point(), Color.ORANGE, 0.001)
 		hit_particle_clone.global_position = gun_ray.get_collision_point()
 		hit_particle_clone.rotation = gun_ray.get_collision_normal()
 		hit_particle_clone.restart()
 		
+		if gun_ray.get_collider().is_in_group("ragdoll"):
+			var bone_parent = gun_ray.get_collider()
+			var knockback_dir = (bone_parent.global_position - gun_ray.global_position).normalized()
+			bone_parent.get_parent().get_parent().hit(bone_parent, base_damage)
+			bone_parent.linear_velocity = knockback_dir * 20
+			
+			
 	else:
 		return false
 
@@ -76,6 +88,6 @@ func effects():
 	var bullet_casing_clone : RigidBody3D = bullet_casing.instantiate()
 	add_child(bullet_casing_clone)
 	bullet_casing_clone.global_position = ejection_area.global_position
-	bullet_casing_clone.linear_velocity = (ejection_dir_node.global_position - bullet_casing_clone.global_position).normalized() * random_number.randf_range(2.0, 4.0)
+	bullet_casing_clone.linear_velocity = ((ejection_dir_node.global_position - bullet_casing_clone.global_position).normalized() + Vector3(0, random_number.randf_range(-1, 1), 0)) * random_number.randf_range(2.0, 4.0)
 	bullet_casing_clone.angular_velocity = Vector3(0, random_number.randf_range(10, 100), 0)
 	bullet_casing_clone.reparent(root_node.particles)

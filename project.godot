@@ -19,6 +19,10 @@ config/icon="res://images/icon.svg"
 
 DrawLine3d="*res://Scripts/DrawLine3D.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Godot4SourceEngineMovement"
@@ -40,6 +44,7 @@ interactable="a interactable object"
 physics_objects="a group for physics objects to be parented to"
 player_animations="items can call this group to play a animation when equiped"
 reloadable="objects that can be reloaded"
+ragdoll=""
 
 [input]
 
@@ -145,6 +150,7 @@ reload={
 3d_physics/layer_1="map"
 3d_physics/layer_2="player"
 3d_physics/layer_3="items"
+3d_physics/layer_4="ragdolls"
 
 [physics]
 

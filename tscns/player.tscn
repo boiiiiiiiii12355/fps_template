@@ -34,7 +34,7 @@ size = Vector3(0.7, 1.655, 0.7)
 size = Vector3(0.7, 0.4, 0.7)
 
 [node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "player_animations", "preselect_timer")]
-collision_layer = 0
+collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
@@ -89,10 +89,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="viewport_hand" parent="TwistPivot" instance=ExtResource("5_r66y1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6280827, 0.09205347)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653387, 0.07730436)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15311015, 0.0018022507)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15311015, -0.0443805)
 cull_mask = 1048571
 current = true
 fov = 70.0
@@ -104,6 +104,10 @@ hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_thickness = 1
+
+[node name="gun_point" type="RayCast3D" parent="TwistPivot/view"]
+target_position = Vector3(0, 0, -157.3)
+collision_mask = 13
 
 [node name="chest_point_target" type="Node3D" parent="TwistPivot/view"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.595)
@@ -155,11 +159,12 @@ stream = ExtResource("13_hpxkm")
 [node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
 stream = ExtResource("14_wemna")
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "equip_pos", "player_animation")]
+[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "equip_pos", "player_animation", "gun_point")]
 script = ExtResource("15_cbyhw")
 hud = NodePath("../HUD")
 equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../player_body")
+gun_point = NodePath("../TwistPivot/view/gun_point")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.8504385, 0)

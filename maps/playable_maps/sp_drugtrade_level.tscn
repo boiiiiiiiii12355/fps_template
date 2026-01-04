@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://y328sqygbr5y"]
+[gd_scene load_steps=11 format=3 uid="uid://y328sqygbr5y"]
 
 [ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_ajc2c"]
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_28upr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="4_w68fj"]
 [ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_ind0n"]
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://tscns/weapons/p7_quiver_phy.tscn" id="6_28upr"]
+[ext_resource type="PackedScene" uid="uid://cthbvnippkvsh" path="res://char_models/ragdoll_test.tscn" id="7_065jd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dip4k"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -47,3 +48,6 @@ transform = Transform3D(-0.5643765, 0, -0.82551754, 0, 1, 0, 0.82551754, 0, -0.5
 
 [node name="p7_quiver" parent="sp_drugtrade/Objects" instance=ExtResource("6_28upr")]
 transform = Transform3D(0.9417409, -0.3363393, 0, 0.3363393, 0.9417409, 0, 0, 0, 1, -1.1996772, 0.51855695, 0.021698475)
+
+[node name="ragdoll_test" parent="." instance=ExtResource("7_065jd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90797794, 1.3523941, -1.6175365)

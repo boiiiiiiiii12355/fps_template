@@ -15,6 +15,8 @@ func play_reload_animation():
 func  play_fire_animation():
 	gun_shot_sound.play(0)
 	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p7_quiver_fire")
+	animation_player.play("p7_quiver_fire")
+	animation_player.seek(0)
 	
 func fire_type():
 	return "full_auto"

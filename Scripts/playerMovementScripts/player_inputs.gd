@@ -97,6 +97,7 @@ func InputKeys():
 				inventory.inventory_array[selected_inventory_slot - 1].object_function(false)
 				
 	if Input.is_action_just_pressed("reload"):
+		Engine.time_scale = 1
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
 			inventory.inventory_array[selected_inventory_slot - 1].object_reload()
 		

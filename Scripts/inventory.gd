@@ -12,6 +12,7 @@ var arms_animationplayer : AnimationPlayer
 @export var item_belt : Node3D
 @export var equip_pos : Node3D
 @export var player_animation : Node3D
+@export var gun_point : RayCast3D
 var slot1_phys : Node3D
 var slot2_phys : Node3D
 var slot3_phys : Node3D
@@ -54,7 +55,10 @@ func inventory_process():
 			inventory_array[i].picked_up(i, slot_phys_array[i], arms_animationplayer)
 		elif inventory_array[selected_slot] and arms_animationplayer:
 			inventory_array[selected_slot].item_equip(equip_node, arms_animationplayer)
-			
+			if gun_point.get_collider():
+				inventory_array[selected_slot].item_point(gun_point.get_collision_point())
+			else:
+				inventory_array[selected_slot].item_point(gun_point.to_global(gun_point.target_position))
 			
 		
 		if i == inventory_array.size():
