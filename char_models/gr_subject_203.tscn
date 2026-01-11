@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://c42sugcir7jjr"]
+
+[ext_resource type="PackedScene" uid="uid://b3mj06s0lfkkx" path="res://char_models/GR_subject_203.blend" id="1_ffiwu"]
+
+[node name="GR_subject_203" instance=ExtResource("1_ffiwu")]
+
+[node name="Skeleton3D" parent="rig" index="0"]
+bones/3/rotation = Quaternion(-0.05146298, -1.1905136e-07, -1.8404604e-08, 0.998675)
+bones/4/rotation = Quaternion(0.10945711, 1.8317721e-14, 2.609661e-08, 0.99399155)
+bones/75/rotation = Quaternion(0.027115433, 8.4628256e-11, 9.584591e-09, 0.99963236)
+bones/80/rotation = Quaternion(0.027115433, 8.456543e-11, -3.3450618e-09, 0.99963236)
+
+[node name="spine_006" parent="rig/Skeleton3D" index="0"]
+transform = Transform3D(0.9998643, -0.0011178609, -0.016434126, 0.0018146758, 0.99909717, 0.042446762, 0.016371842, -0.042470858, 0.99896365, -0.0006154658, 1.448424, 0.04610641)
+
+[node name="spine_look_at" type="LookAtModifier3D" parent="rig/Skeleton3D" index="2"]
+target_node = NodePath("../../../camerapoint")
+bone_name = "spine.001"
+bone = 2
+origin_offset = Vector3(0, 0.375, 0)
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.6252506
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.6705555
+secondary_damp_threshold = 1.0
+
+[node name="chest_look_at" type="LookAtModifier3D" parent="rig/Skeleton3D" index="3"]
+target_node = NodePath("../../../camerapoint")
+bone_name = "spine.002"
+bone = 3
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 0.35691983
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.0773917
+secondary_damp_threshold = 1.0
+
+[node name="neck_look_at" type="LookAtModifier3D" parent="rig/Skeleton3D" index="4"]
+target_node = NodePath("../../../camerapoint")
+bone_name = "spine.004"
+bone = 5
+origin_offset = Vector3(0, 1.055, 0)
+
+[node name="head_look_at" type="LookAtModifier3D" parent="rig/Skeleton3D" index="5"]
+target_node = NodePath("../../../camerapoint")
+bone_name = "spine.006"
+bone = 7
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 0.7140142
+primary_damp_threshold = 1.0
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
+[node name="camerapoint" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.03276515, 1.5314616, 2.0003538)

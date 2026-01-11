@@ -43,7 +43,7 @@ func item_equip(equip_node, arms_anim : AnimationPlayer):
 	freeze = true
 	if equip_animation_played == false:
 		equip_timer.start()
-		play_equip_animation()
+		#play_equip_animation()
 		equip_animation_played = true
 		
 
@@ -52,7 +52,7 @@ var owner_animation_ctrl
 func picked_up(slot, slot_node, arms_anim : AnimationPlayer):
 	if equip_animation_played == true:
 		equip_timer.start()
-		play_store_animation()
+		#play_store_animation()
 		equip_animation_played = false
 		
 	elif equip_animation_played == false:
