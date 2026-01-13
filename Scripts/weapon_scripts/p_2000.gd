@@ -35,7 +35,7 @@ func play_fire_animation():
 	
 func object_function(check : bool):
 	if !check and equip_timer.is_stopped() and ammunition and fire_rate_timer.is_stopped():
-		#play_fire_animation()
+		play_fire_animation()
 		ammunition -= 1
 		animation_player.seek(0)
 		check_hit()
@@ -52,8 +52,8 @@ func fire_type():
 	return "semi_auto"
 	
 func object_reload():
-	#play_reload_animation()
-	#await animation_player.animation_finished
+	play_reload_animation()
+	await animation_player.animation_finished
 	ammunition = mag_size
 
 var hit_particle = preload("res://particle_effects/hit_particles.tscn")

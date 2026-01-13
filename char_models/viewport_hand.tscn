@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2jg7mx08osho" path="res://char_models/viewport_hand.blend" id="1_825lf"]
 
 [node name="viewport_hand" instance=ExtResource("1_825lf")]
+visible = false
 
 [node name="Skeleton3D" parent="arm_rig" index="0"]
 bones/1/rotation = Quaternion(-0.17866401, 0.3646784, -0.13850354, 0.903275)

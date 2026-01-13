@@ -7,6 +7,7 @@ class_name Player
 @export var spring : SpringArm3D
 @export var camera_dist = 0
 @export var camera_spine : Node3D
+@export var player_body : playermodel
 @onready var coyoteTimer = $CoyoteTime
 
 var pickup_point 
@@ -67,8 +68,8 @@ func _physics_process(delta: float) -> void:
 	if hold_target:
 		hold(hold_target)
 	
-	player_animations.chest_point_at(chest_point_target.global_position)
-	player_animations.walk_anim_update(movement_local_dir)
+	player_body.chest_point_at(chest_point_target.global_position)
+	player_body.walk_anim_update(movement_local_dir)
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob
 	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)

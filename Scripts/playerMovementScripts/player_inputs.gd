@@ -10,7 +10,6 @@ class_name PlayerInputs
 @export var pickup_speed = 20
 @export var preselected_inventory_slot : int = 1
 @export var selected_inventory_slot : int = 1
-@export var player_animations : Node3D
 var flashlight_toggle = false
 var camera : Node3D
 

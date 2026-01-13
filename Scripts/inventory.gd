@@ -23,9 +23,9 @@ func _ready() -> void:
 	inventory_owner = self.get_parent()
 	inventory_array.resize(max_slots)
 	owner_model = self.get_parent().get_child(0)
-	arms_animationplayer = player_animation.arms_animation_player
-	arms_animationplayer.animation_finished.connect(arms_free)
-	arms_animationplayer.animation_started.connect(arms_buzy)
+	#arms_animationplayer = player_animation.arms_action
+	#arms_animationplayer.animation_finished.connect(arms_free)
+	#arms_animationplayer.animation_started.connect(arms_buzy)
 	equip_node = owner_model.equip_node
 	slot1_phys = owner_model.slot1
 	slot2_phys = owner_model.slot2

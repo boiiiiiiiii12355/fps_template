@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=23 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
-[ext_resource type="PackedScene" uid="uid://dmopo2slysquu" path="res://char_models/player_body_v2.tscn" id="3_k0k4f"]
-[ext_resource type="PackedScene" uid="uid://bfbuqtw1qjq77" path="res://char_models/player_body.tscn" id="3_wemna"]
+[ext_resource type="PackedScene" uid="uid://c42sugcir7jjr" path="res://char_models/gr_subject_203.tscn" id="4_k0k4f"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
 [ext_resource type="PackedScene" uid="uid://dmow25mh0gb28" path="res://char_models/viewport_hand.tscn" id="5_r66y1"]
@@ -33,31 +32,29 @@ size = Vector3(0.7, 1.655, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.7, 0.4, 0.7)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "player_animations", "preselect_timer")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
-chest_point_target = NodePath("TwistPivot/view/chest_point_target")
+player_body = NodePath("GR_subject_203")
+chest_point_target = NodePath("TwistPivot/view/point_target")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
-player_animations = NodePath("player_body")
 preselect_timer = NodePath("preselect_timer")
 
-[node name="player_body" parent="." node_paths=PackedStringArray("arms_model", "camera_spine") instance=ExtResource("3_wemna")]
+[node name="GR_subject_203" parent="." node_paths=PackedStringArray("arms_model", "camera_spine") instance=ExtResource("4_k0k4f")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 arms_model = NodePath("../TwistPivot/viewport_hand")
 camera_spine = NodePath("../TwistPivot")
 
-[node name="player_third_person" parent="." instance=ExtResource("3_k0k4f")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-
 [node name="debug_cam" type="Camera3D" parent="."]
-transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.26520085, 0)
+transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.573243, 0)
 current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -70,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.298054, 0.0309477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3366288, -0.013798937)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -92,7 +89,7 @@ rotation_edit_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653387, 0.07730436)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15311015, -0.0443805)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14850569, -0.01353652)
 cull_mask = 1048571
 current = true
 fov = 70.0
@@ -109,8 +106,8 @@ debug_shape_thickness = 1
 target_position = Vector3(0, 0, -157.3)
 collision_mask = 13
 
-[node name="chest_point_target" type="Node3D" parent="TwistPivot/view"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.595)
+[node name="point_target" type="Node3D" parent="TwistPivot/view"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4922949, -5)
 
 [node name="player_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)
@@ -129,7 +126,7 @@ script = ExtResource("5_mty1n")
 
 [node name="Air" type="Node" parent="activityMachine" node_paths=PackedStringArray("player_model")]
 script = ExtResource("6_vmmom")
-player_model = NodePath("../../player_body")
+player_model = NodePath("../../GR_subject_203")
 
 [node name="standingMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")
@@ -163,7 +160,7 @@ stream = ExtResource("14_wemna")
 script = ExtResource("15_cbyhw")
 hud = NodePath("../HUD")
 equip_pos = NodePath("../TwistPivot/equip_area")
-player_animation = NodePath("../player_body")
+player_animation = NodePath("../GR_subject_203")
 gun_point = NodePath("../TwistPivot/view/gun_point")
 
 [node name="Headbonk" type="ShapeCast3D" parent="."]

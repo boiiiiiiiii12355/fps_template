@@ -5,7 +5,7 @@ var try_uncrouch = false
 
 func enter(msg := {}) -> void:
 	print("crouched")
-	player_animation = get_parent().get_parent().player_animations
+	player_animation = get_parent().get_parent().player_body
 	stats.crouched = true
 	stats.speed = stats.ply_crouchspeed 
 	if msg.get("try_uncrouch") == true:
