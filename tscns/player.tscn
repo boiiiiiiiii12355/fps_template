@@ -55,7 +55,6 @@ camera_spine = NodePath("../TwistPivot")
 
 [node name="debug_cam" type="Camera3D" parent="."]
 transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.573243, 0)
-current = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -67,7 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3366288, -0.013798937)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1732912, -0.03806916)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -89,7 +88,7 @@ rotation_edit_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.653387, 0.07730436)
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14850569, -0.01353652)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2916224, -0.01165849)
 cull_mask = 1048571
 current = true
 fov = 70.0
@@ -107,7 +106,7 @@ target_position = Vector3(0, 0, -157.3)
 collision_mask = 13
 
 [node name="point_target" type="Node3D" parent="TwistPivot/view"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4922949, -5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.575)
 
 [node name="player_light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)

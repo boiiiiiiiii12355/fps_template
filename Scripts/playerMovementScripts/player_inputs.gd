@@ -94,7 +94,10 @@ func InputKeys():
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
 			if inventory.inventory_array[selected_inventory_slot - 1].object_function(true) == "full_auto":
 				inventory.inventory_array[selected_inventory_slot - 1].object_function(false)
-				
+	
+	if Input.is_action_just_pressed("right_click"):
+		kick()
+		
 	if Input.is_action_just_pressed("reload"):
 		Engine.time_scale = 1
 		if inventory.inventory_array[selected_inventory_slot - 1] != null and preselect_timer.is_stopped():
@@ -158,6 +161,9 @@ var hold_target
 func hold(object):
 	pass
 
+func kick():
+	pass
+	
 func pickup(object : Object):
 	pass
 

@@ -17,21 +17,22 @@ func _ready() -> void:
 	fire_rate_timer.connect("timeout", fire_rate_timer_end)
 	
 func play_equip_animation():
-	animation_player.play("p2000_equip")
-	get_tree().call_group("player_animations", "play_arm_animation", "p2000_equip")
+	animation_player.play("p2000_inspect")
+	get_tree().call_group("player_animations", "play_arm_animation", "p2000_inspect_rig")
 	
 func  play_store_animation():
-	get_tree().call_group("player_animations", "play_arm_animation", "p2000_store")
-
+	#get_tree().call_group("player_animations", "play_arm_animation", "p2000_store")
+	pass
+	
 func play_reload_animation():
-	get_tree().call_group("player_animations", "play_arm_animation", "p2000_reload")
+	get_tree().call_group("player_animations", "play_arm_animation", "p200_reload_rig")
 	animation_player.play("gun_rigAction")
 	animation_player.seek(0)
 	
 func play_fire_animation():
 	gun_shot_sound.play(0)
 	animation_player.play("fire")
-	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_fire")
+	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_shoot_rig")
 	
 func object_function(check : bool):
 	if !check and equip_timer.is_stopped() and ammunition and fire_rate_timer.is_stopped():

@@ -6,7 +6,7 @@ var inventory_array : Array
 var slot_phys_array : Array
 var equipted_slot : int
 var equip_node : Node3D
-var arms_animationplayer : AnimationPlayer
+var arms_animationplayer : AnimationTree
 @export var hud : Control
 @export var max_slots : int = 3
 @export var item_belt : Node3D
@@ -23,9 +23,9 @@ func _ready() -> void:
 	inventory_owner = self.get_parent()
 	inventory_array.resize(max_slots)
 	owner_model = self.get_parent().get_child(0)
-	#arms_animationplayer = player_animation.arms_action
-	#arms_animationplayer.animation_finished.connect(arms_free)
-	#arms_animationplayer.animation_started.connect(arms_buzy)
+	arms_animationplayer = player_animation.animation_tree
+	arms_animationplayer.animation_finished.connect(arms_free)
+	arms_animationplayer.animation_started.connect(arms_buzy)
 	equip_node = owner_model.equip_node
 	slot1_phys = owner_model.slot1
 	slot2_phys = owner_model.slot2

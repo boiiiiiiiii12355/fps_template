@@ -70,6 +70,7 @@ func _physics_process(delta: float) -> void:
 	
 	player_body.chest_point_at(chest_point_target.global_position)
 	player_body.walk_anim_update(movement_local_dir)
+	
 	#bunch of camera effects when moving
 	var req_view_transform = default_camera_pos + fall_cam_bob
 	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)
@@ -79,7 +80,7 @@ func _physics_process(delta: float) -> void:
 		step_time += (delta * stats.vel.length() * float(stats.on_floor))
 	else:
 		step_time = 1
-		
+	
 var change_magnitude = 0.1
 var fall_displacement = .02
 var fall_cam_bob = Vector3.ZERO
@@ -133,6 +134,9 @@ func CheckVelocity():
 		stats.vel = stats.vel.normalized() * stats.ply_maxvelocity
 
 
+func kick():
+	player_body.kick()
+	
 ## Perform a move-and-slide along the set velocity vector. If the body collides
 ## with another, it will slide along the other body rather than stop immediately.
 ## The method returns whether or not it collided with anything.

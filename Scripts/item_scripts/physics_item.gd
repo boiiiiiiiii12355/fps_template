@@ -34,7 +34,7 @@ func _integrate_forces(state):
 var req_linear_velocity
 @export var equip_rotation : Vector3
 @export var equip_position : Vector3
-func item_equip(equip_node, arms_anim : AnimationPlayer):
+func item_equip(equip_node, arms_anim : AnimationTree):
 	reparent(equip_node)
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
@@ -49,7 +49,7 @@ func item_equip(equip_node, arms_anim : AnimationPlayer):
 
 #this function also runs when item is not equiped. should change name soon
 var owner_animation_ctrl
-func picked_up(slot, slot_node, arms_anim : AnimationPlayer):
+func picked_up(slot, slot_node, arms_anim : AnimationTree):
 	if equip_animation_played == true:
 		equip_timer.start()
 		play_store_animation()
