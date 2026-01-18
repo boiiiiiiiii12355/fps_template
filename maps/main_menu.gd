@@ -11,6 +11,18 @@ var map_buttons : Array
 
 func _ready() -> void:
 	map_list_init()
+
+func _physics_process(delta: float) -> void:
+	camera_effect()
+	
+@export var main_menu_scene : Node3D
+func camera_effect():
+	var mouse_2d_pos = maps_button_container.get_global_mouse_position() - maps_button_container.get_viewport_rect().get_center()
+	var scene_camera : Camera3D = main_menu_scene.camera
+	var scene_cam_default_pos = main_menu_scene.cam_default_pos
+	scene_camera.global_position.x = lerp(scene_camera.global_position.x, scene_cam_default_pos.x + mouse_2d_pos.x / 4000, 0.1)
+	scene_camera.global_position.y = lerp(scene_camera.global_position.y, scene_cam_default_pos.y - mouse_2d_pos.y / 4000, 0.1)
+	scene_camera.global_position.y = clamp(scene_camera.global_position.y, scene_cam_default_pos.y, 1000)
 	
 #loads all maps in the playable maps file and makes a button for each of them
 func map_list_init():

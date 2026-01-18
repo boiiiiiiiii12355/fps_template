@@ -54,7 +54,7 @@ arms_model = NodePath("../TwistPivot/viewport_hand")
 camera_spine = NodePath("../TwistPivot")
 
 [node name="debug_cam" type="Camera3D" parent="."]
-transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 3.0596821, 0.573243, 0)
+transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 1.8084285, 0.573243, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

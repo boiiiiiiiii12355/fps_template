@@ -4,13 +4,11 @@
 
 [resource]
 script = ExtResource("1_ffqun")
-ply_upspeed = 100
-ply_airaccelerate = 7
-ply_maxacceleration = 3
-ply_friction = 1
-ply_gravity = 40
+ply_maxlookangle_down = -80
+ply_maxlookangle_up = 70
+ply_ylookspeed = 0.5
+ply_xlookspeed = 0.5
 ply_jumpheight = 2
-ply_stepsize = 5
-ply_maxspeed = 3
-ply_crouchspeed = 2
+ply_maxspeed = 5
+ply_crouchspeed = 4
 camPath = NodePath("TwistPivot")

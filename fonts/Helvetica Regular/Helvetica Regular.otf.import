@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://vrsj2fjo5640"
-path="res://.godot/imported/Helvetica Regular.otf-e402ec43363a4a708837314bcbb47e4b.fontdata"
+path="res://.godot/imported/Helvetica Regular.otf-436df733cbe087dfccbeea074d23c6e0.fontdata"
 
 [deps]
 
-source_file="res://Helvetica Regular/Helvetica Regular.otf"
-dest_files=["res://.godot/imported/Helvetica Regular.otf-e402ec43363a4a708837314bcbb47e4b.fontdata"]
+source_file="res://fonts/Helvetica Regular/Helvetica Regular.otf"
+dest_files=["res://.godot/imported/Helvetica Regular.otf-436df733cbe087dfccbeea074d23c6e0.fontdata"]
 
 [params]
 

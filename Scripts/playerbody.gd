@@ -37,16 +37,13 @@ func _physics_process(delta: float) -> void:
 		
 		
 func chest_point_at(r_position):
-	camera_point.position.z = clamp(camera_point.position.z, 0.815, 1000)
-	camera_point.global_position = r_position
+	camera_point.global_position = lerp(camera_point.global_position, r_position, 0.1)
 	camera_spine.global_position = head_tracker.global_position
 	turn_body_to_cam()
 	
 
 func turn_body_to_cam():
-	var dist = (camera_point.global_position - legs_point.global_position).length()
-	var dir = camera_point.global_position - legs_point.global_position
-	legs_point.global_position += dir * 0.05
+	legs_point.global_position = lerp(legs_point.global_position, camera_point.global_position, 0.05)
 	if get_parent().velocity:
 		legs_point.global_position = lerp(legs_point.global_position, camera_point.global_position, 0.1)
 	
@@ -59,8 +56,11 @@ func crouch_exit():
 	self.position.y = 0
  
 func kick():
-	animation_tree.set(kick_oneshot, 1)
-	
+	if animation_tree.get(kick_oneshot) != 1:
+		animation_tree.set(kick_oneshot, 1)
+	else:
+		print("already_kicking")
+		
 var local_vel_mag : Vector2 = Vector2.ZERO
 func walk_anim_update(velocity_magnitude : Vector2):
 	local_vel_mag = lerp(local_vel_mag, velocity_magnitude, 0.2)
