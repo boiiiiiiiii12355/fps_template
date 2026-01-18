@@ -53,6 +53,7 @@ player_animations="items can call this group to play a animation when equiped"
 reloadable="objects that can be reloaded"
 ragdoll=""
 kick_hitbox=""
+env_player_hurt="things that hurt player"
 
 [input]
 
@@ -164,6 +165,7 @@ right_click={
 3d_physics/layer_2="player"
 3d_physics/layer_3="items"
 3d_physics/layer_4="ragdolls"
+3d_physics/layer_5="hurtbox"
 
 [physics]
 

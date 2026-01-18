@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ona6janl00wj"]
+[gd_scene load_steps=12 format=3 uid="uid://ona6janl00wj"]
 
 [ext_resource type="PackedScene" uid="uid://bjlnu3lmy2mhe" path="res://maps/map_scenes/tram_station.tscn" id="1_gfy6y"]
 [ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_pd6gb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://tscns/weapons/p2000_phy.tscn" id="4_2d02k"]
 [ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://tscns/items/flashlight.tscn" id="5_3eqgb"]
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://tscns/weapons/p7_quiver_phy.tscn" id="6_uphtb"]
+[ext_resource type="PackedScene" uid="uid://bg0rv43fg4qdr" path="res://maps/map_objects/hurt_area.tscn" id="7_84bnf"]
 [ext_resource type="PackedScene" uid="uid://cthbvnippkvsh" path="res://char_models/ragdoll_test.tscn" id="7_o6qup"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2d02k"]
@@ -56,6 +57,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.809464, 0.19193125, -18.3
 
 [node name="p7_quiver" parent="tram_station/objects" instance=ExtResource("6_uphtb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.67299, -1.1615413, -16.67894)
+
+[node name="hurt_area" parent="tram_station/objects" instance=ExtResource("7_84bnf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.115532, -1.5095277, -15.328069)
 
 [node name="entities" type="Node3D" parent="tram_station"]
 

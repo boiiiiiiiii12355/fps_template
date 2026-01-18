@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://dppu81f8q0do2"]
+[gd_scene load_steps=4 format=3 uid="uid://dppu81f8q0do2"]
 
 [ext_resource type="Script" uid="uid://ceqy010g5orms" path="res://Scripts/ui_stuff/hud.gd" id="1_drfnf"]
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "selector")]
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_drfnf"]
+color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lmbg"]
+bg_color = Color(1, 0, 0, 1)
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+corner_detail = 1
+shadow_color = Color(1, 0, 0, 0.49411765)
+shadow_size = 13
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "selector", "hp_bar")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +25,7 @@ slot_1 = NodePath("inventory/Slot 1")
 slot_2 = NodePath("inventory/Slot 2")
 slot_3 = NodePath("inventory/Slot 3")
 selector = NodePath("inventory/selector")
+hp_bar = NodePath("status/hp_bar")
 
 [node name="inventory" type="Control" parent="."]
 anchors_preset = 0
@@ -24,42 +36,61 @@ offset_bottom = 47.0
 
 [node name="background" type="ColorRect" parent="inventory"]
 layout_mode = 0
-offset_top = 549.0
-offset_right = 408.0
-offset_bottom = 650.0
+offset_left = 745.0
+offset_top = 539.0
+offset_right = 1153.0
+offset_bottom = 640.0
 color = Color(0.29586652, 0.29586652, 0.29586634, 0.21568628)
 
 [node name="selector" type="ColorRect" parent="inventory"]
 layout_mode = 0
-offset_left = 16.0
-offset_top = 557.0
-offset_right = 386.0
-offset_bottom = 582.0
+offset_left = 761.0
+offset_top = 547.0
+offset_right = 1131.0
+offset_bottom = 572.0
 color = Color(0, 0, 0, 0.5058824)
 
 [node name="Slot 3" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 609.0
-offset_right = 357.0
-offset_bottom = 635.0
+offset_left = 765.0
+offset_top = 599.0
+offset_right = 1102.0
+offset_bottom = 625.0
 text = "3"
 
 [node name="Slot 2" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 583.0
-offset_right = 357.0
-offset_bottom = 609.0
+offset_left = 765.0
+offset_top = 573.0
+offset_right = 1102.0
+offset_bottom = 599.0
 text = "2"
 
 [node name="Slot 1" type="RichTextLabel" parent="inventory"]
 layout_mode = 0
-offset_left = 20.0
-offset_top = 557.0
-offset_right = 357.0
-offset_bottom = 583.0
+offset_left = 765.0
+offset_top = 547.0
+offset_right = 1102.0
+offset_bottom = 573.0
 text = "1"
+
+[node name="status" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="hp_bar" type="ProgressBar" parent="status"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 518.0
+offset_right = 33.0
+offset_bottom = 627.0
+theme_override_styles/background = SubResource("StyleBoxLine_drfnf")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7lmbg")
+value = 27.0
+rounded = true
+fill_mode = 3
+show_percentage = false
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0

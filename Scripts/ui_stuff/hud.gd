@@ -6,11 +6,15 @@ var player_inventory : Array
 @export var slot_2 : RichTextLabel
 @export var slot_3 : RichTextLabel
 @export var selector : ColorRect
+@export var player_camera : Camera3D
+var ui_hp : float
 var req_selector_position : Vector2 = Vector2.ZERO
 
+@export var hp_bar : ProgressBar
 
 func _physics_process(delta: float) -> void:
 	selector.global_position = lerp(selector.global_position, req_selector_position, 0.3)
+	hp_bar.value = lerp(hp_bar.value, ui_hp, 0.1)
 	
 func update_inventory_display():
 	player_inventory = get_parent().inventory.inventory_array
@@ -36,3 +40,12 @@ func update_inventory_select(slot : int):
 	elif slot == 3:
 		req_selector_position = slot_3.global_position
 	
+func update_hp_bar(hp, update_type : int):
+	ui_hp = hp
+	
+	if update_type == 1 : #damaged
+		pass
+		
+	elif update_type == 2 : #healed
+		pass
+		

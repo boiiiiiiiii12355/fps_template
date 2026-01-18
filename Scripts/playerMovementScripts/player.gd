@@ -8,6 +8,7 @@ class_name Player
 @export var camera_dist = 0
 @export var camera_spine : Node3D
 @export var player_body : playermodel
+@export var hud : Control
 @onready var coyoteTimer = $CoyoteTime
 
 var pickup_point 
@@ -46,7 +47,6 @@ func _physics_process(delta: float) -> void:
 
 	
 	velocity = stats.vel
-	stored_velocity()
 	move_and_slide_own()
 	stats.vel = velocity
 	
@@ -55,7 +55,9 @@ func _physics_process(delta: float) -> void:
 		coyoteTimer.start()
 	
 	if stats.on_floor and stats.shouldJump == false:
-		fall_impact()
+		#disabled for now
+		#fall_impact()
+		pass
 		
 	if(stats.on_floor):
 		stats.shouldJump = true
@@ -71,53 +73,9 @@ func _physics_process(delta: float) -> void:
 	player_body.chest_point_at(chest_point_target.global_position)
 	player_body.walk_anim_update(movement_local_dir)
 	
-	#bunch of camera effects when moving
-	var req_view_transform = default_camera_pos + fall_cam_bob
-	view.transform.origin = lerp(view.transform.origin, req_view_transform + camera_bob(step_time), change_magnitude)
-	view.rotation.z = lerp(view.rotation.z, movement_tilt(), 0.07)
-		
-	if velocity.length():
-		step_time += (delta * stats.vel.length() * float(stats.on_floor))
-	else:
-		step_time = 1
-	
-var change_magnitude = 0.1
-var fall_displacement = .02
-var fall_cam_bob = Vector3.ZERO
-func fall_impact():
-	fall_cam_bob.y = (-fall_displacement * abs(stored_vel.y))
-	print(velocity.length())
-	change_magnitude = 1
-	await get_tree().create_timer(0.001).timeout
-	change_magnitude = 0.1
-	fall_cam_bob.y = 0
-	
-var stored_vel = Vector3.ZERO
-func stored_velocity():
-	if velocity:
-		stored_vel = velocity
 
-var step_time = 0.0
-var headbob_frequency = 2.5
-var headbob_amplitude = 0.04
-func camera_bob(headbob_time):
-	var headbob_position = Vector3.ZERO
-	headbob_position.y = sin(headbob_time * headbob_frequency) * headbob_amplitude
-	headbob_position.x = cos(headbob_time * headbob_frequency / 2) * headbob_amplitude
-	return headbob_position
 	
-@export var cam_tilt_init = 10.0
-@export var tilt_magnitude = 0.1 
-func movement_tilt():
-	if stats.sidemove and tilt_magnitude:
-		var tilt_ratio = stats.sidemove / 4096.0
-		var tilt_equation = tilt_ratio * tilt_magnitude
-		if stats.sidemove > cam_tilt_init or stats.sidemove < -cam_tilt_init:
-			return tilt_equation
-		else:
-			return 0.0
-	else:
-		return 0.0
+
 		
 func clearCoyote():
 	coyoteTimer.stop()

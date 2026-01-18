@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene load_steps=26 format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
 [ext_resource type="PackedScene" uid="uid://dmow25mh0gb28" path="res://char_models/viewport_hand.tscn" id="5_r66y1"]
+[ext_resource type="Script" uid="uid://bpdjib6lk0mik" path="res://Scripts/player_camera.gd" id="6_hru13"]
 [ext_resource type="Script" uid="uid://chp77x488ykfs" path="res://Scripts/playerMovementScripts/Air.gd" id="6_vmmom"]
 [ext_resource type="Script" uid="uid://1d3cycomfleh" path="res://Scripts/playerMovementScripts/Standing.gd" id="7_jr32t"]
 [ext_resource type="Script" uid="uid://cur17euoajhrj" path="res://Scripts/playerMovementScripts/Crouching.gd" id="8_uw634"]
@@ -18,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://c85665es0w1ws" path="res://sounds/footsteps/concrete3.wav" id="13_hpxkm"]
 [ext_resource type="AudioStream" uid="uid://l4e1i8kwoyxf" path="res://sounds/footsteps/concrete4.wav" id="14_wemna"]
 [ext_resource type="Script" uid="uid://lpvtdujdvkds" path="res://Scripts/inventory.gd" id="15_cbyhw"]
+[ext_resource type="Script" uid="uid://n7ehl4agfny" path="res://Scripts/player_health_system.gd" id="19_k0k4f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_65t5e"]
 albedo_texture = ExtResource("3_imbja")
@@ -26,13 +28,17 @@ albedo_texture = ExtResource("3_imbja")
 material = SubResource("StandardMaterial3D_65t5e")
 size = Vector3(1, 2, 1)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k0k4f"]
+radius = 0.21875
+height = 1.6298828
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jijlf"]
 size = Vector3(0.7, 1.655, 0.7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.7, 0.4, 0.7)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "hud", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
@@ -40,6 +46,7 @@ myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
 player_body = NodePath("GR_subject_203")
+hud = NodePath("HUD")
 chest_point_target = NodePath("TwistPivot/view/point_target")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
@@ -61,9 +68,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
+[node name="player_hitbox" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 16
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player_hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8018502, -0.06283069)
+shape = SubResource("CapsuleShape3D_k0k4f")
+
 [node name="map_colision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
+
+[node name="player_light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)
+light_energy = 0.05
+light_indirect_energy = 0.0
+omni_range = 1.606
 
 [node name="TwistPivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1732912, -0.03806916)
@@ -92,6 +113,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2916224, -0.01165849)
 cull_mask = 1048571
 current = true
 fov = 70.0
+script = ExtResource("6_hru13")
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
 target_position = Vector3(0, 0, -2.018)
@@ -107,14 +129,6 @@ collision_mask = 13
 
 [node name="point_target" type="Node3D" parent="TwistPivot/view"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.575)
-
-[node name="player_light" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)
-light_energy = 0.05
-light_indirect_energy = 0.0
-omni_range = 1.606
-
-[node name="HUD" parent="." instance=ExtResource("3_hpxkm")]
 
 [node name="activityMachine" type="Node" parent="."]
 script = ExtResource("4_oxk7l")
@@ -162,6 +176,14 @@ equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../GR_subject_203")
 gun_point = NodePath("../TwistPivot/view/gun_point")
 
+[node name="health" type="Node" parent="." node_paths=PackedStringArray("player_hitbox", "environment_damage_timer")]
+script = ExtResource("19_k0k4f")
+player_hitbox = NodePath("../player_hitbox")
+environment_damage_timer = NodePath("../environment_dmg_timer")
+
+[node name="HUD" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("3_hpxkm")]
+player_camera = NodePath("../TwistPivot/view")
+
 [node name="Headbonk" type="ShapeCast3D" parent="."]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.8504385, 0)
 shape = SubResource("BoxShape3D_4pade")
@@ -171,4 +193,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="preselect_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="environment_dmg_timer" type="Timer" parent="."]
 one_shot = true

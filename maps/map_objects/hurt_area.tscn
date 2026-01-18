@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg0rv43fg4qdr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kiegt"]
+size = Vector3(1, 0.05053711, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a83mf"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="hurt_area" type="Area3D" groups=["env_player_hurt"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.023803711, 0)
+shape = SubResource("BoxShape3D_kiegt")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.025543213, 0)
+size = Vector3(1, 0.03375244, 1)
+material = SubResource("StandardMaterial3D_a83mf")
