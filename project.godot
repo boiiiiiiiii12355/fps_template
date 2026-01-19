@@ -54,6 +54,7 @@ reloadable="objects that can be reloaded"
 ragdoll=""
 kick_hitbox=""
 env_player_hurt="things that hurt player"
+player_hitbox="mostly used for detection"
 
 [input]
 

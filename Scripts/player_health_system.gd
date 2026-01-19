@@ -18,6 +18,6 @@ func check_env():
 	if player_hitbox.get_overlapping_areas() and environment_damage_timer.is_stopped():
 		for i in player_hitbox.get_overlapping_areas():
 			if i.is_in_group("env_player_hurt"):
+				hp -= 25
 				owner.hud.update_hp_bar(hp, 1)
 				environment_damage_timer.start()
-				hp -= 25

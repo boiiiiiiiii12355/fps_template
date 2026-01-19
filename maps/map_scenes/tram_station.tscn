@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bjlnu3lmy2mhe"]
 
 [ext_resource type="PackedScene" uid="uid://dkluxc8hn75d5" path="res://maps/blend_files/tram_station.blend" id="1_vlg2k"]
-[ext_resource type="Material" path="res://materials/bricks.tres" id="2_2f2mk"]
+[ext_resource type="Material" uid="uid://04y1cj4isxm5" path="res://materials/bricks.tres" id="2_2f2mk"]
 [ext_resource type="Material" uid="uid://bdufpkakpq78e" path="res://materials/floor_tiles.tres" id="2_tyxaw"]
 [ext_resource type="Material" uid="uid://cfuv7dv7kdxc8" path="res://materials/windows.tres" id="4_xlget"]
 

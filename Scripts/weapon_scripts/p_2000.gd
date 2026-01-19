@@ -25,7 +25,7 @@ func  play_store_animation():
 	pass
 	
 func play_reload_animation():
-	get_tree().call_group("player_animations", "play_arm_animation", "p200_reload_rig")
+	get_tree().call_group("player_animations", "play_arm_animation", "p2000_reload_rig")
 	animation_player.play("gun_rigAction")
 	animation_player.seek(0)
 	

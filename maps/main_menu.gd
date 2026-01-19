@@ -39,7 +39,7 @@ func map_list_init():
 		maps_button_container.get_child(0).add_child(tmp_map_store)
 		tmp_map_store.assigned_map = loaded_maps[i]
 		tmp_map_store.position = maps_button_offset * i
-		tmp_map_store.text = str("map" + str(i + 1))
+		tmp_map_store.text = (loaded_maps[i].resource_path).replace(map_file_paths, "").replace(".tscn", "").replace("sp_", "").replace("_level", "")
 		map_buttons[i] = tmp_map_store
 		
 func _on_sp_button_pressed() -> void:

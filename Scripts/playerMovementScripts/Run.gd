@@ -38,7 +38,7 @@ func WalkMove(delta):
 	forward = forward.normalized()
 	side = side.normalized()
 	
-	#stats.vel.y -= stats.ply_gravity * delta
+	stats.vel.y -= stats.ply_gravity * delta
 	
 
 	var fmove = stats.forwardmove

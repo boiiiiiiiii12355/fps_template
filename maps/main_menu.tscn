@@ -9,7 +9,6 @@
 font = ExtResource("3_km1yj")
 font_size = 116
 font_color = Color(1, 0, 0, 1)
-shadow_size = 1861
 
 [sub_resource type="LabelSettings" id="LabelSettings_bneil"]
 font = ExtResource("3_km1yj")
@@ -110,7 +109,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(1, 1.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(128, 663.05), Vector2(128, 616)]
+"values": [Vector2(195, 663.05), Vector2(195, 616)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -151,8 +150,8 @@ offset_bottom = 649.0
 layout_mode = 0
 offset_left = 734.0
 offset_top = 354.0
-offset_right = 1298.0
-offset_bottom = 557.0
+offset_right = 1095.0
+offset_bottom = 485.0
 text = "Naloxone"
 label_settings = SubResource("LabelSettings_rlf6c")
 
@@ -189,13 +188,13 @@ offset_bottom = 647.0
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/sp_maps_list"]
 layout_mode = 0
-offset_right = 129.0
-offset_bottom = 643.0
+offset_right = 195.0
+offset_bottom = 648.0
 color = Color(0, 0, 0, 0.40784314)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/sp_maps_list"]
 layout_mode = 0
-offset_right = 132.0
+offset_right = 197.0
 offset_bottom = 651.0
 draw_focus_border = true
 horizontal_scroll_mode = 0
@@ -206,10 +205,10 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="CanvasLayer/sp_maps_list/ScrollContainer/map_list"]
 layout_mode = 0
-offset_left = 138.0
-offset_top = -3.9999998
-offset_right = 1091.0
-offset_bottom = 86.0
+offset_left = 203.185
+offset_top = -4.0
+offset_right = 1156.1843
+offset_bottom = 92.0
 rotation = 1.5707964
 text = "the world at its finest."
 label_settings = SubResource("LabelSettings_kshxf")
@@ -218,7 +217,7 @@ label_settings = SubResource("LabelSettings_kshxf")
 layout_mode = 0
 offset_left = 75.435
 offset_top = 616.0
-offset_right = 173.4349
+offset_right = 173.43488
 offset_bottom = 648.0
 text = "<-- go back"
 
