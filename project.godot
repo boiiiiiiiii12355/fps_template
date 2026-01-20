@@ -38,6 +38,10 @@ project/assembly_name="Godot4SourceEngineMovement"
 
 enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [gd2cs]
 
 config/ask_no_python=true

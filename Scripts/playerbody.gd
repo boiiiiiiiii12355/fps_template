@@ -31,11 +31,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	equip_node.get_parent().scale = Vector3(1, 1, 1)
 	animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
-	if arms_action.animation != "self_inspect_rig":
-		animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equip_node.get_children().size()), 0.2))
-		chest_look_at_modi.influence = lerp(chest_look_at_modi.influence, float(equip_node.get_children().size()), 0.2)
-		
-		
+	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equip_node.get_children().size()), 0.2))
+	
+	
+	
+	
 func chest_point_at(r_position):
 	camera_point.global_position = lerp(camera_point.global_position, r_position, 0.1)
 	camera_spine.global_position = head_tracker.global_position

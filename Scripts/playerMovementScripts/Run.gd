@@ -38,7 +38,7 @@ func WalkMove(delta):
 	forward = forward.normalized()
 	side = side.normalized()
 	
-	stats.vel.y -= stats.ply_gravity * delta
+	#stats.vel.y -= stats.ply_gravity * delta
 	
 
 	var fmove = stats.forwardmove
@@ -62,8 +62,8 @@ func WalkMove(delta):
 		wishvel *= stats.speed / wishspeed
 		wishspeed = stats.speed
 		
-
-	Accelerate(wishdir, wishspeed, stats.ply_accelerate, delta)
+	if player.stats.on_floor:
+		Accelerate(wishdir, wishspeed, stats.ply_accelerate, delta)
 
 
 func Accelerate(wishdir, wishspeed, accel, delta):
@@ -143,10 +143,11 @@ func PerformJump():
 	var flMul : float
 	
 	if stats.crouching: #trying to emulate that crouch jumping is slightly higher than jump crouching but not completely accurate. Reasion why you jump higher mid crouch is because the game forgets to apply gravity for the first frame. This attempts to recreate it by removing one frame of gravity to make up for it
-		flMul = sqrt(2 * stats.ply_gravity * stats.ply_jumpheight) + ((1./60.) * stats.ply_gravity)
+		#flMul = sqrt(2 * stats.ply_gravity * stats.ply_jumpheight) + ((1./60.) * stats.ply_gravity)
 		
 		if !stats.crouched:
-			player.move_and_collide(Vector3(0, 2-player.myShape.scale.y, 0))
+			#player.move_and_collide(Vector3(0, 2-player.myShape.scale.y, 0))
+			pass
 		
 		
 		

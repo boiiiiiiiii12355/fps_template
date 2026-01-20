@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://cthbvnippkvsh"]
 
-[ext_resource type="PackedScene" uid="uid://carffmwyj7ro4" path="res://char_models/dummy_simple_bones.blend" id="1_sv50y"]
-[ext_resource type="Script" path="res://char_models/ragdoll_body.gd" id="2_r3jae"]
+[ext_resource type="PackedScene" uid="uid://cb4srhx3s5kg3" path="res://char_models/gltf_character_files/dummy_simple_bones.glb" id="1_sv50y"]
+[ext_resource type="Script" uid="uid://dl8fs1dtfb77r" path="res://char_models/ragdoll_body.gd" id="2_r3jae"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_r3jae"]
 radius = 0.16210938

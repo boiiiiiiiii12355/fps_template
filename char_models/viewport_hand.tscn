@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dmow25mh0gb28"]
 
-[ext_resource type="PackedScene" uid="uid://b2jg7mx08osho" path="res://char_models/viewport_hand.blend" id="1_825lf"]
+[ext_resource type="PackedScene" uid="uid://brktmqb8xpw1v" path="res://char_models/gltf_character_files/viewport_hand.glb" id="1_825lf"]
 
 [node name="viewport_hand" instance=ExtResource("1_825lf")]
 visible = false
