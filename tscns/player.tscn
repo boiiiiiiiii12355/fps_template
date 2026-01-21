@@ -37,15 +37,15 @@ size = Vector3(0.7, 1.655, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.7, 0.4, 0.7)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "hud", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
+[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "hud", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
-player_body = NodePath("GR_subject_203")
 hud = NodePath("HUD")
+player_body = NodePath("GR_subject_203")
 chest_point_target = NodePath("TwistPivot/view/point_target")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")

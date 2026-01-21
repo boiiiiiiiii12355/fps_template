@@ -62,10 +62,11 @@ func WalkMove(delta):
 		wishvel *= stats.speed / wishspeed
 		wishspeed = stats.speed
 		
-	if player.stats.on_floor:
+	if player.stats.on_floor and !player.player_body.kicking:
 		Accelerate(wishdir, wishspeed, stats.ply_accelerate, delta)
-
-
+	elif player.stats.on_floor and player.player_body.kicking:
+		Accelerate(wishdir, wishspeed / 1.6, stats.ply_accelerate, delta)
+	
 func Accelerate(wishdir, wishspeed, accel, delta):
 # See if we are changing direction a bit
 	var currentspeed = stats.vel.dot(wishdir)

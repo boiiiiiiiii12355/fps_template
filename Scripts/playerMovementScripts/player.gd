@@ -7,8 +7,8 @@ class_name Player
 @export var spring : SpringArm3D
 @export var camera_dist = 0
 @export var camera_spine : Node3D
-@export var player_body : playermodel
 @export var hud : Control
+@export var player_body : playermodel
 @onready var coyoteTimer = $CoyoteTime
 
 var pickup_point 

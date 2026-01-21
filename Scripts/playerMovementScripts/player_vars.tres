@@ -16,5 +16,5 @@ ply_stopspeed = 20
 ply_gravity = 30
 ply_jumpheight = 1
 ply_maxspeed = 3
-ply_crouchspeed = 4
+ply_crouchspeed = 2
 camPath = NodePath("TwistPivot")

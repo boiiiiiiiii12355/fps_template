@@ -64,7 +64,7 @@ func InputKeys():
 		stats.sidemove = 0
 	else:
 		stats.sidemove = clamp(stats.sidemove, -4096, 4096)
-		
+			
 	if Input.is_action_just_released("move_forward") or Input.is_action_just_released("move_back"):
 		stats.upmove = 0
 	else:
