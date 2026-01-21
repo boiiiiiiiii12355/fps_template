@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://1yxyrfjflrro"]
 
 [ext_resource type="Script" uid="uid://d0ox2l5ok3reh" path="res://Scripts/enemy_ai.gd" id="1_by24e"]
-[ext_resource type="PackedScene" uid="uid://carffmwyj7ro4" path="res://char_models/dummy_simple_bones.blend" id="1_ghyrv"]
+[ext_resource type="PackedScene" uid="uid://cb4srhx3s5kg3" path="res://char_models/gltf_character_files/dummy_simple_bones.glb" id="1_ghyrv"]
 
 [node name="enemy_base" type="CharacterBody3D"]
 script = ExtResource("1_by24e")
