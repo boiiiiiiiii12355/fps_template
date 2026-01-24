@@ -5,3 +5,4 @@ class_name Level
 @export var level_name = "undefined level"
 @export var objects : Node3D
 @export var particles : Node3D
+@export var player : Player

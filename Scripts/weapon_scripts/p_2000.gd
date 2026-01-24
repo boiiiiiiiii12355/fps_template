@@ -8,12 +8,12 @@ class_name gun_item_base
 @export var fire_rate_timer : Timer
 @export var mag_size : int
 @export var base_damage : int
+@export var animation_player : AnimationPlayer
 var ammunition = mag_size
-var animation_player : AnimationPlayer
+
 
 func _ready() -> void:
 	ammunition = mag_size
-	animation_player = weapon_model.get_child(1)
 	fire_rate_timer.connect("timeout", fire_rate_timer_end)
 	
 func play_equip_animation():

@@ -64,7 +64,7 @@ visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
 [node name="player_hitbox" type="Area3D" parent="." groups=["player_hitbox"]]
-collision_layer = 2
+collision_layer = 32
 collision_mask = 16
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player_hitbox"]
@@ -82,7 +82,7 @@ light_indirect_energy = 0.0
 omni_range = 1.606
 
 [node name="TwistPivot" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3792615, -0.11903688)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3736701, -0.04618293)
 
 [node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
 visible = false
@@ -101,10 +101,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
 [node name="view" type="Camera3D" parent="TwistPivot"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06392181, -0.076192975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06100726, -0.06913549)
 cull_mask = 1048571
 current = true
 fov = 70.0
+near = 0.001
 script = ExtResource("6_hru13")
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]

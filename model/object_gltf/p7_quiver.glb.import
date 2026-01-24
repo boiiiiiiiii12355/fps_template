@@ -13,8 +13,8 @@ dest_files=["res://.godot/imported/p7_quiver.glb-a56101c7cde9e8b6e6edadf143d2c7c
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
+nodes/root_type="p7_quiver"
+nodes/root_name="p7_quiver_phy"
 nodes/root_script=null
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
@@ -37,6 +37,12 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:p7_quiver": {
+"node/node_type": "Node3D"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1

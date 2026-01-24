@@ -27,14 +27,15 @@ var kick_oneshot = "parameters/kick_oneshot/request"
 
 func _ready() -> void:
 	arms_action = animation_tree.tree_root.get_node("arms_action")
-	play_arm_animation("self_inspect_rig")
 	
 func _physics_process(delta: float) -> void:
 	equip_node.get_parent().scale = Vector3(1, 1, 1)
 	animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
 	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equip_node.get_children().size()), 0.2))
 	
+var upperchest_x_offset = 0.62
 func chest_point_at(r_position):
+	upper_chest_look_at_modi.origin_offset.x = lerp(upper_chest_look_at_modi.origin_offset.x, float(equip_node.get_children().size() * upperchest_x_offset), 0.1)
 	camera_point.global_position = lerp(camera_point.global_position, r_position, 0.1)
 	camera_spine.global_position = head_tracker.global_position
 	turn_body_to_cam()
@@ -90,4 +91,4 @@ func _on_kick_hitbox_body_entered(body: Node3D) -> void:
 		var bone_parent = body
 		var knockback_dir = (bone_parent.global_position - self.global_position).normalized()
 		bone_parent.get_parent().get_parent().hit(body, 10000000)
-		bone_parent.linear_velocity = knockback_dir * 30
+		bone_parent.linear_velocity = knockback_dir * 5

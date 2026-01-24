@@ -36,6 +36,8 @@ light_energy = 3.0
 
 [node name="Spot" parent="." index="3"]
 light_energy = 3.0
+spot_range = 31.244
+spot_angle_attenuation = 0.50182337
 
 [node name="Skeleton3D" parent="rig" index="0"]
 bones/0/position = Vector3(-5.996482, -1.1461157, 8.351252)
@@ -156,6 +158,7 @@ bones/84/scale = Vector3(0.99998766, 1.0000007, 0.9999754)
 
 [node name="Area_001" parent="." index="6"]
 light_energy = 3.0
+spot_angle_attenuation = 3.870613
 
 [node name="Spot_001" parent="." index="9"]
 light_energy = 3.0

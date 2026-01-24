@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ce7skwe0nlajq"]
 
 [ext_resource type="Script" uid="uid://dttfxp5jqimxa" path="res://Scripts/item_scripts/flashlight.gd" id="1_prm06"]
-[ext_resource type="PackedScene" uid="uid://dr312dsgdbxf3" path="res://model/flashlight.blend" id="2_hk5sf"]
+[ext_resource type="PackedScene" uid="uid://ba7qng0ju8pnq" path="res://model/object_gltf/flashlight.glb" id="2_hk5sf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6wbh"]
 bounce = 0.32

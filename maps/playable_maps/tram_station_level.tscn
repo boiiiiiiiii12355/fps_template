@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ona6janl00wj"]
+[gd_scene load_steps=13 format=3 uid="uid://ona6janl00wj"]
 
 [ext_resource type="PackedScene" uid="uid://bjlnu3lmy2mhe" path="res://maps/map_scenes/tram_station.tscn" id="1_gfy6y"]
 [ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_pd6gb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://maps/map_objects/p7_quiver_phy.tscn" id="6_uphtb"]
 [ext_resource type="PackedScene" uid="uid://bg0rv43fg4qdr" path="res://maps/map_objects/hurt_area.tscn" id="7_84bnf"]
 [ext_resource type="PackedScene" uid="uid://cthbvnippkvsh" path="res://char_models/ragdoll_test.tscn" id="7_o6qup"]
+[ext_resource type="PackedScene" uid="uid://1yxyrfjflrro" path="res://tscns/enemy/enemy_base.tscn" id="9_ttvm0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2d02k"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -30,11 +31,12 @@ volumetric_fog_enabled = true
 volumetric_fog_density = 0.0171
 volumetric_fog_emission = Color(0.42749333, 0.427493, 0.42749295, 1)
 
-[node name="tram_station_level" type="Node3D" node_paths=PackedStringArray("objects", "particles")]
+[node name="tram_station_level" type="Node3D" node_paths=PackedStringArray("objects", "particles", "player")]
 script = ExtResource("1_pd6gb")
 level_name = "tram_station"
 objects = NodePath("tram_station/objects")
 particles = NodePath("tram_station/particles")
+player = NodePath("player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_uphtb")
@@ -63,15 +65,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.115532, -1.5095277, -15.3
 
 [node name="entities" type="Node3D" parent="tram_station"]
 
-[node name="ragdoll_test" parent="tram_station/entities" instance=ExtResource("7_o6qup")]
-transform = Transform3D(-0.90243495, 0, -0.43082613, 0, 1, 0, 0.43082613, 0, -0.90243495, -43.98092, -1.3274629, -9.736027)
-
-[node name="ragdoll_test2" parent="tram_station/entities" instance=ExtResource("7_o6qup")]
-transform = Transform3D(-0.6673647, 0, 0.74473107, 0, 1, 0, -0.74473107, 0, -0.6673647, -46.929443, -1.3274629, -9.736027)
-
-[node name="ragdoll_test3" parent="tram_station/entities" instance=ExtResource("7_o6qup")]
-transform = Transform3D(-0.90243495, 0, -0.43082613, 0, 1, 0, 0.43082613, 0, -0.90243495, -43.98092, -1.3274629, -8.608427)
-
 [node name="ragdoll_test4" parent="tram_station/entities" instance=ExtResource("7_o6qup")]
 transform = Transform3D(-0.6673647, 0, 0.74473107, 0, 1, 0, -0.74473107, 0, -0.6673647, -46.929443, -1.3274629, -8.608427)
 
@@ -80,6 +73,9 @@ transform = Transform3D(-0.90243495, 0, -0.43082613, 0, 1, 0, 0.43082613, 0, -0.
 
 [node name="ragdoll_test6" parent="tram_station/entities" instance=ExtResource("7_o6qup")]
 transform = Transform3D(-0.6673647, 0, 0.74473107, 0, 1, 0, -0.74473107, 0, -0.6673647, -46.929443, -1.3274629, -7.553357)
+
+[node name="enemy_base" parent="tram_station/entities" instance=ExtResource("9_ttvm0")]
+transform = Transform3D(0.28476825, 0, 0.9585964, 0, 1, 0, -0.9585964, 0, 0.28476825, -59.526535, -1.5095282, -14.016497)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.97326714, -0.031313583, 0.22753142, 0, 0.9906624, 0.13633806, -0.22967604, -0.13269335, 0.96417916, 0, 23.347904, 0)
