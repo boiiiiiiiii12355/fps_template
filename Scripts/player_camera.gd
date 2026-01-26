@@ -1,6 +1,6 @@
 extends Camera3D
 
-var change_magnitude = 0.1
+var change_magnitude = 0.2
 var fall_displacement = .02
 var fall_cam_bob = Vector3.ZERO
 

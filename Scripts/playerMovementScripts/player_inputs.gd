@@ -10,6 +10,7 @@ class_name PlayerInputs
 @export var pickup_speed = 20
 @export var preselected_inventory_slot : int = 1
 @export var selected_inventory_slot : int = 1
+var kick_charge : float = 0.0
 var flashlight_toggle = false
 var camera : Node3D
 
@@ -41,8 +42,9 @@ func InputMouse(event):
 	
 func interact_check():
 	if interact_ray.is_colliding():
-		var object = interact_ray.get_collider().get_parent()
-		return object
+		var object = interact_ray.get_collider().owner
+		if object.is_in_group("interactable") or object.is_in_group("pickable"):
+			return object
 	else:
 		return null
 		
@@ -95,8 +97,10 @@ func InputKeys():
 			if inventory.inventory_array[selected_inventory_slot - 1].object_function(true) == "full_auto":
 				inventory.inventory_array[selected_inventory_slot - 1].object_function(false)
 	
+	#controls the kick
 	if Input.is_action_just_pressed("right_click"):
 		kick()
+		
 		
 	if Input.is_action_just_pressed("reload"):
 		Engine.time_scale = 1
@@ -106,7 +110,7 @@ func InputKeys():
 	if Input.is_action_just_pressed("interact") and interact_check():
 		var object : Object = interact_check()
 		if object.is_in_group("interactable"):
-			object.object_function()
+			object.object_function(false)
 			
 	elif Input.is_action_just_pressed("interact"):
 		print("nothing here...")
@@ -161,6 +165,9 @@ var hold_target
 func hold(object):
 	pass
 
+func kick_charging():
+	pass
+	
 func kick():
 	pass
 	

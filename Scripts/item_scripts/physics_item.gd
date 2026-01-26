@@ -36,6 +36,8 @@ var req_linear_velocity
 @export var equip_position : Vector3
 func item_equip(equip_node, arms_anim : AnimationTree):
 	reparent(equip_node)
+	self.remove_from_group("pickable")
+	self.remove_from_group("interactable")
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO
 	position = equip_position
@@ -50,6 +52,8 @@ func item_equip(equip_node, arms_anim : AnimationTree):
 #this function also runs when item is not equiped. should change name soon
 var owner_animation_ctrl
 func picked_up(slot, slot_node, arms_anim : AnimationTree):
+	self.remove_from_group("pickable")
+	self.remove_from_group("interactable")
 	if equip_animation_played == true:
 		equip_timer.start()
 		play_store_animation()
@@ -88,6 +92,8 @@ func item_point(look_at):
 	
 	pass
 func dropped():
+	self.add_to_group("pickable")
+	self.add_to_group("interactable")
 	print("dropped")
 	freeze = false
 	reparent(root_node.objects)

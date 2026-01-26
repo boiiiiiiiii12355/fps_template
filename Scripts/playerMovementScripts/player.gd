@@ -51,12 +51,11 @@ func _physics_process(delta: float) -> void:
 	stats.vel = velocity
 	
 	if stats.wasOnFloor && !stats.on_floor:
+		view.fall_impact()
 		print("start timer")
 		coyoteTimer.start()
 	
 	if stats.on_floor and stats.shouldJump == false:
-		#disabled for now
-		#fall_impact()
 		pass
 		
 	if(stats.on_floor):
@@ -73,8 +72,11 @@ func _physics_process(delta: float) -> void:
 	player_body.chest_point_at(chest_point_target.global_position)
 	player_body.walk_anim_update(movement_local_dir)
 	
-
-	
+	if interact_check():
+		player_body.interact_detect()
+	else:
+		player_body.interact_none()
+		
 
 		
 func clearCoyote():
@@ -91,7 +93,9 @@ func CheckVelocity():
 	elif stats.vel.length() < -stats.ply_maxvelocity:
 		stats.vel = stats.vel.normalized() * stats.ply_maxvelocity
 
-
+func kick_charging():
+	player_body.kick_charging()
+	
 func kick():
 	player_body.kick()
 	

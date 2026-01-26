@@ -30,7 +30,9 @@ func scan_for_player():
 
 func gravity():
 	if !is_on_floor():
-		wishvelocity.y += 2
+		wishvelocity.y += -0.2
+	else:
+		wishvelocity.y = 0
 	
 #should finish all this once i figure out navigation meshes
 var speed = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c41sndaibm3u2"]
+[gd_scene load_steps=14 format=3 uid="uid://c41sndaibm3u2"]
 
 [ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_gs2xo"]
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_oadqg"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ce7skwe0nlajq" path="res://maps/map_objects/flashlight.tscn" id="6_n4p6k"]
 [ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://maps/map_objects/p2000_phy.tscn" id="7_1nqs6"]
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://maps/map_objects/p7_quiver_phy.tscn" id="8_nsedg"]
+[ext_resource type="PackedScene" uid="uid://bh3xk8hxufios" path="res://maps/map_objects/door_wood.tscn" id="9_u54fw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5e6ql"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -59,9 +60,12 @@ script = ExtResource("3_weggy")
 transform = Transform3D(0.6028878, 0, -0.797826, 0, 1, 0, 0.797826, 0, 0.6028878, -143.66843, 56.202103, -52.08455)
 
 [node name="p2000" parent="test_whiteroom/objects" instance=ExtResource("7_1nqs6")]
-transform = Transform3D(-0.051429626, 0.9986766, 0, -0.9986766, -0.051429626, 0, 0, 0, 1, -142.13992, 56.868374, -53.336926)
+transform = Transform3D(-0.051429626, 0.9986766, 0, -0.9986766, -0.051429626, 0, 0, 0, 1, -142.13992, 56.111393, -53.336926)
 
 [node name="p7_quiver" parent="test_whiteroom/objects" instance=ExtResource("8_nsedg")]
-transform = Transform3D(0.3275477, -0.94483465, 0, 0.94483465, 0.3275477, 0, 0, 0, 1, -141.43793, 56.56775, -53.753525)
+transform = Transform3D(0.07231563, -0.9973819, 0, 0.9973819, 0.07231563, 0, 0, 0, 1, -141.43793, 56.133507, -53.753525)
+
+[node name="door_wood" parent="test_whiteroom/objects" instance=ExtResource("9_u54fw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.14813, 56.09279, -62.502266)
 
 [node name="Particles" type="Node3D" parent="test_whiteroom"]

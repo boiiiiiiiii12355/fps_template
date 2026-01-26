@@ -20,7 +20,5 @@ func hit(hit_bone : PhysicalBone3D, base_damage : float):
 		modi_damage *= headshot_modi / 100
 		
 	hp -= modi_damage
-	print(modi_damage)
-	print(hp)
 	if hp <= 0:
 		physics_bone.physical_bones_start_simulation()
