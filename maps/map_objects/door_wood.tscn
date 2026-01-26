@@ -75,7 +75,7 @@ door_hitbox = NodePath("door_hitbox")
 
 [node name="test_model" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55869395, 1.2234792, -0.031728517)
-size = Vector3(1.2910156, 2.4429188, 0.10154297)
+size = Vector3(1.3, 2.5, 0.05)
 material = SubResource("StandardMaterial3D_1nj8n")
 
 [node name="collision" type="CollisionShape3D" parent="."]

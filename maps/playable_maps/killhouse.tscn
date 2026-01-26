@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://dave5hnjum605"]
+
+[ext_resource type="PackedScene" uid="uid://pp84otuo1e2v" path="res://maps/map_gltf/killhouse.glb" id="1_4uox5"]
+[ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_553v6"]
+
+[sub_resource type="Environment" id="Environment_553v6"]
+tonemap_mode = 2
+glow_enabled = true
+glow_bloom = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.1
+
+[node name="killhouse" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_553v6")
+
+[node name="killhouse" parent="." instance=ExtResource("1_4uox5")]
+
+[node name="lights" type="Node3D" parent="killhouse"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="killhouse/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.895745, 11.3473015, 15.631844)
+shadow_enabled = true
+omni_range = 12.89
+omni_attenuation = 0.483
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="killhouse/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.682172, 11.3473015, -4.2664948)
+shadow_enabled = true
+omni_range = 22.252861
+omni_attenuation = 0.483
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="killhouse/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65882, 11.3473015, -4.2664948)
+shadow_enabled = true
+omni_range = 22.252861
+omni_attenuation = 0.483
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="killhouse/lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65882, 11.3473015, 12.698143)
+shadow_enabled = true
+omni_range = 22.252861
+omni_attenuation = 0.483
+
+[node name="SpotLight3D" type="SpotLight3D" parent="killhouse/lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8.784088, 4.25453, 10.701171)
+spot_angle = 31.361969
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="killhouse/lights"]
+transform = Transform3D(0.452611, -0.12160946, -0.8833767, 0.88998216, -1.6616749e-08, 0.45599538, -0.055453368, -0.992578, 0.10823024, -5.225515, 6.563401, 22.033451)
+light_energy = 2.103
+shadow_enabled = true
+spot_range = 35.290733
+spot_angle = 31.361969
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="killhouse/lights"]
+transform = Transform3D(0.44570556, 0.21123953, -0.8698991, 0.88998216, -3.3502765e-08, 0.45599538, 0.09632422, -0.97743434, -0.18799943, -4.573676, 6.563401, 10.3770485)
+light_energy = 2.103
+shadow_enabled = true
+spot_range = 35.290733
+spot_angle = 31.361969
+
+[node name="Map_entities" type="Node3D" parent="killhouse"]
+
+[node name="player" parent="killhouse/Map_entities" instance=ExtResource("2_553v6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.741169, 0.3078009, 16.521431)
