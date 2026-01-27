@@ -11,6 +11,7 @@ class_name playermodel
 @export var camera_spine : Node3D
 @export var chest_look_at_modi : LookAtModifier3D
 @export var upper_chest_look_at_modi : LookAtModifier3D
+@export var gun_point : Node3D
 var chest_angle : float = 0.0
 var rtc_blend_amount = 0.0
 var kick_blend_amount = 0.0
@@ -35,15 +36,32 @@ func _physics_process(delta: float) -> void:
 	equip_node.get_parent().scale = Vector3(1, 1, 1)
 	animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
 	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equip_node.get_children().size()), 0.2))
-	
-var upperchest_x_offset = 0.62
-func chest_point_at(r_position):
-	upper_chest_look_at_modi.origin_offset.x = lerp(upper_chest_look_at_modi.origin_offset.x, float(equip_node.get_children().size() * upperchest_x_offset), 0.1)
-	camera_point.global_position = lerp(camera_point.global_position, r_position, 0.5)
-	camera_spine.global_position = head_tracker.global_position
-	turn_body_to_cam()
-	
 
+var recoil_pos : Vector3 = Vector3.ZERO
+var upperchest_x_offset = .3
+func chest_point_at(r_position : Vector3):
+	var end_position = r_position + recoil_pos 
+	upper_chest_look_at_modi.origin_offset.x = lerp(upper_chest_look_at_modi.origin_offset.x, float(equip_node.get_children().size() * upperchest_x_offset), 0.1)
+	camera_point.global_position = lerp(camera_point.global_position, end_position, 0.5)
+	camera_spine.global_position = head_tracker.global_position
+	recoil_process()
+	turn_body_to_cam()
+
+var recoil_rand = RandomNumberGenerator.new()
+func apply_recoil(amount : Vector3):
+	recoil_pos.y += recoil_rand.randf_range(-amount.y / 2, amount.y)
+	recoil_pos.x += recoil_rand.randf_range(-amount.x, amount.x)
+	
+@export var gun_ray : RayCast3D
+func recoil_process():
+	recoil_pos = lerp(recoil_pos, Vector3.ZERO, 0.1)
+	if gun_ray.is_colliding():
+		var recoil_pos_dist_scale = recoil_pos * (gun_ray.get_collision_point() - gun_ray.global_position).length() / 2
+		var final_pos = gun_ray.get_collision_point() + recoil_pos_dist_scale
+		gun_point.global_position = lerp(gun_point.global_position, final_pos, 0.5)
+	else:
+		gun_point.global_position = lerp(gun_point.global_position, camera_point.global_position, 0.1)
+	
 func turn_body_to_cam():
 	legs_point.global_position = lerp(legs_point.global_position, camera_point.global_position, 0.05)
 	if get_parent().velocity:
@@ -96,9 +114,9 @@ func play_arm_animation(name : String):
 	animation_tree.set(arms_action_timeseek, 0)
 	print("played " + str(arms_action.animation))
 
-func play_arm_animation_from_start(name : String):
+func play_arm_animation_from_time(name : String, time : float):
 	arms_action.set_animation(name)
-	animation_tree.set(arms_action_timeseek, 0)
+	animation_tree.set(arms_action_timeseek, time)
 
 @export var kick_hitbox : Area3D
 func _on_kick_hitbox_body_entered(body: Node3D) -> void:

@@ -23,9 +23,10 @@ func object_function(check : bool):
 	
 func door_anim():
 	if open:
-		animation_player.play_backwards("open")
-	else:
 		animation_player.play("open")
+	else:
+		animation_player.play_backwards("open")
+		
 
 func on_destruct(dir : Vector3):
 	freeze = false

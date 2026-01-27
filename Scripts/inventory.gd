@@ -55,10 +55,7 @@ func inventory_process():
 			inventory_array[i].picked_up(i, slot_phys_array[i], arms_animationplayer)
 		elif inventory_array[selected_slot] and arms_animationplayer:
 			inventory_array[selected_slot].item_equip(equip_node, arms_animationplayer)
-			if gun_point.get_collider():
-				inventory_array[selected_slot].item_point(gun_point.get_collision_point())
-			else:
-				inventory_array[selected_slot].item_point(gun_point.to_global(gun_point.target_position))
+			inventory_array[selected_slot].item_point(player_animation.gun_point.global_position)
 			
 		
 		if i == inventory_array.size():

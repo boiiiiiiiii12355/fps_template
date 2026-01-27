@@ -110,7 +110,10 @@ func InputKeys():
 	if Input.is_action_just_pressed("interact") and interact_check():
 		var object : Object = interact_check()
 		if object.is_in_group("interactable"):
-			object.object_function(false)
+			if object.is_class("physics_item"):
+				object.object_function(false)
+			else:
+				object.get_child(0).object_function(false)
 			
 	elif Input.is_action_just_pressed("interact"):
 		print("nothing here...")

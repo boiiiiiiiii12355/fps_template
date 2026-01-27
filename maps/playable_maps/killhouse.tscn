@@ -1,67 +1,109 @@
-[gd_scene load_steps=4 format=3 uid="uid://dave5hnjum605"]
+[gd_scene format=3 uid="uid://dave5hnjum605"]
 
+[ext_resource type="Script" uid="uid://1a4buntu66sd" path="res://maps/level.gd" id="1_4oc55"]
 [ext_resource type="PackedScene" uid="uid://pp84otuo1e2v" path="res://maps/map_gltf/killhouse.glb" id="1_4uox5"]
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_553v6"]
+[ext_resource type="PackedScene" uid="uid://bh3xk8hxufios" path="res://maps/map_objects/door_wood.tscn" id="3_u52id"]
+[ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://maps/map_objects/p7_quiver_phy.tscn" id="4_mwhld"]
+[ext_resource type="PackedScene" uid="uid://cthbvnippkvsh" path="res://char_models/ragdoll_test.tscn" id="6_fb6d2"]
 
 [sub_resource type="Environment" id="Environment_553v6"]
-tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 
-[node name="killhouse" type="Node3D"]
+[node name="killhouse" type="Node3D" unique_id=1970762040 node_paths=PackedStringArray("objects", "particles", "player")]
+script = ExtResource("1_4oc55")
+level_name = "killhouse"
+objects = NodePath("killhouse/physics_object")
+particles = NodePath("killhouse/particles")
+player = NodePath("killhouse/Map_entities/player")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1339140329]
 environment = SubResource("Environment_553v6")
 
-[node name="killhouse" parent="." instance=ExtResource("1_4uox5")]
+[node name="killhouse" parent="." unique_id=1207320430 instance=ExtResource("1_4uox5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9455533, -1.1285801, -8.440266)
 
-[node name="lights" type="Node3D" parent="killhouse"]
+[node name="lights" type="Node3D" parent="killhouse" unique_id=1272078715]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="killhouse/lights"]
+[node name="OmniLight3D" type="OmniLight3D" parent="killhouse/lights" unique_id=369467366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.895745, 11.3473015, 15.631844)
 shadow_enabled = true
 omni_range = 12.89
 omni_attenuation = 0.483
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="killhouse/lights"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="killhouse/lights" unique_id=469184132]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.682172, 11.3473015, -4.2664948)
 shadow_enabled = true
 omni_range = 22.252861
 omni_attenuation = 0.483
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="killhouse/lights"]
+[node name="OmniLight3D3" type="OmniLight3D" parent="killhouse/lights" unique_id=1845268413]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65882, 11.3473015, -4.2664948)
 shadow_enabled = true
 omni_range = 22.252861
 omni_attenuation = 0.483
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="killhouse/lights"]
+[node name="OmniLight3D4" type="OmniLight3D" parent="killhouse/lights" unique_id=1243154775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.65882, 11.3473015, 12.698143)
 shadow_enabled = true
 omni_range = 22.252861
 omni_attenuation = 0.483
 
-[node name="SpotLight3D" type="SpotLight3D" parent="killhouse/lights"]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8.784088, 4.25453, 10.701171)
-spot_angle = 31.361969
+[node name="SpotLight3D" type="SpotLight3D" parent="killhouse/lights" unique_id=1048420170]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8.784088, 5.3653283, 10.701171)
+spot_range = 10.117351
+spot_angle = 25.867064
 
-[node name="SpotLight3D2" type="SpotLight3D" parent="killhouse/lights"]
+[node name="SpotLight3D4" type="SpotLight3D" parent="killhouse/lights" unique_id=1852611338]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -8.784088, 5.3653283, 10.701171)
+spot_range = 10.117351
+spot_angle = 25.867064
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="killhouse/lights" unique_id=1696164577]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 14.366762, 5.3653283, -0.07173538)
+spot_range = 10.117351
+spot_angle = 25.867064
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="killhouse/lights" unique_id=627701524]
 transform = Transform3D(0.452611, -0.12160946, -0.8833767, 0.88998216, -1.6616749e-08, 0.45599538, -0.055453368, -0.992578, 0.10823024, -5.225515, 6.563401, 22.033451)
 light_energy = 2.103
 shadow_enabled = true
 spot_range = 35.290733
 spot_angle = 31.361969
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="killhouse/lights"]
+[node name="SpotLight3D3" type="SpotLight3D" parent="killhouse/lights" unique_id=1997105407]
 transform = Transform3D(0.44570556, 0.21123953, -0.8698991, 0.88998216, -3.3502765e-08, 0.45599538, 0.09632422, -0.97743434, -0.18799943, -4.573676, 6.563401, 10.3770485)
 light_energy = 2.103
 shadow_enabled = true
 spot_range = 35.290733
 spot_angle = 31.361969
 
-[node name="Map_entities" type="Node3D" parent="killhouse"]
+[node name="Map_entities" type="Node3D" parent="killhouse" unique_id=1936279994]
 
-[node name="player" parent="killhouse/Map_entities" instance=ExtResource("2_553v6")]
+[node name="player" parent="killhouse/Map_entities" unique_id=1277926118 instance=ExtResource("2_553v6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.741169, 0.3078009, 16.521431)
+
+[node name="door_wood" parent="killhouse/Map_entities" unique_id=1622822043 instance=ExtResource("3_u52id")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.318039, -0.05950582, 10.068408)
+
+[node name="door_wood2" parent="killhouse/Map_entities" unique_id=1857981172 instance=ExtResource("3_u52id")]
+transform = Transform3D(0.049895737, 0, -0.99875444, 0, 1, 0, 0.99875444, 0, 0.049895737, -8.121926, -0.05950582, 2.131765)
+
+[node name="p7_quiver2" parent="killhouse/Map_entities" unique_id=1290369115 instance=ExtResource("4_mwhld")]
+transform = Transform3D(0.8919627, -0.3916053, -0.22593787, 0.45198804, 0.78395134, 0.42559028, 0.010460959, -0.4817319, 0.8762562, -20.166992, 2.6113172, 14.766369)
+
+[node name="ragdoll_test" parent="killhouse/Map_entities" unique_id=774154725 instance=ExtResource("6_fb6d2")]
+transform = Transform3D(-0.1152145, 0, -0.9933406, 0, 1, 0, 0.9933406, 0, -0.1152145, -7.022218, -0.08602667, 2.8136182)
+
+[node name="ragdoll_test2" parent="killhouse/Map_entities" unique_id=1699079401 instance=ExtResource("6_fb6d2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.671267, -0.086027145, 5.7617903)
+
+[node name="ragdoll_test3" parent="killhouse/Map_entities" unique_id=540084833 instance=ExtResource("6_fb6d2")]
+transform = Transform3D(-0.96037644, 0, -0.27870607, 0, 1, 0, 0.27870607, 0, -0.96037644, -3.1343021, -0.08602667, 1.2721705)
+
+[node name="particles" type="Node3D" parent="killhouse" unique_id=1608921423]
+
+[node name="physics_object" type="Node3D" parent="killhouse" unique_id=2050902388]

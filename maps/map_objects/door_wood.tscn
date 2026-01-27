@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bh3xk8hxufios"]
+[gd_scene format=3 uid="uid://bh3xk8hxufios"]
 
 [ext_resource type="Script" uid="uid://cvwh3p0iekyw7" path="res://maps/map_objects/door_wood.gd" id="1_6asaa"]
 
@@ -9,7 +9,7 @@ bounce = 0.2
 albedo_color = Color(0.45490196, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1nj8n"]
-size = Vector3(1.2932763, 2.4631824, 0.12123291)
+size = Vector3(1.1870276, 2.1915007, 0.12123291)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6asaa"]
 size = Vector3(1.505, 2.701, 0.335)
@@ -67,32 +67,32 @@ _data = {
 &"open": SubResource("Animation_1nj8n")
 }
 
-[node name="door_wood" type="RigidBody3D" node_paths=PackedStringArray("animation_player", "door_hitbox")]
+[node name="door_wood" type="Node3D" unique_id=1963563711 groups=["interactable"]]
+
+[node name="door_wood" type="RigidBody3D" parent="." unique_id=1857981172 node_paths=PackedStringArray("animation_player", "door_hitbox") groups=["interactable"]]
 physics_material_override = SubResource("PhysicsMaterial_6asaa")
 script = ExtResource("1_6asaa")
 animation_player = NodePath("AnimationPlayer")
 door_hitbox = NodePath("door_hitbox")
 
-[node name="test_model" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55869395, 1.2234792, -0.031728517)
-size = Vector3(1.3, 2.5, 0.05)
+[node name="test_model" type="CSGBox3D" parent="door_wood" unique_id=1127311940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6091376, 1.1548508, -0.031728517)
+size = Vector3(1.3, 2.3, 0.05)
 material = SubResource("StandardMaterial3D_1nj8n")
 
-[node name="collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56232446, 1.2345036, -0.036080323)
+[node name="collision" type="CollisionShape3D" parent="door_wood" unique_id=195904843]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.62655413, 1.1602808, -0.036080323)
 shape = SubResource("BoxShape3D_1nj8n")
 
-[node name="door_hitbox" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.66318613, 1.4090986, 1.8626451e-09)
+[node name="door_hitbox" type="Area3D" parent="door_wood" unique_id=1440054624 groups=["interactable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7136298, 1.4090986, 1.8626451e-09)
 collision_layer = 1024
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="door_hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door_wood/door_hitbox" unique_id=1267390772]
 shape = SubResource("BoxShape3D_6asaa")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_dxvpb")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="door_wood" unique_id=1174484835]
+libraries/ = SubResource("AnimationLibrary_dxvpb")
 
-[connection signal="area_entered" from="door_hitbox" to="." method="_on_door_hitbox_area_entered"]
+[connection signal="area_entered" from="door_wood/door_hitbox" to="door_wood" method="_on_door_hitbox_area_entered"]

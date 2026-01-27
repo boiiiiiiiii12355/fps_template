@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://hynsll4jq3n2"]
+[gd_scene format=3 uid="uid://hynsll4jq3n2"]
 
 [ext_resource type="Script" uid="uid://mvsu00jo7qwo" path="res://Scripts/playerMovementScripts/player.gd" id="1_a7j60"]
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
@@ -37,12 +37,13 @@ size = Vector3(0.7, 1.655, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.7, 0.4, 0.7)
 
-[node name="player" type="CharacterBody3D" node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "hud", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
+[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "hud", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
+camera_dist = null
 camera_spine = NodePath("TwistPivot")
 hud = NodePath("HUD")
 player_body = NodePath("GR_subject_203")
@@ -52,55 +53,59 @@ view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
+pickup_speed = null
+preselected_inventory_slot = null
+selected_inventory_slot = null
 preselect_timer = NodePath("preselect_timer")
 
-[node name="GR_subject_203" parent="." node_paths=PackedStringArray("camera_spine") instance=ExtResource("4_k0k4f")]
+[node name="GR_subject_203" parent="." unique_id=422351306 node_paths=PackedStringArray("camera_spine", "gun_ray") instance=ExtResource("4_k0k4f")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 camera_spine = NodePath("../TwistPivot")
+gun_ray = NodePath("../TwistPivot/view/gun_point")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=822870378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 mesh = SubResource("BoxMesh_usx7c")
 
-[node name="player_hitbox" type="Area3D" parent="." groups=["player_hitbox"]]
+[node name="player_hitbox" type="Area3D" parent="." unique_id=754333322 groups=["player_hitbox"]]
 collision_layer = 32
 collision_mask = 16
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player_hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player_hitbox" unique_id=1036448013]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8018502, -0.06283069)
 shape = SubResource("CapsuleShape3D_k0k4f")
 
-[node name="map_colision" type="CollisionShape3D" parent="."]
+[node name="map_colision" type="CollisionShape3D" parent="." unique_id=967495515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
 
-[node name="player_light" type="OmniLight3D" parent="."]
+[node name="player_light" type="OmniLight3D" parent="." unique_id=411037315]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)
 light_energy = 0.05
 light_indirect_energy = 0.0
 omni_range = 1.606
 
-[node name="TwistPivot" type="Node3D" parent="."]
+[node name="TwistPivot" type="Node3D" parent="." unique_id=1112278182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3736701, -0.04618293)
 
-[node name="PitchPivot" type="SpringArm3D" parent="TwistPivot"]
+[node name="PitchPivot" type="SpringArm3D" parent="TwistPivot" unique_id=343688257]
 visible = false
 spring_length = 8.0
 margin = 8.0
 
-[node name="equip_area" type="Node3D" parent="TwistPivot"]
+[node name="equip_area" type="Node3D" parent="TwistPivot" unique_id=2043188993]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08422494, 0.0017762184, -0.37906247)
 
-[node name="pickup_area" type="Node3D" parent="TwistPivot"]
+[node name="pickup_area" type="Node3D" parent="TwistPivot" unique_id=328718831]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1010226, -0.9454944)
 rotation_edit_mode = 1
 
-[node name="point area" type="Node3D" parent="TwistPivot/pickup_area"]
+[node name="point area" type="Node3D" parent="TwistPivot/pickup_area" unique_id=1423122609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.9454944)
 rotation_edit_mode = 1
 
-[node name="view" type="Camera3D" parent="TwistPivot"]
+[node name="view" type="Camera3D" parent="TwistPivot" unique_id=1795726355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06100726, -0.06913549)
 cull_mask = 1048571
 current = true
@@ -108,7 +113,7 @@ fov = 70.0
 near = 0.001
 script = ExtResource("6_hru13")
 
-[node name="interact_ray" type="RayCast3D" parent="TwistPivot/view"]
+[node name="interact_ray" type="RayCast3D" parent="TwistPivot/view" unique_id=995186137]
 target_position = Vector3(0, 0, -2.018)
 collision_mask = 1028
 hit_from_inside = true
@@ -116,80 +121,80 @@ collide_with_areas = true
 collide_with_bodies = false
 debug_shape_thickness = 1
 
-[node name="gun_point" type="RayCast3D" parent="TwistPivot/view"]
+[node name="gun_point" type="RayCast3D" parent="TwistPivot/view" unique_id=692533287]
 target_position = Vector3(0, 0, -157.3)
 collision_mask = 13
 
-[node name="point_target" type="Node3D" parent="TwistPivot/view"]
+[node name="point_target" type="Node3D" parent="TwistPivot/view" unique_id=145324719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.575)
 
-[node name="debug_cam" type="Camera3D" parent="."]
+[node name="debug_cam" type="Camera3D" parent="." unique_id=2145762609]
 transform = Transform3D(0.008586899, 0, 0.99996316, 0, 1, 0, -0.99996316, 0, 0.008586899, 1.8084285, 0.573243, 0)
 
-[node name="activityMachine" type="Node" parent="."]
+[node name="activityMachine" type="Node" parent="." unique_id=607726714]
 script = ExtResource("4_oxk7l")
 initial_state = NodePath("Run")
 
-[node name="Run" type="Node" parent="activityMachine"]
+[node name="Run" type="Node" parent="activityMachine" unique_id=1300036375]
 script = ExtResource("5_mty1n")
 
-[node name="Air" type="Node" parent="activityMachine" node_paths=PackedStringArray("player_model")]
+[node name="Air" type="Node" parent="activityMachine" unique_id=851895591 node_paths=PackedStringArray("player_model")]
 script = ExtResource("6_vmmom")
 player_model = NodePath("../../GR_subject_203")
 
-[node name="standingMachine" type="Node" parent="."]
+[node name="standingMachine" type="Node" parent="." unique_id=663764984]
 script = ExtResource("4_oxk7l")
 initial_state = NodePath("Standing")
 
-[node name="Standing" type="Node" parent="standingMachine"]
+[node name="Standing" type="Node" parent="standingMachine" unique_id=1348097078]
 script = ExtResource("7_jr32t")
 
-[node name="Crouching" type="Node" parent="standingMachine"]
+[node name="Crouching" type="Node" parent="standingMachine" unique_id=1919810171]
 script = ExtResource("8_uw634")
 
-[node name="Crouched" type="Node" parent="standingMachine"]
+[node name="Crouched" type="Node" parent="standingMachine" unique_id=2140443935]
 script = ExtResource("9_1hcmd")
 
-[node name="soundctrl" type="Node" parent="." groups=["sound_ctrl"]]
+[node name="soundctrl" type="Node" parent="." unique_id=1908570452 groups=["sound_ctrl"]]
 script = ExtResource("10_y3dw1")
 
-[node name="Concrete1" type="AudioStreamPlayer" parent="soundctrl"]
+[node name="Concrete1" type="AudioStreamPlayer" parent="soundctrl" unique_id=1784737234]
 stream = ExtResource("11_2rxho")
 
-[node name="Concrete2" type="AudioStreamPlayer" parent="soundctrl"]
+[node name="Concrete2" type="AudioStreamPlayer" parent="soundctrl" unique_id=1305421707]
 stream = ExtResource("12_cbyhw")
 
-[node name="Concrete3" type="AudioStreamPlayer" parent="soundctrl"]
+[node name="Concrete3" type="AudioStreamPlayer" parent="soundctrl" unique_id=2063841641]
 stream = ExtResource("13_hpxkm")
 
-[node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl"]
+[node name="Concrete4" type="AudioStreamPlayer" parent="soundctrl" unique_id=687706512]
 stream = ExtResource("14_wemna")
 
-[node name="Inventory" type="Node" parent="." node_paths=PackedStringArray("hud", "equip_pos", "player_animation", "gun_point")]
+[node name="Inventory" type="Node" parent="." unique_id=1077585926 node_paths=PackedStringArray("hud", "equip_pos", "player_animation", "gun_point")]
 script = ExtResource("15_cbyhw")
 hud = NodePath("../HUD")
 equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../GR_subject_203")
 gun_point = NodePath("../TwistPivot/view/gun_point")
 
-[node name="health" type="Node" parent="." node_paths=PackedStringArray("player_hitbox", "environment_damage_timer")]
+[node name="health" type="Node" parent="." unique_id=1769689478 node_paths=PackedStringArray("player_hitbox", "environment_damage_timer")]
 script = ExtResource("19_k0k4f")
 player_hitbox = NodePath("../player_hitbox")
 environment_damage_timer = NodePath("../environment_dmg_timer")
 
-[node name="HUD" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("3_hpxkm")]
+[node name="HUD" parent="." unique_id=817762856 node_paths=PackedStringArray("player_camera") instance=ExtResource("3_hpxkm")]
 player_camera = NodePath("../TwistPivot/view")
 
-[node name="Headbonk" type="ShapeCast3D" parent="."]
+[node name="Headbonk" type="ShapeCast3D" parent="." unique_id=1319775847]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.8504385, 0)
 shape = SubResource("BoxShape3D_4pade")
 
-[node name="CoyoteTime" type="Timer" parent="."]
+[node name="CoyoteTime" type="Timer" parent="." unique_id=238687300]
 wait_time = 0.15
 one_shot = true
 
-[node name="preselect_timer" type="Timer" parent="."]
+[node name="preselect_timer" type="Timer" parent="." unique_id=348207079]
 one_shot = true
 
-[node name="environment_dmg_timer" type="Timer" parent="."]
+[node name="environment_dmg_timer" type="Timer" parent="." unique_id=819652879]
 one_shot = true

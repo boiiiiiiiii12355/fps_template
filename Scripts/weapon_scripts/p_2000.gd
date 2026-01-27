@@ -34,6 +34,7 @@ func play_fire_animation():
 	animation_player.play("fire")
 	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_shoot_rig")
 	
+	
 func object_function(check : bool):
 	if !check and equip_timer.is_stopped() and ammunition and fire_rate_timer.is_stopped():
 		play_fire_animation()
@@ -43,6 +44,8 @@ func object_function(check : bool):
 		effects()
 		fire_rate_timer.start()
 		muzzle_flash.omni_range = 1000
+		get_tree().call_group("player_animations", "apply_recoil", Vector3(0.2,0.2,0)) 
+		
 	elif check:
 		return fire_type()
 
@@ -63,7 +66,7 @@ func check_hit():
 		print(gun_ray.get_collider())
 		var hit_particle_clone = hit_particle.instantiate()
 		root_node.particles.add_child(hit_particle_clone)
-		DrawLine3d.DrawLine(gun_ray.global_position, gun_ray.get_collision_point(), Color.ORANGE, 0.001)
+		DrawLine3d.DrawLine(gun_ray.global_position, gun_ray.get_collision_point(), Color.YELLOW, 0.01)
 		hit_particle_clone.global_position = gun_ray.get_collision_point()
 		hit_particle_clone.rotation = gun_ray.get_collision_normal()
 		hit_particle_clone.restart()

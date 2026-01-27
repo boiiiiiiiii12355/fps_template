@@ -1,24 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://1yxyrfjflrro"]
+[gd_scene format=3 uid="uid://1yxyrfjflrro"]
 
 [ext_resource type="Script" uid="uid://d0ox2l5ok3reh" path="res://Scripts/enemy_ai.gd" id="1_by24e"]
 [ext_resource type="PackedScene" uid="uid://cb4srhx3s5kg3" path="res://char_models/gltf_character_files/dummy_simple_bones.glb" id="1_ghyrv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_by24e"]
 
-[node name="enemy_base" type="CharacterBody3D" node_paths=PackedStringArray("check_player_sightline", "navigation_agent")]
+[node name="enemy_base" type="CharacterBody3D" unique_id=303559765 node_paths=PackedStringArray("check_player_sightline", "navigation_agent")]
 script = ExtResource("1_by24e")
 check_player_sightline = NodePath("sight_line")
 navigation_agent = NodePath("NavigationAgent3D")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=677553047]
 
-[node name="map_collision" type="CollisionShape3D" parent="."]
+[node name="map_collision" type="CollisionShape3D" parent="." unique_id=1438906103]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9919652, 0)
 shape = SubResource("CapsuleShape3D_by24e")
 
-[node name="test_model" parent="." instance=ExtResource("1_ghyrv")]
+[node name="test_model" parent="." unique_id=39094687 instance=ExtResource("1_ghyrv")]
 
-[node name="sight_line" type="RayCast3D" parent="."]
+[node name="sight_line" type="RayCast3D" parent="." unique_id=1229142707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.536185, 0)
 target_position = Vector3(0, 0, 7.44)
 collision_mask = 32

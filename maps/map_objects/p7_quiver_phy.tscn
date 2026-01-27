@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtcqajnjlqou5"]
+[gd_scene format=3 uid="uid://dtcqajnjlqou5"]
 
 [ext_resource type="PackedScene" uid="uid://b0a0smwc4mwa" path="res://model/object_gltf/p7_quiver.glb" id="2_pohe6"]
 [ext_resource type="AudioStream" uid="uid://cd5xx4ei7iese" path="res://sounds/gunshots/gun_shot.wav" id="3_egya0"]
@@ -9,7 +9,7 @@ size = Vector3(0.03482422, 0.2302666, 0.35789832)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cn67g"]
 size = Vector3(0.16627441, 0.23308691, 0.35871485)
 
-[node name="p7_quiver2" node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"] instance=ExtResource("2_pohe6")]
+[node name="p7_quiver2" unique_id=1290369115 node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"] instance=ExtResource("2_pohe6")]
 collision_layer = 4
 gun_shot_sound = NodePath("gunshot")
 weapon_model = NodePath("p7_quiver")
@@ -24,41 +24,30 @@ equip_timer = NodePath("equip_timer")
 item_name = "P7-quiver"
 pickup_area = NodePath("pickup_area")
 
-[node name="p7_quiver" parent="." index="0"]
-transform = Transform3D(0.09, 0, 0, 0, 0.09, 0, 0, 0, 0.09, -0.009645045, -0.00021217391, -2.2299588e-05)
+[node name="Skeleton3D" parent="p7_quiver" parent_id_path=PackedInt32Array(900790568) index="0" unique_id=1046850617]
+bones/1/position = Vector3(-0.2861197, 1.2156099, -0.9854029)
+bones/2/position = Vector3(0.26878232, 1.0634985, 1.2634128)
+bones/3/rotation = Quaternion(0.9999044, 5.883684e-15, 2.3839583e-07, -0.01382738)
+bones/5/position = Vector3(0.009663078, 0.5277725, 0.84414375)
+bones/5/rotation = Quaternion(0.9943199, 4.584204e-09, 2.3412154e-07, -0.106432654)
 
-[node name="Skeleton3D" parent="p7_quiver" index="0"]
-bones/0/position = Vector3(0.03887053, 0.022466779, -0.0035873875)
-bones/1/position = Vector3(-0.28611976, 1.7512004, -0.42239776)
-bones/2/position = Vector3(0.26878223, 0.6080946, 1.5201833)
-bones/3/rotation = Quaternion(0.96989447, 1.4824334e-14, 2.312408e-07, -0.24352582)
-bones/4/rotation = Quaternion(0.9882509, 7.3151374e-10, 2.3573057e-07, -0.15284036)
-bones/5/position = Vector3(0.009663066, 0.3168574, 0.9053909)
-bones/5/rotation = Quaternion(0.94315207, 5.421823e-09, 2.2315542e-07, -0.3323616)
+[node name="charging_handle_2" parent="p7_quiver/Skeleton3D" index="0" unique_id=264902539]
+transform = Transform3D(1, 1.310454e-09, 0, 9.265477e-12, -0.0070683956, 0.999975, 1.3104113e-09, -0.999975, -0.0070683956, -0.28157908, 1.1062843, -1.1706464)
 
-[node name="charging_handle_2" parent="p7_quiver/Skeleton3D" index="0"]
-transform = Transform3D(1, -1.4153869e-08, -4.973799e-14, -1.00001785e-10, -0.007068366, 0.99997497, -1.4153528e-08, -0.9999751, -0.007068306, -0.24724932, 1.3990778, -1.16551)
+[node name="ejection_port" parent="p7_quiver/Skeleton3D" index="1" unique_id=1919850235]
+transform = Transform3D(1, 1.3105392e-09, 1.4210855e-14, 9.265477e-12, -0.0070683956, 0.999975, 1.310525e-09, -0.999975, -0.0070683956, 0.27332348, 0.9541729, 1.0781691)
 
-[node name="ejection_port" parent="p7_quiver/Skeleton3D" index="1"]
-transform = Transform3D(1, 2.5799963e-08, -4.2632564e-14, 1.8239632e-10, -0.007068634, 0.99997497, 2.5799295e-08, -0.99997497, -0.0070685744, 0.30765313, 1.2469662, 1.083306)
+[node name="trigger_2" parent="p7_quiver/Skeleton3D" index="2" unique_id=657011255]
+transform = Transform3D(1, 1.2434498e-14, 2.384187e-07, -6.5927677e-09, -0.99961746, 0.02765212, 2.3832749e-07, -0.027652113, -0.9996177, 0.004540855, 0.57594335, -0.7628422)
 
-[node name="trigger_2" parent="p7_quiver/Skeleton3D" index="2"]
-transform = Transform3D(1, 4.973799e-14, 2.3841848e-07, -6.5926997e-09, -0.9996175, 0.027651936, 2.3832729e-07, -0.027652025, -0.9996174, 0.038870532, 0.8687368, -0.7577057)
+[node name="mag" parent="p7_quiver/Skeleton3D" index="4" unique_id=1841395055]
+transform = Transform3D(1, 8.489913e-09, 2.3159113e-07, -4.0720025e-08, -0.97734416, 0.21165669, 2.2814069e-07, -0.21165621, -0.97734636, 0.014204135, 0.4184469, 0.6589001)
 
-[node name="mag_release_2" parent="p7_quiver/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.4804797e-09, 2.3841892e-07, 3.884861e-08, -0.9876288, -0.15681013, 2.3523705e-07, 0.15680999, -0.98762953, 0.048534, 0.5545989, 0.9041706)
-
-[node name="mag" parent="p7_quiver/Skeleton3D" index="4"]
-transform = Transform3D(1, 9.090883e-09, 2.3158978e-07, -4.0132534e-08, -0.97734416, 0.2116563, 2.2826708e-07, -0.21165642, -0.9773438, 0.048533812, 0.7112404, 0.6640369)
-
-[node name="root" parent="p7_quiver/Skeleton3D" index="5"]
-transform = Transform3D(1, -2.4868994e-14, 2.3841852e-07, -1.0677233e-07, 0.89411575, 0.4478358, -2.1317379e-07, -0.44783577, 0.8941158, 0.03887053, 0.022466779, -0.0035873875)
-
-[node name="AnimationPlayer" parent="." index="1"]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1184321932]
 deterministic = true
 speed_scale = 1.067
 
-[node name="muzzle_flash" type="OmniLight3D" parent="." index="2"]
+[node name="muzzle_flash" type="OmniLight3D" parent="." index="2" unique_id=1963215095]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.104482844, -0.17952193)
 light_color = Color(1, 0.6627451, 0, 1)
 light_size = 0.032
@@ -66,43 +55,43 @@ shadow_enabled = true
 omni_range = 0.0
 omni_attenuation = 2.0
 
-[node name="item_light" type="OmniLight3D" parent="." index="3"]
+[node name="item_light" type="OmniLight3D" parent="." index="3" unique_id=1090144154]
 light_energy = 0.001
 light_size = 0.284
 shadow_enabled = true
 omni_range = 0.34798703
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4" unique_id=491189767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001171546, 0.07742468, 0.020715624)
 shape = SubResource("BoxShape3D_rrpo2")
 
-[node name="gun_ray" type="RayCast3D" parent="." index="5"]
+[node name="gun_ray" type="RayCast3D" parent="." index="5" unique_id=942387043]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1057135, -0.17134768)
 target_position = Vector3(0, 0, -1000)
 collision_mask = 13
 
-[node name="pickup_area" type="Area3D" parent="." index="6"]
+[node name="pickup_area" type="Area3D" parent="." index="6" unique_id=944823226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0.1265812, -0.09443234)
 collision_layer = 4
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="pickup_area" index="0" unique_id=691735598]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012658648, -0.05496189, 0.11073044)
 shape = SubResource("BoxShape3D_cn67g")
 
-[node name="equip_timer" type="Timer" parent="." index="7"]
+[node name="equip_timer" type="Timer" parent="." index="7" unique_id=63095774]
 one_shot = true
 
-[node name="fire_rate" type="Timer" parent="." index="8"]
+[node name="fire_rate" type="Timer" parent="." index="8" unique_id=139454521]
 wait_time = 0.06
 one_shot = true
 
-[node name="ejection_area" type="Node3D" parent="." index="9"]
+[node name="ejection_area" type="Node3D" parent="." index="9" unique_id=1617347653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013785843, 0.027849622, 0.100205496)
 
-[node name="ejection_dir" type="Node3D" parent="ejection_area" index="0"]
+[node name="ejection_dir" type="Node3D" parent="ejection_area" index="0" unique_id=220982119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019657835, -0.0036101379, -0.01165247)
 
-[node name="gunshot" type="AudioStreamPlayer3D" parent="." index="10"]
+[node name="gunshot" type="AudioStreamPlayer3D" parent="." index="10" unique_id=1526873038]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10507042, -0.17788082)
 stream = ExtResource("3_egya0")

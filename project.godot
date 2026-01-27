@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Naloxone"
 run/main_scene="uid://b6631ppy0o6he"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://images/icon.svg"
 
 [autoload]
@@ -33,10 +37,6 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Godot4SourceEngineMovement"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 
 [filesystem]
 
@@ -183,6 +183,9 @@ right_click={
 
 textures/canvas_textures/default_texture_filter=3
 lights_and_shadows/directional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality.mobile=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality=3
+lights_and_shadows/positional_shadow/soft_shadow_filter_quality.mobile=3
 textures/default_filters/anisotropic_filtering_level=4
 textures/decals/filter=4
 textures/light_projectors/filter=5
