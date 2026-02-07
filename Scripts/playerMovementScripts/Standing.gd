@@ -3,7 +3,7 @@ extends PlayerState
 
 # If we get a message asking us to jump, we jump.
 func enter(msg := {}) -> void:
-	print("standing")
+	#print("standing")
 	stats.crouching = false
 	stats.crouched = false
 	stats.speed = stats.ply_maxspeed

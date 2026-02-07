@@ -60,6 +60,9 @@ kick_hitbox=""
 env_player_hurt="things that hurt player"
 player_hitbox="mostly used for detection"
 door_destructable="anything that can destroy a door"
+level_geometry="levels models "
+door="anything thats a door. Mainly for ai to recognize and interact"
+cover_point_collection="a collection for all cover pointss"
 
 [input]
 
@@ -174,6 +177,10 @@ right_click={
 3d_physics/layer_5="hurtbox"
 3d_physics/layer_6="hitboxes"
 3d_physics/layer_11="map_objects"
+
+[limbo_ai]
+
+behavior_tree/user_task_dirs=PackedStringArray("res://ai/ai_tasks")
 
 [physics]
 

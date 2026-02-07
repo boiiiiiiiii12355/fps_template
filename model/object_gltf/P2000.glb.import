@@ -13,9 +13,9 @@ dest_files=["res://.godot/imported/P2000.glb-af302079fc559cf1fcb2f59fc263ec76.sc
 
 [params]
 
-nodes/root_type=""
-nodes/root_name=""
-nodes/root_script=null
+nodes/root_type="res://Scripts/item_scripts/physics_item.gd"
+nodes/root_name="p2000_phy"
+nodes/root_script=Resource("uid://dm05urle0w041", "res://Scripts/weapon_scripts/p_2000.gd")
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false

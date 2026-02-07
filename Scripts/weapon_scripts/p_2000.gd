@@ -9,6 +9,7 @@ class_name gun_item_base
 @export var mag_size : int
 @export var base_damage : int
 @export var animation_player : AnimationPlayer
+@export var chest_twist_offset : float 
 var ammunition = mag_size
 
 
@@ -17,22 +18,22 @@ func _ready() -> void:
 	fire_rate_timer.connect("timeout", fire_rate_timer_end)
 	
 func play_equip_animation():
-	animation_player.play("p2000_inspect")
-	get_tree().call_group("player_animations", "play_arm_animation", "p2000_inspect_rig")
+	animation_player.play("p2000_gun_equip")
+	get_tree().call_group("player_animations", "play_arm_animation", "player_animation/p2000_equip")
 	
 func  play_store_animation():
 	#get_tree().call_group("player_animations", "play_arm_animation", "p2000_store")
 	pass
 	
 func play_reload_animation():
-	get_tree().call_group("player_animations", "play_arm_animation", "p2000_reload_rig")
-	animation_player.play("gun_rigAction")
+	get_tree().call_group("player_animations", "play_arm_animation", "player_animation/p2000_reload")
+	animation_player.play("p2000_reload_baked")
 	animation_player.seek(0)
 	
 func play_fire_animation():
 	gun_shot_sound.play(0)
 	animation_player.play("fire")
-	get_tree().call_group("player_animations", "play_arm_animation_from_start", "p2000_shoot_rig")
+	get_tree().call_group("player_animations", "play_arm_animation_from_time", "player_animation/p2000_shoot", 0)
 	
 	
 func object_function(check : bool):

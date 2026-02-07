@@ -1,5 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://i6sys5xbccan"]
+[gd_scene format=3 uid="uid://i6sys5xbccan"]
 
 [ext_resource type="PackedScene" uid="uid://c5b5yy7ua3a7l" path="res://model/object_gltf/P2000.glb" id="1_yyuj5"]
 
-[node name="P2000" instance=ExtResource("1_yyuj5")]
+[node name="P2000" unique_id=576477124 instance=ExtResource("1_yyuj5")]

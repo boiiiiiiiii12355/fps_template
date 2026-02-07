@@ -35,13 +35,24 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	equip_node.get_parent().scale = Vector3(1, 1, 1)
 	animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
-	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equip_node.get_children().size()), 0.2))
+	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equipstatus_check(false)), 0.2))
 
+func equipstatus_check(checkoffset:bool):
+	if !checkoffset:
+		var equipstatus : bool = false
+		equipstatus = equip_node.get_children().size()
+		return equipstatus
+	else:
+		var offset = equip_node.get_child(0).chest_twist_offset
+		return offset
+		
 var recoil_pos : Vector3 = Vector3.ZERO
 var upperchest_x_offset = .3
 func chest_point_at(r_position : Vector3):
+	if equipstatus_check(false):
+		upperchest_x_offset = equipstatus_check(true)
 	var end_position = r_position + recoil_pos 
-	upper_chest_look_at_modi.origin_offset.x = lerp(upper_chest_look_at_modi.origin_offset.x, float(equip_node.get_children().size() * upperchest_x_offset), 0.1)
+	upper_chest_look_at_modi.origin_offset.x = lerp(upper_chest_look_at_modi.origin_offset.x, (float(equipstatus_check(false)) * upperchest_x_offset), 0.1)
 	camera_point.global_position = lerp(camera_point.global_position, end_position, 0.5)
 	camera_spine.global_position = head_tracker.global_position
 	recoil_process()

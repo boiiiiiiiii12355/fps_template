@@ -9,41 +9,43 @@ size = Vector3(0.03482422, 0.2302666, 0.35789832)
 [sub_resource type="BoxShape3D" id="BoxShape3D_cn67g"]
 size = Vector3(0.16627441, 0.23308691, 0.35871485)
 
-[node name="p7_quiver2" unique_id=1290369115 node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"] instance=ExtResource("2_pohe6")]
+[node name="p7_quiver2" unique_id=1854719357 node_paths=PackedStringArray("gun_shot_sound", "weapon_model", "muzzle_flash", "gun_ray", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"] instance=ExtResource("2_pohe6")]
 collision_layer = 4
+mass = 4.0
 gun_shot_sound = NodePath("gunshot")
 weapon_model = NodePath("p7_quiver")
 muzzle_flash = NodePath("muzzle_flash")
 gun_ray = NodePath("gun_ray")
 fire_rate_timer = NodePath("fire_rate")
 mag_size = 32
-base_damage = 20
+base_damage = 25
 animation_player = NodePath("AnimationPlayer")
+chest_twist_offset = 0.3
 ejection_area = NodePath("ejection_area")
 equip_timer = NodePath("equip_timer")
 item_name = "P7-quiver"
 pickup_area = NodePath("pickup_area")
 
-[node name="Skeleton3D" parent="p7_quiver" parent_id_path=PackedInt32Array(900790568) index="0" unique_id=1046850617]
-bones/1/position = Vector3(-0.2861197, 1.2156099, -0.9854029)
-bones/2/position = Vector3(0.26878232, 1.0634985, 1.2634128)
-bones/3/rotation = Quaternion(0.9999044, 5.883684e-15, 2.3839583e-07, -0.01382738)
-bones/5/position = Vector3(0.009663078, 0.5277725, 0.84414375)
+[node name="Skeleton3D" parent="p7_quiver" parent_id_path=PackedInt32Array(35957717) index="0" unique_id=35305991]
+bones/1/position = Vector3(-0.2861197, 1.2156099, -0.98540294)
+bones/2/position = Vector3(0.26878232, 1.0634984, 1.2634128)
+bones/3/rotation = Quaternion(0.9999044, 6.2166344e-15, 2.3839583e-07, -0.013827384)
+bones/5/position = Vector3(0.009663077, 0.5277725, 0.8441438)
 bones/5/rotation = Quaternion(0.9943199, 4.584204e-09, 2.3412154e-07, -0.106432654)
 
-[node name="charging_handle_2" parent="p7_quiver/Skeleton3D" index="0" unique_id=264902539]
-transform = Transform3D(1, 1.310454e-09, 0, 9.265477e-12, -0.0070683956, 0.999975, 1.3104113e-09, -0.999975, -0.0070683956, -0.28157908, 1.1062843, -1.1706464)
+[node name="charging_handle_2" parent="p7_quiver/Skeleton3D" index="0" unique_id=2110444763]
+transform = Transform3D(1, 1.3104255e-09, 4.973799e-14, 9.208634e-12, -0.0070683956, 0.999975, 1.3103829e-09, -0.999975, -0.0070683956, -0.28611994, 1.2156099, -0.9854029)
 
-[node name="ejection_port" parent="p7_quiver/Skeleton3D" index="1" unique_id=1919850235]
-transform = Transform3D(1, 1.3105392e-09, 1.4210855e-14, 9.265477e-12, -0.0070683956, 0.999975, 1.310525e-09, -0.999975, -0.0070683956, 0.27332348, 0.9541729, 1.0781691)
+[node name="ejection_port" parent="p7_quiver/Skeleton3D" index="1" unique_id=1680127396]
+transform = Transform3D(1, 1.3105108e-09, 2.1316282e-14, 9.251266e-12, -0.0070683956, 0.999975, 1.3104966e-09, -0.999975, -0.0070683956, 0.26878262, 1.0634984, 1.2634127)
 
-[node name="trigger_2" parent="p7_quiver/Skeleton3D" index="2" unique_id=657011255]
-transform = Transform3D(1, 1.2434498e-14, 2.384187e-07, -6.5927677e-09, -0.99961746, 0.02765212, 2.3832749e-07, -0.027652113, -0.9996177, 0.004540855, 0.57594335, -0.7628422)
+[node name="trigger_2" parent="p7_quiver/Skeleton3D" index="2" unique_id=671141728]
+transform = Transform3D(1, 1.3322676e-14, 2.384187e-07, -6.592769e-09, -0.99961746, 0.02765213, 2.3832749e-07, -0.027652122, -0.9996177, 0, 0.6852689, -0.57759845)
 
-[node name="mag" parent="p7_quiver/Skeleton3D" index="4" unique_id=1841395055]
-transform = Transform3D(1, 8.489913e-09, 2.3159113e-07, -4.0720025e-08, -0.97734416, 0.21165669, 2.2814069e-07, -0.21165621, -0.97734636, 0.014204135, 0.4184469, 0.6589001)
+[node name="mag" parent="p7_quiver/Skeleton3D" index="4" unique_id=1658337083]
+transform = Transform3D(1, 8.489913e-09, 2.3159113e-07, -4.0720025e-08, -0.97734416, 0.21165669, 2.2814069e-07, -0.21165621, -0.97734636, 0.009663278, 0.5277725, 0.8441438)
 
-[node name="AnimationPlayer" parent="." index="1" unique_id=1184321932]
+[node name="AnimationPlayer" parent="." index="1" unique_id=1317897004]
 deterministic = true
 speed_scale = 1.067
 
@@ -87,7 +89,7 @@ wait_time = 0.06
 one_shot = true
 
 [node name="ejection_area" type="Node3D" parent="." index="9" unique_id=1617347653]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.013785843, 0.027849622, 0.100205496)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020848684, 0.09576865, 0.08090496)
 
 [node name="ejection_dir" type="Node3D" parent="ejection_area" index="0" unique_id=220982119]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.019657835, -0.0036101379, -0.01165247)

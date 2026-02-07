@@ -4,7 +4,7 @@ var player_animation : playermodel
 var try_uncrouch = false
 
 func enter(msg := {}) -> void:
-	print("crouched")
+	#print("crouched")
 	player_animation = get_parent().get_parent().player_body
 	stats.crouched = true
 	stats.speed = stats.ply_crouchspeed 
@@ -24,4 +24,5 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Standing")
 		
 	if(player.bonker.is_colliding()):
-		print("bonking")
+		#print("bonking")
+		pass

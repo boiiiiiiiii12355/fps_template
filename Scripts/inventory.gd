@@ -48,7 +48,6 @@ func inventory_process():
 		if last_selected_slot != selected_slot and inventory_array[last_selected_slot] and inventory_array[selected_slot]:
 			inventory_array[last_selected_slot].picked_up(i, slot_phys_array[i], arms_animationplayer)
 			last_selected_slot = selected_slot
-			await  arms_animationplayer.animation_finished
 			
 			
 		if inventory_array[i] != null and (i) != selected_slot:

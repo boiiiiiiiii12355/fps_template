@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://w57ifh56sab"]
+
+[ext_resource type="Script" uid="uid://dcfwcdt17h0ww" path="res://Scripts/ai_behaviour_modifiers/base_behaviour.gd" id="1_idcun"]
+[ext_resource type="Script" uid="uid://benw1bpnlnn40" path="res://ai/ai_tasks/scan_for_cover.gd" id="2_wq2fs"]
+
+[node name="base_behaviour" type="Node" unique_id=1918533730]
+script = ExtResource("1_idcun")
+
+[node name="move_to_cover" type="Node" parent="." unique_id=506841044]
+script = ExtResource("2_wq2fs")
+
+[node name="move_towards_target" type="Node" parent="." unique_id=2124765427]
+
+[node name="Node" type="Node" parent="." unique_id=344980128]

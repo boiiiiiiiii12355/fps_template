@@ -4,7 +4,7 @@ var player_animation : playermodel
 var try_uncrouch = false
 
 func enter(msg := {}) -> void:
-	print("crouching")
+	#print("crouching")
 	player_animation = get_parent().get_parent().player_body
 	stats.crouching = true
 	try_uncrouch = false

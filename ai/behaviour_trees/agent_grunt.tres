@@ -1,0 +1,45 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://d1x35363miqf6"]
+
+[ext_resource type="Script" uid="uid://8i00cykmfiu" path="res://ai/ai_tasks/choose_random_pos(testing only !!!).gd" id="1_8ii65"]
+[ext_resource type="Script" uid="uid://c4apkkvnlo03k" path="res://ai/ai_tasks/move_to_pos.gd" id="2_r6i13"]
+[ext_resource type="Script" uid="uid://benw1bpnlnn40" path="res://ai/ai_tasks/scan_for_cover.gd" id="3_cmrs0"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_tttfl"]
+
+[sub_resource type="BTFail" id="BTFail_r6i13"]
+
+[sub_resource type="BTAction" id="BTAction_r6i13"]
+script = ExtResource("1_8ii65")
+
+[sub_resource type="BTAction" id="BTAction_cmrs0"]
+script = ExtResource("2_r6i13")
+
+[sub_resource type="BTSequence" id="BTSequence_253pm"]
+custom_name = "sequence - moverand"
+children = [SubResource("BTAction_r6i13"), SubResource("BTAction_cmrs0")]
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_cmrs0"]
+custom_name = "selector - patrol"
+children = [SubResource("BTFail_r6i13"), SubResource("BTSequence_253pm")]
+
+[sub_resource type="BTAction" id="BTAction_hjh51"]
+script = ExtResource("3_cmrs0")
+
+[sub_resource type="BTAction" id="BTAction_tivvm"]
+script = ExtResource("2_r6i13")
+
+[sub_resource type="BTSequence" id="BTSequence_cmrs0"]
+custom_name = "sequence - move to cover"
+children = [SubResource("BTAction_hjh51"), SubResource("BTAction_tivvm")]
+
+[sub_resource type="BTSelector" id="BTSelector_cmrs0"]
+custom_name = "selector - combat"
+children = [SubResource("BTSequence_cmrs0")]
+
+[sub_resource type="BTSelector" id="BTSelector_m0450"]
+custom_name = "root"
+children = [SubResource("BTDynamicSequence_cmrs0"), SubResource("BTSelector_cmrs0")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_tttfl")
+root_task = SubResource("BTSelector_m0450")

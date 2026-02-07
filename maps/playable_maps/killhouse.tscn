@@ -5,7 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://hynsll4jq3n2" path="res://tscns/player.tscn" id="2_553v6"]
 [ext_resource type="PackedScene" uid="uid://bh3xk8hxufios" path="res://maps/map_objects/door_wood.tscn" id="3_u52id"]
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://maps/map_objects/p7_quiver_phy.tscn" id="4_mwhld"]
-[ext_resource type="PackedScene" uid="uid://cthbvnippkvsh" path="res://char_models/ragdoll_test.tscn" id="6_fb6d2"]
+[ext_resource type="PackedScene" uid="uid://bly1cw0xtom6u" path="res://maps/map_objects/p2000_phy.tscn" id="7_jsh2l"]
+[ext_resource type="PackedScene" uid="uid://1yxyrfjflrro" path="res://tscns/enemy/enemy_base.tscn" id="8_48ds0"]
 
 [sub_resource type="Environment" id="Environment_553v6"]
 glow_enabled = true
@@ -13,18 +14,33 @@ glow_bloom = 0.5
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 
+[sub_resource type="NavigationMesh" id="NavigationMesh_jsh2l"]
+vertices = PackedVector3Array(-24.925747, -0.71460867, -16.586311, -22.675747, -0.71460867, -15.836311, -22.425747, -0.71460867, -18.086311, -24.925747, -0.71460867, -30.336311, -7.175747, -0.71460867, -27.586311, -4.925747, -0.71460867, -27.836311, -4.925747, -0.71460867, -30.336311, -7.175747, -0.71460867, -18.086311, 19.074253, -0.71460867, -27.586311, 19.074253, -0.71460867, -30.336311, -6.425747, -0.71460867, -19.086311, -5.925747, -0.71460867, -19.086311, -5.675747, -0.71460867, -20.586311, -6.425747, -0.71460867, -26.836311, 14.824253, -0.71460867, -20.836311, 18.074253, -0.71460867, -26.836311, 15.824253, -0.71460867, -20.586311, 18.074253, -0.71460867, -20.836311, 15.074253, -0.71460867, 0.16368866, 15.824253, -0.71460867, 0.16368866, 16.574253, -0.71460867, -19.836311, 16.574253, -0.71460867, 1.1636887, 19.074253, -0.71460867, 1.1636887, 19.074253, -0.71460867, -20.086311, 12.824253, -0.71460867, -18.336311, 13.074253, -0.71460867, -8.836311, 14.324253, -0.71460867, -8.836311, 14.324253, -0.71460867, -19.836311, -4.925747, -0.71460867, -19.836311, -4.925747, -0.71460867, -18.336311, -5.675747, -0.71460867, -17.336311, -6.675747, -0.71460867, -17.086311, -10.925747, -0.71460867, -14.586311, -9.425747, -0.71460867, -14.336311, 10.574253, -0.71460867, -14.336311, 12.074253, -0.71460867, -17.336311, -10.675747, -0.71460867, -12.586311, -9.675747, -0.71460867, -12.336311, -21.675747, -0.71460867, -17.086311, -21.675747, -0.71460867, -14.586311, 10.824253, -0.71460867, -9.836311, 12.074253, -0.71460867, -9.836311, -22.425747, -0.71460867, -13.586311, -24.925747, -0.71460867, -8.836311, -11.425747, -0.71460867, -8.836311, -11.425747, -0.71460867, -13.586311, -8.925747, -0.71460867, -13.586311, -8.925747, -0.71460867, -8.836311, 9.824253, -0.71460867, -8.836311, 9.824253, -0.71460867, -13.586311, -11.175747, -0.71460867, -6.0863113, -11.175747, -0.71460867, -5.3363113, -10.675747, -0.71460867, -5.0863113, -8.925747, -0.71460867, -4.3363113, -10.675747, -0.71460867, -6.3363113, -3.425747, -0.71460867, 0.66368866, -2.925747, -0.71460867, 0.41368866, -2.925747, -0.71460867, -0.33631134, -3.425747, -0.71460867, -0.58631134, -9.425747, -0.71460867, -7.8363113, -3.425747, -0.71460867, -7.8363113, -9.175747, -0.71460867, -3.5863113, -10.675747, -0.71460867, -3.5863113, -10.675747, -0.71460867, 1.1636887, -10.675747, -0.71460867, -4.5863113, -3.425747, -0.71460867, 1.1636887, -2.675747, -0.71460867, 1.1636887, 14.324253, -0.71460867, 1.1636887, 10.574253, -0.71460867, -7.8363113, -2.675747, -0.71460867, -7.8363113, 12.324253, -0.71460867, -7.8363113, 14.324253, -0.71460867, -7.8363113, -11.425747, -0.71460867, -7.8363113, -16.675747, -0.71460867, -0.58631134, -11.425747, -0.71460867, -0.83631134, -12.675747, -0.71460867, 1.1636887, -12.175747, -0.71460867, -0.08631134, -16.425747, -0.71460867, -0.08631134, -24.925747, -0.71460867, 1.1636887, -24.925747, -0.71460867, -7.8363113, -12.175747, -0.71460867, 1.4136887, -11.425747, -0.71460867, -0.08631134, -11.175747, -0.71460867, 1.9136887, -12.425747, -0.71460867, 1.9136887, -24.925747, -0.71460867, 1.9136887, -24.925747, -0.71460867, 13.663689, -1.9257469, -0.71460867, 13.663689, -1.9257469, -0.71460867, 1.9136887, 14.824253, -0.71460867, 2.1636887, 16.074253, -0.71460867, 2.1636887, -1.1757469, -0.71460867, 2.1636887, -1.1757469, -0.71460867, 13.663689, 19.074253, -0.71460867, 13.663689, 19.074253, -0.71460867, 2.1636887)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 3), PackedInt32Array(7, 2, 4), PackedInt32Array(4, 2, 3), PackedInt32Array(6, 9, 5), PackedInt32Array(5, 9, 8), PackedInt32Array(11, 10, 12), PackedInt32Array(12, 10, 13), PackedInt32Array(12, 13, 14), PackedInt32Array(14, 13, 15), PackedInt32Array(16, 14, 17), PackedInt32Array(17, 14, 15), PackedInt32Array(19, 18, 16), PackedInt32Array(16, 18, 14), PackedInt32Array(21, 20, 22), PackedInt32Array(22, 20, 23), PackedInt32Array(25, 24, 26), PackedInt32Array(26, 24, 27), PackedInt32Array(29, 28, 24), PackedInt32Array(24, 28, 27), PackedInt32Array(11, 30, 10), PackedInt32Array(10, 30, 31), PackedInt32Array(32, 31, 33), PackedInt32Array(33, 31, 30), PackedInt32Array(33, 30, 34), PackedInt32Array(34, 30, 35), PackedInt32Array(37, 36, 33), PackedInt32Array(33, 36, 32), PackedInt32Array(39, 38, 32), PackedInt32Array(32, 38, 31), PackedInt32Array(40, 34, 41), PackedInt32Array(41, 34, 35), PackedInt32Array(1, 42, 0), PackedInt32Array(0, 42, 43), PackedInt32Array(45, 44, 42), PackedInt32Array(42, 44, 43), PackedInt32Array(49, 48, 46), PackedInt32Array(46, 48, 47), PackedInt32Array(50, 54, 51), PackedInt32Array(51, 54, 52), PackedInt32Array(52, 54, 53), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(54, 59, 53), PackedInt32Array(53, 59, 60), PackedInt32Array(53, 60, 58), PackedInt32Array(63, 62, 61), PackedInt32Array(53, 64, 52), PackedInt32Array(61, 53, 63), PackedInt32Array(63, 53, 58), PackedInt32Array(63, 58, 55), PackedInt32Array(37, 59, 36), PackedInt32Array(36, 59, 54), PackedInt32Array(55, 65, 63), PackedInt32Array(56, 57, 66), PackedInt32Array(66, 57, 69), PackedInt32Array(66, 69, 68), PackedInt32Array(66, 68, 67), PackedInt32Array(41, 70, 40), PackedInt32Array(40, 70, 68), PackedInt32Array(68, 70, 67), PackedInt32Array(70, 71, 67), PackedInt32Array(50, 51, 72), PackedInt32Array(72, 51, 74), PackedInt32Array(72, 74, 73), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 78), PackedInt32Array(73, 77, 78), PackedInt32Array(78, 79, 73), PackedInt32Array(73, 79, 72), PackedInt32Array(76, 80, 75), PackedInt32Array(76, 81, 80), PackedInt32Array(80, 81, 82), PackedInt32Array(84, 83, 85), PackedInt32Array(85, 83, 86), PackedInt32Array(80, 82, 83), PackedInt32Array(83, 82, 86), PackedInt32Array(82, 87, 86), PackedInt32Array(19, 89, 18), PackedInt32Array(18, 89, 88), PackedInt32Array(90, 88, 91), PackedInt32Array(91, 88, 92), PackedInt32Array(89, 93, 92), PackedInt32Array(88, 89, 92)]
+geometry_parsed_geometry_type = 1
+geometry_source_geometry_mode = 1
+geometry_source_group_name = &"level_geometry"
+border_size = 0.25
+agent_radius = 0.25
+region_min_size = 5.0
+edge_max_error = 1.0
+detail_sample_max_error = 0.5
+
 [node name="killhouse" type="Node3D" unique_id=1970762040 node_paths=PackedStringArray("objects", "particles", "player")]
 script = ExtResource("1_4oc55")
 level_name = "killhouse"
 objects = NodePath("killhouse/physics_object")
 particles = NodePath("killhouse/particles")
-player = NodePath("killhouse/Map_entities/player")
+player = NodePath("killhouse/entities/player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1339140329]
 environment = SubResource("Environment_553v6")
 
-[node name="killhouse" parent="." unique_id=1207320430 instance=ExtResource("1_4uox5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9455533, -1.1285801, -8.440266)
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1001507835]
+navigation_mesh = SubResource("NavigationMesh_jsh2l")
+
+[node name="killhouse" parent="." unique_id=1207320430 groups=["level_geometry"] instance=ExtResource("1_4uox5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0019612, -1.128582, -8.414559)
 
 [node name="lights" type="Node3D" parent="killhouse" unique_id=1272078715]
 
@@ -81,29 +97,44 @@ shadow_enabled = true
 spot_range = 35.290733
 spot_angle = 31.361969
 
-[node name="Map_entities" type="Node3D" parent="killhouse" unique_id=1936279994]
+[node name="interactables" type="Node3D" parent="killhouse" unique_id=1936279994]
 
-[node name="player" parent="killhouse/Map_entities" unique_id=1277926118 instance=ExtResource("2_553v6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.741169, 0.3078009, 16.521431)
+[node name="door_wood" parent="killhouse/interactables" unique_id=1622822043 instance=ExtResource("3_u52id")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -8.132011, -0.05950582, 9.976559)
 
-[node name="door_wood" parent="killhouse/Map_entities" unique_id=1622822043 instance=ExtResource("3_u52id")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.318039, -0.05950582, 10.068408)
+[node name="door_wood2" parent="killhouse/interactables" unique_id=1857981172 instance=ExtResource("3_u52id")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8.0125885, -0.05950582, 3.4254098)
 
-[node name="door_wood2" parent="killhouse/Map_entities" unique_id=1857981172 instance=ExtResource("3_u52id")]
-transform = Transform3D(0.049895737, 0, -0.99875444, 0, 1, 0, 0.99875444, 0, 0.049895737, -8.121926, -0.05950582, 2.131765)
+[node name="door_wood3" parent="killhouse/interactables" unique_id=1963563711 instance=ExtResource("3_u52id")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.789128, -0.09415817, -5.421733)
 
-[node name="p7_quiver2" parent="killhouse/Map_entities" unique_id=1290369115 instance=ExtResource("4_mwhld")]
-transform = Transform3D(0.8919627, -0.3916053, -0.22593787, 0.45198804, 0.78395134, 0.42559028, 0.010460959, -0.4817319, 0.8762562, -20.166992, 2.6113172, 14.766369)
+[node name="door_wood4" parent="killhouse/interactables" unique_id=780144944 instance=ExtResource("3_u52id")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.704103, -0.08602691, -9.290172)
 
-[node name="ragdoll_test" parent="killhouse/Map_entities" unique_id=774154725 instance=ExtResource("6_fb6d2")]
-transform = Transform3D(-0.1152145, 0, -0.9933406, 0, 1, 0, 0.9933406, 0, -0.1152145, -7.022218, -0.08602667, 2.8136182)
+[node name="door_wood5" parent="killhouse/interactables" unique_id=1835117398 instance=ExtResource("3_u52id")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.040180206, -0.086027145, 9.000113)
 
-[node name="ragdoll_test2" parent="killhouse/Map_entities" unique_id=1699079401 instance=ExtResource("6_fb6d2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.671267, -0.086027145, 5.7617903)
+[node name="door_wood6" parent="killhouse/interactables" unique_id=705327991 instance=ExtResource("3_u52id")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.892475, -0.08602667, -11.952687)
 
-[node name="ragdoll_test3" parent="killhouse/Map_entities" unique_id=540084833 instance=ExtResource("6_fb6d2")]
-transform = Transform3D(-0.96037644, 0, -0.27870607, 0, 1, 0, 0.27870607, 0, -0.96037644, -3.1343021, -0.08602667, 1.2721705)
+[node name="door_wood7" parent="killhouse/interactables" unique_id=1976893915 instance=ExtResource("3_u52id")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.860918, -0.08602643, 10.047256)
 
 [node name="particles" type="Node3D" parent="killhouse" unique_id=1608921423]
 
 [node name="physics_object" type="Node3D" parent="killhouse" unique_id=2050902388]
+
+[node name="P2000" parent="killhouse/physics_object" unique_id=1251320840 instance=ExtResource("7_jsh2l")]
+transform = Transform3D(0.009866471, -0.77621204, -0.6303945, 0.99988294, 0.00028644502, 0.015296668, -0.011692882, -0.6304715, 0.7761243, 1.4107519, 1.0579596, 21.126226)
+
+[node name="p7_quiver2" parent="killhouse/physics_object" unique_id=1290369115 instance=ExtResource("4_mwhld")]
+transform = Transform3D(-0.068692535, 0.8738878, 0.4812498, -0.997583, -0.06522651, -0.023949753, 0.010460958, -0.48173183, 0.8762561, 1.3056529, 1.0829048, 20.767923)
+
+[node name="entities" type="Node3D" parent="killhouse" unique_id=888714139]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.741169, 0.3078009, 16.521431)
+
+[node name="player" parent="killhouse/entities" unique_id=1277926118 instance=ExtResource("2_553v6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.22884, -0.38844597, 1.7581329)
+
+[node name="enemy_base" parent="killhouse/entities" unique_id=303559765 instance=ExtResource("8_48ds0")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 18.198807, -0.3938266, -0.20802689)
