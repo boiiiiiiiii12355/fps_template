@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1yxyrfjflrro"]
 
 [ext_resource type="Script" uid="uid://d0ox2l5ok3reh" path="res://Scripts/enemy_ai.gd" id="1_by24e"]
-[ext_resource type="PackedScene" uid="uid://cb4srhx3s5kg3" path="res://char_models/gltf_character_files/dummy_simple_bones.glb" id="1_ghyrv"]
+[ext_resource type="PackedScene" uid="uid://cb4srhx3s5kg3" path="res://models/char_models/gltf_character_files/dummy_simple_bones.glb" id="1_ghyrv"]
 [ext_resource type="BehaviorTree" uid="uid://d1x35363miqf6" path="res://ai/behaviour_trees/agent_grunt.tres" id="4_pidst"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_by24e"]
@@ -49,7 +49,7 @@ collision_mask = 1024
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83877456, 0)
 shape = SubResource("CapsuleShape3D_ma7yh")
 
-[node name="test_model" parent="." unique_id=39094687 instance=ExtResource("1_ghyrv")]
+[node name="test_model" parent="." unique_id=1371570031 instance=ExtResource("1_ghyrv")]
 
 [node name="sight_line" type="RayCast3D" parent="." unique_id=1229142707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.536185, 0)

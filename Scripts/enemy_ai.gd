@@ -41,7 +41,7 @@ func gravity():
 		wishvelocity.y = 0
 	
 #should finish all this once i figure out navigation meshes
-var speed = 3
+var speed = 10
 var player_chase_dist = 5 #meter
 #this controls how far away the ai should stop when chasing the player
 

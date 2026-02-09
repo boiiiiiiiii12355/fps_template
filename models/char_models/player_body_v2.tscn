@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmopo2slysquu"]
+
+[ext_resource type="PackedScene" uid="uid://jrn1to23rl6e" path="res://char_models/player_body_v2.blend" id="1_5kqkc"]
+
+[node name="player_third_person" instance=ExtResource("1_5kqkc")]
+
+[node name="test_model" parent="Armature/Skeleton3D" index="0"]
+layers = 3
+cast_shadow = 3
+visibility_range_fade_mode = 1
