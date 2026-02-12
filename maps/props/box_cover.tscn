@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b40i5v5ewe75i"]
+
+[ext_resource type="PackedScene" uid="uid://boffk3cmlo84r" path="res://tscns/enemy/cover_point.tscn" id="1_5txsi"]
+
+[node name="box_cover" type="Node3D" unique_id=1833818623 groups=["level_geometry"]]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=883585442]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32897186, 0)
+use_collision = true
+size = Vector3(1, 0.6640625, 1)
+
+[node name="CoverPoint" parent="." unique_id=324885791 instance=ExtResource("1_5txsi")]
+transform = Transform3D(-0.012216939, 0, -0.9999254, 0, 1, 0, 0.9999254, 0, -0.012216939, 0.98145914, 0, -0.019727826)
+
+[node name="CoverPoint2" parent="." unique_id=1850186827 instance=ExtResource("1_5txsi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.04438734, 0, -1.0258466)
+
+[node name="CoverPoint3" parent="." unique_id=1221833148 instance=ExtResource("1_5txsi")]
+transform = Transform3D(-0.9999388, 0, -0.01106517, 0, 1, 0, 0.01106517, 0, -0.9999388, 0.01479578, 0, 1.0258467)
+
+[node name="CoverPoint4" parent="." unique_id=838702886 instance=ExtResource("1_5txsi")]
+transform = Transform3D(-0.009581702, 0, 0.9999541, 0, 1, 0, -0.9999541, 0, -0.009581702, -0.991323, 0, 0.009863791)
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="." unique_id=1021351347]
+vertices = PackedVector3Array(0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, -0.5)

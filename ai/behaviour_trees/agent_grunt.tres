@@ -6,6 +6,8 @@
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_tttfl"]
 
+[sub_resource type="BTFail" id="BTFail_cmrs0"]
+
 [sub_resource type="BTAction" id="BTAction_r6i13"]
 script = ExtResource("1_8ii65")
 
@@ -18,7 +20,7 @@ children = [SubResource("BTAction_r6i13"), SubResource("BTAction_cmrs0")]
 
 [sub_resource type="BTDynamicSequence" id="BTDynamicSequence_cmrs0"]
 custom_name = "selector - patrol"
-children = [SubResource("BTSequence_253pm")]
+children = [SubResource("BTFail_cmrs0"), SubResource("BTSequence_253pm")]
 
 [sub_resource type="BTAction" id="BTAction_hjh51"]
 script = ExtResource("3_cmrs0")
@@ -26,9 +28,11 @@ script = ExtResource("3_cmrs0")
 [sub_resource type="BTAction" id="BTAction_tivvm"]
 script = ExtResource("2_r6i13")
 
+[sub_resource type="BTRandomWait" id="BTRandomWait_cmrs0"]
+
 [sub_resource type="BTSequence" id="BTSequence_cmrs0"]
 custom_name = "sequence - move to cover"
-children = [SubResource("BTAction_hjh51"), SubResource("BTAction_tivvm")]
+children = [SubResource("BTAction_hjh51"), SubResource("BTAction_tivvm"), SubResource("BTRandomWait_cmrs0")]
 
 [sub_resource type="BTRandomSelector" id="BTRandomSelector_cmrs0"]
 custom_name = "selector - combat"

@@ -9,6 +9,7 @@ class_name grunt
 @export var action_cooldown : Timer
 @export var max_hp = 100
 @export var area_scanner : Node3D
+@export var cover_ignore_dist = 2
 var hp = max_hp
 var player_spotted : bool = false
 var player_spot
