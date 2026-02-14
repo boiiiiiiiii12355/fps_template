@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7uu2lftx65gd"]
+[gd_scene format=3 uid="uid://b7uu2lftx65gd"]
 
 [ext_resource type="PackedScene" uid="uid://b5ohlp3pakpev" path="res://maps/map_gltf/main_menu.glb" id="1_4dr35"]
 [ext_resource type="Script" uid="uid://diyolna02rxe3" path="res://maps/main_menu_effects.gd" id="2_5wmgd"]
@@ -18,28 +18,28 @@ sky_custom_fov = 1.0
 glow_enabled = true
 glow_normalized = true
 glow_bloom = 1.0
-glow_blend_mode = 1
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.034
 volumetric_fog_albedo = Color(0.6027341, 0.6027341, 0.6027341, 1)
 
-[node name="main_menu_scene" node_paths=PackedStringArray("subject_205_anim", "camera") instance=ExtResource("1_4dr35")]
+[node name="main_menu_scene" unique_id=375231371 node_paths=PackedStringArray("subject_205_anim", "camera") instance=ExtResource("1_4dr35")]
 script = ExtResource("2_5wmgd")
 subject_205_anim = NodePath("AnimationPlayer")
 camera = NodePath("Camera")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0" unique_id=963141119]
 environment = SubResource("Environment_owyrs")
 
-[node name="Area" parent="." index="2"]
+[node name="Area" parent="." index="2" unique_id=1375128132]
 light_energy = 3.0
+spot_attenuation = 1.26
 
-[node name="Spot" parent="." index="3"]
+[node name="Spot" parent="." index="3" unique_id=450961452]
 light_energy = 3.0
 spot_range = 31.244
 spot_angle_attenuation = 0.50182337
 
-[node name="Skeleton3D" parent="rig" index="0"]
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(2111200551) index="0" unique_id=1976972785]
 bones/0/position = Vector3(-5.996482, -1.1461157, 8.351252)
 bones/0/rotation = Quaternion(-0.66359705, 0.24421103, 0.24421099, 0.663597)
 bones/1/position = Vector3(-0.5099231, 0.4771523, 0.5188825)
@@ -156,15 +156,15 @@ bones/84/position = Vector3(-0.085559204, 0.05084002, -0.008924408)
 bones/84/rotation = Quaternion(-0.82734257, -3.4406821e-06, 3.677222e-06, 0.5616977)
 bones/84/scale = Vector3(0.99998766, 1.0000007, 0.9999754)
 
-[node name="Area_001" parent="." index="6"]
+[node name="Area_001" parent="." index="6" unique_id=668850607]
 light_energy = 3.0
 spot_angle_attenuation = 3.870613
 
-[node name="Spot_001" parent="." index="9"]
+[node name="Spot_001" parent="." index="9" unique_id=539896546]
+light_energy = 2.0
+
+[node name="Spot_002" parent="." index="10" unique_id=1430807640]
 light_energy = 3.0
 
-[node name="Spot_002" parent="." index="10"]
-light_energy = 3.0
-
-[node name="Spot_003" parent="." index="11"]
+[node name="Spot_003" parent="." index="11" unique_id=550303705]
 light_energy = 3.0
