@@ -14,7 +14,7 @@ height = 1.6845703
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_ma7yh"]
 
-[node name="enemy_base" type="CharacterBody3D" unique_id=303559765 node_paths=PackedStringArray("model", "check_player_sightline", "nav_agent", "interaction_area", "action_cooldown", "area_scanner")]
+[node name="enemy_base" type="CharacterBody3D" unique_id=303559765 node_paths=PackedStringArray("model", "check_player_sightline", "nav_agent", "interaction_area", "action_cooldown", "area_scanner", "gun_ray")]
 script = ExtResource("1_by24e")
 model = NodePath("test_model")
 check_player_sightline = NodePath("sight_line")
@@ -22,6 +22,7 @@ nav_agent = NodePath("NavigationAgent3D")
 interaction_area = NodePath("Interaction_area")
 action_cooldown = NodePath("action_cooldown")
 area_scanner = NodePath("area_scanner")
+gun_ray = NodePath("test_model/CSGBox3D/RayCast3D")
 
 [node name="area_scanner" type="Node3D" parent="." unique_id=2145846045]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5457393, 0)
@@ -50,6 +51,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83877456, 0)
 shape = SubResource("CapsuleShape3D_ma7yh")
 
 [node name="test_model" parent="." unique_id=1371570031 instance=ExtResource("1_ghyrv")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="test_model" unique_id=364783273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19178237, 1.2164296, 0.37632883)
+size = Vector3(0.025, 0.095, 0.495)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="test_model/CSGBox3D" unique_id=1760038003]
+transform = Transform3D(1, 0, 0, 0, -0.43680185, -0.8995577, 0, 0.8995577, -0.43680185, 0, -0.07064009, -0.1657686)
+size = Vector3(0.05, 0.05, 0.205)
+
+[node name="RayCast3D" type="RayCast3D" parent="test_model/CSGBox3D" unique_id=653307533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.25278306)
+target_position = Vector3(0, 0, 100)
+collision_mask = 3
 
 [node name="sight_line" type="RayCast3D" parent="." unique_id=1229142707]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.536185, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://xkb3p5xx5rpu"]
+[gd_scene format=3 uid="uid://xkb3p5xx5rpu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_if265"]
 emission_shape = 3
@@ -15,14 +15,17 @@ transparency = 1
 emission_enabled = true
 emission = Color(0.0006710991, 0.04973557, 0.32660756, 1)
 clearcoat_enabled = true
+billboard_mode = 2
+billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_yy2xj"]
+lightmap_size_hint = Vector2i(2, 4)
 material = SubResource("StandardMaterial3D_if265")
-size = Vector2(0.02, 1)
+size = Vector2(0.02, 0.515)
 
-[node name="Rain" type="GPUParticles3D"]
+[node name="Rain" type="GPUParticles3D" unique_id=1441800040]
 amount = 1000
 visibility_aabb = AABB(-45.52595, -96.632866, -44.340973, 96.03276, 97.60453, 87.70635)
-transform_align = 2
+transform_align = 3
 process_material = SubResource("ParticleProcessMaterial_if265")
 draw_pass_1 = SubResource("QuadMesh_yy2xj")

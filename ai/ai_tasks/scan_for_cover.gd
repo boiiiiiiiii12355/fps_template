@@ -41,8 +41,8 @@ func scan_for_cover():
 		return nearest3cover[0]
 
 func sort_by_dist(a:Vector3, b:Vector3):
-	var dist_a = agent.global_position.distance_squared_to(a)
-	var dist_b = agent.global_position.distance_squared_to(b)
+	var dist_a = agent.player.global_position.distance_squared_to(a)
+	var dist_b = agent.player.global_position.distance_squared_to(b)
 	
 	if dist_a < dist_b:
 		return true

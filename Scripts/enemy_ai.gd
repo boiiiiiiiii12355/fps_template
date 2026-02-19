@@ -90,10 +90,10 @@ func pathfinding():
 				action_queue.resize(action_queue.size() - 1)
 				
 		#rotate towards movement dir
-		var rotation_speed = 0.1
+		#var rotation_speed = 0.1
 		
-		var target_rotation = dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
-		model.rotation.y = lerp(model.rotation.y, target_rotation, rotation_speed)
+		#var target_rotation = dir.signed_angle_to(Vector3.MODEL_FRONT, Vector3.DOWN)
+		#model.rotation.y = lerp(model.rotation.y, target_rotation, rotation_speed)
 	
 func apply_wishvel(dir : Vector3, sped : float, decelerate : bool):
 	if !decelerate:
@@ -110,6 +110,14 @@ func add_action(position : Vector3):
 	action_queue[-1] = position
 	print(action_queue)
 	
+#for testing combat ai only
+@export var gun_ray : RayCast3D
+func test_fire():
+	model.look_at(player.global_position, Vector3(0, 1, 0), true)
+	if gun_ray.is_colliding():
+		var colider = gun_ray.get_collider()
+		var colide_pos = gun_ray.get_collision_point()
+		DrawLine3d.DrawLine(gun_ray.global_position, gun_ray.get_collision_point(), Color.YELLOW, 0.01)
 	
 func target_in_range():
 	pass
