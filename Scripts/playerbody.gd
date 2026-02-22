@@ -33,9 +33,10 @@ func _ready() -> void:
 	arms_action = animation_tree.tree_root.get_node("arms_action")
 	
 func _physics_process(delta: float) -> void:
-	equip_node.get_parent().scale = Vector3(1, 1, 1)
-	animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
-	animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equipstatus_check(false)), 0.2))
+	if alive:
+		equip_node.get_parent().scale = Vector3(1, 1, 1)
+		animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
+		animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equipstatus_check(false)), 0.2))
 
 func equipstatus_check(checkoffset:bool):
 	if !checkoffset:
@@ -56,8 +57,19 @@ func chest_point_at(r_position : Vector3):
 	camera_point.global_position = lerp(camera_point.global_position, end_position, 0.5)
 	camera_spine.global_position = head_tracker.global_position
 	recoil_process()
+	apply_camera_influence()
 	turn_body_to_cam()
-
+	
+var alive : bool = true
+func player_dead():
+	alive = false
+	visible = false
+	
+var camera_influence : float = 50.0 #percentage
+func apply_camera_influence():
+	var head_angl = head_tracker.quaternion
+	camera_spine.quaternion.slerp(head_tracker.quaternion, camera_influence / 100)
+	
 var recoil_rand = RandomNumberGenerator.new()
 func apply_recoil(amount : Vector3):
 	recoil_pos.y += recoil_rand.randf_range(-amount.y / 2, amount.y)

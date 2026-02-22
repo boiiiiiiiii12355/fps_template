@@ -1,24 +1,14 @@
-extends Skeleton3D
+extends Node3D
+class_name ragdoll
+@export var skeleton : Skeleton3D
 @export var physics_bone : PhysicalBoneSimulator3D
-@export var head : PhysicalBone3D
-var hp = 100
+@export var head_tracker : BoneAttachment3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	bone_init()
-
-func bone_init():
-	for i : PhysicalBone3D in physics_bone.get_children():
-		i.add_to_group("ragdoll")
-
-@export var headshot_modi = 400 #percent
-@export var bodyshot_modi = 100 #percent
-func hit(hit_bone : PhysicalBone3D, base_damage : float):
-	var modi_damage = base_damage
+	visible = false
 	
-	if hit_bone == head:
-		modi_damage *= headshot_modi / 100
-		
-	hp -= modi_damage
-	if hp <= 0:
-		physics_bone.physical_bones_start_simulation()
+func start_phy():
+	visible = true
+	skeleton.show_rest_only = false
+	physics_bone.physical_bones_start_simulation()

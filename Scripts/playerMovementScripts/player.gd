@@ -9,6 +9,7 @@ class_name Player
 @export var camera_spine : Node3D
 @export var hud : Control
 @export var player_body : playermodel
+@export var player_cam : Camera3D
 @onready var coyoteTimer = $CoyoteTime
 
 var pickup_point 
@@ -32,6 +33,12 @@ func _ready():
 	
 @export var chest_point_target : Node3D
 func _physics_process(delta: float) -> void:
+	if !dead:
+		phy_pro(delta)
+	else:
+		velocity = Vector3.ZERO
+		
+func phy_pro(delta):
 	camera_dist = clamp(4+(sqrt(stats.vel.length())/1.5),8, 100)
 	view.fov = clamp(70+sqrt(stats.vel.length()*7),90, 180)
 	preselect_check()
@@ -76,8 +83,6 @@ func _physics_process(delta: float) -> void:
 		player_body.interact_detect()
 	else:
 		player_body.interact_none()
-		
-
 		
 func clearCoyote():
 	coyoteTimer.stop()

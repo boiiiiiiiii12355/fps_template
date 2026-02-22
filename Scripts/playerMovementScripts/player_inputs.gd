@@ -10,10 +10,10 @@ class_name PlayerInputs
 @export var pickup_speed = 20
 @export var preselected_inventory_slot : int = 1
 @export var selected_inventory_slot : int = 1
+var camera : Node3D
 var kick_charge : float = 0.0
 var flashlight_toggle = false
-var camera : Node3D
-
+var dead = false
 
 func _ready():
 	push_warning("You should not be seeing this (player_inputs.gd is being initiated)")
@@ -54,6 +54,10 @@ func ViewAngles(delta):
 
 var movement_local_dir = Vector2.ZERO
 func InputKeys():
+	if !dead:
+		input_tick()
+
+func input_tick():
 	stats.sidemove += int(stats.ply_sidespeed) * (int(Input.get_action_strength("move_left") * 50))
 	stats.sidemove -= int(stats.ply_sidespeed) * (int(Input.get_action_strength("move_right") * 50))
 	

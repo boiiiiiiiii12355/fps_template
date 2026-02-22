@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://dljcnxkua4rf" path="res://Scripts/playerMovementScripts/player_vars.tres" id="2_graem"]
 [ext_resource type="PackedScene" uid="uid://dppu81f8q0do2" path="res://tscns/hud.tscn" id="3_hpxkm"]
 [ext_resource type="Texture2D" uid="uid://da72e4jxersy2" path="res://images/icon.svg" id="3_imbja"]
+[ext_resource type="PackedScene" uid="uid://bllbjlr3e1iyr" path="res://models/char_models/player_ragdoll.tscn" id="4_hru13"]
 [ext_resource type="PackedScene" uid="uid://c42sugcir7jjr" path="res://models/char_models/gr_subject_203.tscn" id="4_k0k4f"]
 [ext_resource type="Script" uid="uid://d1igmj4igr0ja" path="res://Scripts/stateMachine.gd" id="4_oxk7l"]
 [ext_resource type="Script" uid="uid://jibxa5kw7wft" path="res://Scripts/playerMovementScripts/Run.gd" id="5_mty1n"]
@@ -37,31 +38,31 @@ size = Vector3(0.7, 1.655, 0.7)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.7, 0.4, 0.7)
 
-[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "hud", "player_body", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
+[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "hud", "player_body", "player_cam", "chest_point_target", "view", "inventory", "interact_ray", "pickup_hold_area", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
-camera_dist = null
 camera_spine = NodePath("TwistPivot")
 hud = NodePath("HUD")
 player_body = NodePath("GR_subject_203")
+player_cam = NodePath("TwistPivot/view")
 chest_point_target = NodePath("TwistPivot/view/point_target")
 stats = ExtResource("2_graem")
 view = NodePath("TwistPivot/view")
 inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
-pickup_speed = null
-preselected_inventory_slot = null
-selected_inventory_slot = null
 preselect_timer = NodePath("preselect_timer")
 
 [node name="GR_subject_203" parent="." unique_id=1369285068 node_paths=PackedStringArray("camera_spine", "gun_ray") instance=ExtResource("4_k0k4f")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 camera_spine = NodePath("../TwistPivot")
 gun_ray = NodePath("../TwistPivot/view/gun_point")
+
+[node name="player_ragdoll" parent="." unique_id=989224547 instance=ExtResource("4_hru13")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=822870378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -174,10 +175,12 @@ equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../GR_subject_203")
 gun_point = NodePath("../TwistPivot/view/gun_point")
 
-[node name="health" type="Node" parent="." unique_id=1769689478 node_paths=PackedStringArray("player_hitbox", "environment_damage_timer")]
+[node name="health" type="Node" parent="." unique_id=1769689478 node_paths=PackedStringArray("player_hitbox", "environment_damage_timer", "player_model", "player_ragdoll")]
 script = ExtResource("19_k0k4f")
 player_hitbox = NodePath("../player_hitbox")
 environment_damage_timer = NodePath("../environment_dmg_timer")
+player_model = NodePath("../GR_subject_203")
+player_ragdoll = NodePath("../player_ragdoll")
 
 [node name="HUD" parent="." unique_id=817762856 node_paths=PackedStringArray("player_camera") instance=ExtResource("3_hpxkm")]
 player_camera = NodePath("../TwistPivot/view")
