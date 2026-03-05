@@ -112,7 +112,7 @@ rotation_edit_mode = 1
 [node name="view" type="Camera3D" parent="TwistPivot" unique_id=1795726355]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028270006, -0.05330111)
 current = true
-near = 0.089
+near = 0.001
 script = ExtResource("6_hru13")
 
 [node name="interact_ray" type="RayCast3D" parent="TwistPivot/view" unique_id=995186137]

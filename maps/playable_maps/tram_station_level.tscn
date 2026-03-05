@@ -79,7 +79,13 @@ size = Vector3(2.2235107, 0.94021606, 0.6690674)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.253387, -1.5095289, -10.120253)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1850443382]
-transform = Transform3D(0.97326714, -0.031313583, 0.22753142, 0, 0.9906624, 0.13633806, -0.22967604, -0.13269335, 0.96417916, 0, 23.347904, 0)
+transform = Transform3D(0.97326714, -0.031313583, 0.22753139, -0.2285822, -0.22862992, 0.9462973, 0.022388523, -0.9730097, -0.22967571, -41.401146, 7.921081, 0)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1592845043]
+transform = Transform3D(0.71921986, 0.17524727, -0.6723176, 0.6944216, -0.15013517, 0.7037314, 0.022388516, -0.9730097, -0.2296757, -41.401146, 7.921081, 0)
+light_energy = 0.5
 shadow_enabled = true
 
 [node name="door_wood" parent="." unique_id=1031475536 instance=ExtResource("10_hc6mv")]

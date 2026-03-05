@@ -192,7 +192,7 @@ nodes/fall_landing_anim/node = SubResource("AnimationNodeAnimation_hl46p")
 nodes/fall_landing_anim/position = Vector2(200, -360)
 node_connections = [&"output", 0, &"interact_blend", &"stand_to_crouch", 0, &"idle_to_walk", &"stand_to_crouch", 1, &"crouch_to_crouchwalk", &"arms_action_blend", 0, &"kick_oneshot", &"arms_action_blend", 1, &"arms_action_timeseek", &"arms_action_timeseek", 0, &"arms_action", &"kick_oneshot", 0, &"fall_landing", &"kick_oneshot", 1, &"kick", &"interact_blend", 0, &"arms_action_blend", &"interact_blend", 1, &"Animation", &"falling_blend", 0, &"stand_to_crouch", &"falling_blend", 1, &"falling", &"fall_landing", 0, &"falling_blend", &"fall_landing", 1, &"fall_landing_anim"]
 
-[node name="GR_subject_203" unique_id=291686338 node_paths=PackedStringArray("skeleton", "camera_point", "legs_point", "animation_tree", "head_tracker", "gun_point", "upper_chest_lookat", "copy_transform", "equip_node", "slot1", "slot2", "slot3", "kick_hitbox") groups=["player_animations"] instance=ExtResource("1_00ty0")]
+[node name="GR_subject_203" unique_id=2037052509 node_paths=PackedStringArray("skeleton", "camera_point", "legs_point", "animation_tree", "head_tracker", "gun_point", "upper_chest_lookat", "copy_transform", "equip_node", "slot1", "slot2", "slot3", "kick_hitbox") groups=["player_animations"] instance=ExtResource("1_00ty0")]
 rotation_edit_mode = 1
 script = ExtResource("2_p1ll0")
 skeleton = NodePath("rig/Skeleton3D")
@@ -228,14 +228,14 @@ visible = false
 size = Vector3(0.1, 0.1, 0.1)
 material = SubResource("StandardMaterial3D_00ty0")
 
-[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(940359267) index="0" unique_id=802757763]
-bones/1/position = Vector3(0.006010397, -0.021533752, 0.83479846)
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(1560151386) index="0" unique_id=352152905]
+bones/1/position = Vector3(0.0060103973, -0.021527957, 0.8328976)
 bones/1/rotation = Quaternion(0.7744464, -0.093404494, -0.07492224, 0.6212045)
 bones/2/rotation = Quaternion(-0.051503174, 1.19051e-07, -1.841897e-08, 0.99867284)
 bones/3/rotation = Quaternion(-0.14415012, 0.041191872, 0.008095244, 0.988665)
 bones/4/rotation = Quaternion(0.0865149, 0.11926501, 0.0036631753, 0.9890792)
-bones/5/rotation = Quaternion(0.18778156, -1.1708872e-07, 2.2385102e-08, 0.9822109)
-bones/7/rotation = Quaternion(-0.120534874, -1.1834029e-07, -1.4368078e-08, 0.99270916)
+bones/5/rotation = Quaternion(0.18057209, -1.17249954e-07, 2.1528992e-08, 0.9835618)
+bones/7/rotation = Quaternion(-0.12781239, -1.1823528e-07, -1.5233406e-08, 0.9917984)
 bones/9/scale = Vector3(0.99999994, 0.99999994, 0.99999994)
 bones/10/scale = Vector3(0.99999994, 0.9999999, 1)
 bones/19/rotation = Quaternion(-0.6006747, -0.31868812, -0.27044556, 0.68153286)
@@ -292,15 +292,15 @@ bones/74/rotation = Quaternion(-0.10960084, -0.006695049, -0.041118592, 0.993102
 bones/75/position = Vector3(0.04777982, 0.10130772, -0.036250554)
 bones/75/rotation = Quaternion(0.97966903, 0.11408968, 0.021112934, -0.16366513)
 bones/76/rotation = Quaternion(0.07823316, 0.76949656, 0.42892048, -0.4666711)
-bones/78/rotation = Quaternion(0.9661949, -0.007498336, -0.0028189505, 0.25768858)
-bones/79/rotation = Quaternion(0.27442646, -0.0020818824, -0.043412976, 0.9606254)
-bones/80/rotation = Quaternion(-0.5879153, -0.24282813, -0.06718487, 0.76868474)
+bones/78/rotation = Quaternion(0.96460986, -0.007486648, -0.002937719, 0.2635586)
+bones/79/rotation = Quaternion(0.2874406, -0.0024402058, -0.04344086, 0.95680976)
+bones/80/rotation = Quaternion(-0.5933869, -0.24306548, -0.065255694, 0.76456064)
 bones/81/rotation = Quaternion(-1.294835e-06, 0.97799546, -0.20862648, 3.2294263e-06)
 bones/82/position = Vector3(-0.030937502, 0.010043687, 0.08060443)
 bones/82/rotation = Quaternion(0.6844574, 0.6844599, -0.177528, 0.1775289)
-bones/83/rotation = Quaternion(0.9960158, -0.0050817444, 0.00039984763, 0.08903118)
-bones/84/rotation = Quaternion(0.19581278, 0.0043789735, 0.04227562, 0.9797199)
-bones/85/rotation = Quaternion(-0.6440594, 0.22337924, 0.020184474, 0.7313561)
+bones/83/rotation = Quaternion(0.9953483, -0.005175078, 0.00054864166, 0.09620194)
+bones/84/rotation = Quaternion(0.21368119, 0.0046848156, 0.04222646, 0.9759792)
+bones/85/rotation = Quaternion(-0.6513532, 0.2233381, 0.017635398, 0.7249471)
 bones/86/rotation = Quaternion(-1.9411566e-06, 0.9743316, -0.22511776, 1.2402288e-07)
 bones/87/position = Vector3(0.030937351, 0.010045983, 0.08060456)
 bones/87/rotation = Quaternion(0.6844569, -0.68445593, 0.1775375, 0.17753707)
@@ -410,7 +410,7 @@ use_secondary_rotation = false
 relative = false
 
 [node name="foot_attach" type="BoneAttachment3D" parent="rig/Skeleton3D" index="2" unique_id=1597711738]
-transform = Transform3D(0.7830704, -0.53306454, 0.32038143, 8.764863e-05, -0.5150429, -0.8571645, 0.62193525, 0.67125297, -0.40327045, -0.08141725, 0.10060793, -0.12717596)
+transform = Transform3D(0.78294253, -0.5328318, 0.32108036, -0.0005965233, -0.5167705, -0.85612386, 0.62209594, 0.670109, -0.40492186, -0.08093647, 0.10207692, -0.1283715)
 bone_name = "foot.R"
 bone_idx = 85
 
@@ -423,22 +423,22 @@ collision_mask = 8
 shape = SubResource("BoxShape3D_00ty0")
 
 [node name="head_tracker" type="BoneAttachment3D" parent="rig/Skeleton3D" index="3" unique_id=735029294]
-transform = Transform3D(0.995632, 0.040643696, 0.08405413, -0.042085633, 0.9989946, 0.015454054, -0.083341464, -0.018924072, 0.9963412, 0.029361863, 1.4217995, 0.06257715)
+transform = Transform3D(0.9956918, 0.03780165, 0.08467143, -0.04044508, 0.99873966, 0.029725015, -0.08344101, -0.03302148, 0.9959653, 0.028938662, 1.4203701, 0.06117649)
 bone_name = "spine.006"
 bone_idx = 7
 
 [node name="chest_tracker" type="BoneAttachment3D" parent="rig/Skeleton3D" index="4" unique_id=123498572]
-transform = Transform3D(0.9500818, 0.07101132, 0.3038125, -0.055531938, 0.99669445, -0.05930195, -0.30701923, 0.03947036, 0.9508845, 0.0043286085, 1.166656, 0.02630738)
+transform = Transform3D(0.9500818, 0.07101132, 0.3038125, -0.055531938, 0.99669445, -0.05930195, -0.30701923, 0.03947036, 0.9508845, 0.0043286085, 1.1647551, 0.026301583)
 bone_name = "spine.003"
 bone_idx = 4
 
 [node name="hand_R" type="BoneAttachment3D" parent="rig/Skeleton3D" index="5" unique_id=134147364]
-transform = Transform3D(-0.33880687, 0.93791044, -0.07438787, 0.9392799, 0.3417547, 0.03092743, 0.054429546, -0.05939272, -0.99674976, -0.10133008, 1.2760195, 0.53980565)
+transform = Transform3D(-0.33880687, 0.93791044, -0.07438787, 0.9392799, 0.3417547, 0.03092743, 0.054429546, -0.05939272, -0.99674976, -0.10133008, 1.2741185, 0.53979987)
 bone_name = "hand_hold.R"
 bone_idx = 68
 
 [node name="slot1and3" type="BoneAttachment3D" parent="rig/Skeleton3D" index="6" unique_id=1155354426]
-transform = Transform3D(0.99584854, 0.044708226, 0.07929057, -0.054633267, 0.9902961, 0.12778431, -0.07280809, -0.13158575, 0.98862743, -0.0016111212, 1.0350899, 0.043789238)
+transform = Transform3D(0.99584854, 0.044708226, 0.07929057, -0.054633267, 0.9902961, 0.12778431, -0.07280809, -0.13158575, 0.98862743, -0.0016111208, 1.0331889, 0.04378344)
 bone_name = "spine.002"
 bone_idx = 3
 
@@ -449,7 +449,7 @@ transform = Transform3D(0.8807106, 0.0003938377, 0.47365478, -0.45203853, 0.2993
 transform = Transform3D(0.5625809, -0.81800175, -0.11990023, 0.4240877, 0.16103855, 0.89118814, -0.70968527, -0.5522135, 0.43750158, 0.08815792, 0.029289953, -0.05923052)
 
 [node name="slot2" type="BoneAttachment3D" parent="rig/Skeleton3D" index="7" unique_id=1941975202]
-transform = Transform3D(0.9723902, -0.08351247, 0.21790953, -0.015219199, -0.9544799, -0.29788864, 0.23286635, 0.28634575, -0.9294032, 0.069158, 0.8723207, 0.090248615)
+transform = Transform3D(0.9724238, -0.08612937, 0.21673751, -0.015237393, -0.95078707, -0.30947262, 0.23272453, 0.29763407, -0.9258856, 0.069158, 0.87041986, 0.09024282)
 bone_name = "thigh.L"
 bone_idx = 78
 
@@ -486,7 +486,7 @@ settings/2/axes = 7
 settings/2/invert = 0
 settings/2/additive = false
 
-[node name="head" parent="rig/Skeleton3D" index="11" unique_id=1103945440]
+[node name="head" parent="rig/Skeleton3D" index="11" unique_id=1160174223]
 cast_shadow = 3
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="5" unique_id=28479982]
@@ -506,5 +506,5 @@ parameters/fall_landing/active = false
 parameters/fall_landing/internal_active = false
 parameters/fall_landing/request = 0
 
-[node name="AnimationPlayer" parent="." index="6" unique_id=1358232637]
+[node name="AnimationPlayer" parent="." index="6" unique_id=1557682785]
 libraries/player_animation = ExtResource("3_00ty0")
