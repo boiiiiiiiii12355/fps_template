@@ -40,7 +40,10 @@ func _physics_process(delta: float) -> void:
 		animation_tree.set(stand_to_crouch, lerp(animation_tree.get(stand_to_crouch), rtc_blend_amount, 0.1))
 		animation_tree.set(arms_action_blend, lerp(animation_tree.get(arms_action_blend), float(equipstatus_check(false)), 0.2))
 		animation_tree.set(falling_blend, lerp(animation_tree.get(falling_blend), 0.0, 0.05))
-		
+
+func  _process(delta: float) -> void:
+	camera_spine.global_position = head_tracker.global_position
+	
 func equipstatus_check(checkoffset:bool):
 	if !checkoffset:
 		var equipstatus : float = 0
@@ -55,9 +58,8 @@ var upperchest_offset :Vector3 = Vector3(0.3, 0, 0)
 func chest_point_at(r_position : Vector3):
 	var end_position = r_position + recoil_pos 
 	var upper_torso_copy_amount = copy_transform.get("settings/0/amount")
-	copy_transform.set("settings/0/amount", lerp(upper_torso_copy_amount, equipstatus_check(false) + 0.1, 0.1))
+	copy_transform.set("settings/0/amount", lerp(upper_torso_copy_amount, equipstatus_check(false) + 0.45, 0.1))
 	camera_point.global_position = lerp(camera_point.global_position, end_position, 0.5)
-	camera_spine.global_position = head_tracker.global_position
 	upper_chest_lookat.look_at(camera_point.global_position, Vector3.UP, true)
 	upper_chest_lookat.global_position = owner.camera.global_position
 	recoil_process()
