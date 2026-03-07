@@ -9,6 +9,8 @@ class_name Player
 @export var camera_spine : Node3D
 @export var player_body : playermodel
 @export var player_cam : Camera3D
+@export var dialogue_cam_root : Node3D
+@export var dialogue_cam : Camera3D
 @onready var coyoteTimer = $CoyoteTime
 
 var pickup_point 
@@ -18,6 +20,7 @@ var height = 2 #the model is 2 meter tall
 
 
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	preselect_timer.timeout.connect(preselect_timer_end)
 	mySkin.set_sorting_offset(1)
 	pickup_point = pickup_hold_area.get_child(0)

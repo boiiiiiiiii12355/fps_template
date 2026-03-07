@@ -38,7 +38,7 @@ size = Vector3(0.5, 1.655, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.5, 0.4, 0.5)
 
-[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "player_cam", "chest_point_target", "hp_system", "view", "inventory", "interact_ray", "pickup_hold_area", "hud", "preselect_timer")]
+[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "player_cam", "dialogue_cam_root", "dialogue_cam", "chest_point_target", "hp_system", "view", "inventory", "interact_ray", "pickup_hold_area", "hud", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
@@ -47,6 +47,8 @@ spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
 player_body = NodePath("GR_subject_203")
 player_cam = NodePath("TwistPivot/view")
+dialogue_cam_root = NodePath("TwistPivot/dialogue_cam_root")
+dialogue_cam = NodePath("TwistPivot/dialogue_cam_root/dialogue_cam")
 chest_point_target = NodePath("TwistPivot/view/point_target")
 hp_system = NodePath("health")
 stats = ExtResource("2_graem")
@@ -65,7 +67,6 @@ gun_ray = NodePath("../TwistPivot/view/gun_point")
 
 [node name="player_ragdoll" parent="." unique_id=989224547 instance=ExtResource("4_hru13")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=822870378]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -128,6 +129,11 @@ collision_mask = 13
 
 [node name="point_target" type="Node3D" parent="TwistPivot/view" unique_id=145324719]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.575)
+
+[node name="dialogue_cam_root" type="Node3D" parent="TwistPivot" unique_id=1893487209]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.028270006, -0.05330111)
+
+[node name="dialogue_cam" type="Camera3D" parent="TwistPivot/dialogue_cam_root" unique_id=1362784668]
 
 [node name="Headbonk" type="ShapeCast3D" parent="." unique_id=1319775847]
 transform = Transform3D(-1, 1.50996e-07, 0, -1.50996e-07, -1, 0, 0, 0, 1, 0, 0.8504385, 0)

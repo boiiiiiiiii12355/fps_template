@@ -21,9 +21,8 @@ ground_horizon_color = Color(0.10248828, 0.1029329, 0.12159113, 1)
 sky_material = SubResource("ProceduralSkyMaterial_2d02k")
 
 [sub_resource type="Environment" id="Environment_uphtb"]
-background_mode = 2
+background_color = Color(0.71838135, 0.71838135, 0.71838135, 1)
 sky = SubResource("Sky_3eqgb")
-tonemap_mode = 2
 glow_enabled = true
 glow_bloom = 1.0
 fog_enabled = true
@@ -90,3 +89,10 @@ shadow_enabled = true
 
 [node name="door_wood" parent="." unique_id=1031475536 instance=ExtResource("10_hc6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.513973, -0.6745939, -6.609885)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1423912838]
+transform = Transform3D(1, 0, 0, 0, -0.0329284, 0.9994577, 0, -0.9994577, -0.0329284, -43.080627, 2.9229395, -16.173216)
+light_energy = 3.646
+shadow_enabled = true
+spot_range = 4.44656
+spot_angle = 30.102865

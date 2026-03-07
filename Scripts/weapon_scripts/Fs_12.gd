@@ -27,7 +27,6 @@ func fire_type():
 
 var pellets = 9
 func object_function(check : bool):
-	Engine.time_scale = 0.1
 	if !check and equip_timer.is_stopped() and ammunition and fire_rate_timer.is_stopped():
 		play_fire_animation()
 		check_hit_shotgun()

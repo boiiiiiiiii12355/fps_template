@@ -9,8 +9,7 @@ var player_inventory : Array
 @export var player_camera : Camera3D
 @export var animationplayer : AnimationPlayer
 @export var dialogue_controller : dialogue_control
-@export var dialogue_gimbal : Node3D
-@export var dialogue_cam_root : Node3D
+@export var player_hud_nodes : Control
 var ui_hp : float
 var req_selector_position : Vector2 = Vector2.ZERO
 

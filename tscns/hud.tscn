@@ -76,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("inventory:rotation")
+tracks/1/path = NodePath("player_hud/inventory:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -84,6 +84,46 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.5795229730548683]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("dialogue/dialogue_choices:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1013.91, 677.295)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("dialogue:dialogue_box_status")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_t502a"]
+resource_name = "dialogue_choices"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dialogue/dialogue_choices:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1013.91, 677.295), Vector2(1013.91, 473)]
 }
 
 [sub_resource type="Animation" id="Animation_224jd"]
@@ -101,6 +141,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 177.725), Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dialogue:dialogue_box_status")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_1pnm5"]
 resource_name = "inventory_toggle"
@@ -108,7 +160,7 @@ length = 13.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("inventory:rotation")
+tracks/0/path = NodePath("player_hud/inventory:rotation")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -121,11 +173,12 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1pnm5"]
 _data = {
 &"RESET": SubResource("Animation_qtpdn"),
+&"dialogue_choices_toggle": SubResource("Animation_t502a"),
 &"dialogue_toggle": SubResource("Animation_224jd"),
 &"inventory_toggle": SubResource("Animation_1pnm5")
 }
 
-[node name="HUD" type="Control" unique_id=1151845633 node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "selector", "animationplayer", "dialogue_controller", "hp_bar", "inventory_timer", "blood_vignette_rect")]
+[node name="HUD" type="Control" unique_id=1151845633 node_paths=PackedStringArray("slot_1", "slot_2", "slot_3", "selector", "animationplayer", "dialogue_controller", "player_hud_nodes", "hp_bar", "inventory_timer", "blood_vignette_rect")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,13 +186,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_drfnf")
-slot_1 = NodePath("inventory/Slot 1")
-slot_2 = NodePath("inventory/Slot 2")
-slot_3 = NodePath("inventory/Slot 3")
-selector = NodePath("inventory/selector")
+slot_1 = NodePath("player_hud/inventory/Slot 1")
+slot_2 = NodePath("player_hud/inventory/Slot 2")
+slot_3 = NodePath("player_hud/inventory/Slot 3")
+selector = NodePath("player_hud/inventory/selector")
 animationplayer = NodePath("AnimationPlayer")
 dialogue_controller = NodePath("dialogue")
-hp_bar = NodePath("status/hp_bar")
+player_hud_nodes = NodePath("player_hud")
+hp_bar = NodePath("player_hud/status/hp_bar")
 inventory_timer = NodePath("inventory_hide_timer")
 blood_vignette_rect = NodePath("blood_vignette")
 
@@ -163,15 +217,22 @@ layout_mode = 0
 offset_right = 1155.0
 offset_bottom = 651.0
 
-[node name="inventory" type="Control" parent="." unique_id=627919267]
+[node name="player_hud" type="Control" parent="." unique_id=1250527702]
 anchors_preset = 0
-offset_left = -5.0
-offset_top = 354.0
-offset_right = 406.0
-offset_bottom = 447.0
+offset_left = 576.0
+offset_top = 326.0
+offset_right = 576.0
+offset_bottom = 326.0
+
+[node name="inventory" type="Control" parent="player_hud" unique_id=627919267]
+anchors_preset = 0
+offset_left = -581.0
+offset_top = 28.0
+offset_right = -170.0
+offset_bottom = 121.0
 rotation = 1.579523
 
-[node name="background" type="ColorRect" parent="inventory" unique_id=720533348]
+[node name="background" type="ColorRect" parent="player_hud/inventory" unique_id=720533348]
 layout_mode = 0
 offset_left = 3.0
 offset_top = -5.0
@@ -179,7 +240,7 @@ offset_right = 411.0
 offset_bottom = 96.0
 color = Color(0.29586652, 0.29586652, 0.29586634, 0.21568628)
 
-[node name="selector" type="ColorRect" parent="inventory" unique_id=1835693200]
+[node name="selector" type="ColorRect" parent="player_hud/inventory" unique_id=1835693200]
 layout_mode = 0
 offset_left = 19.0
 offset_top = 3.0
@@ -187,7 +248,7 @@ offset_right = 389.0
 offset_bottom = 28.0
 color = Color(0, 0, 0, 0.5058824)
 
-[node name="Slot 3" type="RichTextLabel" parent="inventory" unique_id=2016064702]
+[node name="Slot 3" type="RichTextLabel" parent="player_hud/inventory" unique_id=2016064702]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 55.0
@@ -195,7 +256,7 @@ offset_right = 360.0
 offset_bottom = 81.0
 text = "3"
 
-[node name="Slot 2" type="RichTextLabel" parent="inventory" unique_id=186158875]
+[node name="Slot 2" type="RichTextLabel" parent="player_hud/inventory" unique_id=186158875]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 29.0
@@ -203,7 +264,7 @@ offset_right = 360.0
 offset_bottom = 55.0
 text = "2"
 
-[node name="Slot 1" type="RichTextLabel" parent="inventory" unique_id=1535983781]
+[node name="Slot 1" type="RichTextLabel" parent="player_hud/inventory" unique_id=1535983781]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 3.0
@@ -211,12 +272,14 @@ offset_right = 360.0
 offset_bottom = 29.0
 text = "1"
 
-[node name="status" type="Control" parent="." unique_id=676258757]
+[node name="status" type="Control" parent="player_hud" unique_id=676258757]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -576.0
+offset_top = -326.0
+offset_right = -536.0
+offset_bottom = -286.0
 
-[node name="hp_bar" type="ProgressBar" parent="status" unique_id=1523102949]
+[node name="hp_bar" type="ProgressBar" parent="player_hud/status" unique_id=1523102949]
 layout_mode = 0
 offset_left = 23.0
 offset_top = 518.0
@@ -229,6 +292,13 @@ rounded = true
 fill_mode = 3
 show_percentage = false
 
+[node name="ColorRect" type="ColorRect" parent="player_hud" unique_id=1039712457]
+layout_mode = 0
+offset_top = -2.0
+offset_right = 3.0
+offset_bottom = 1.0
+rotation = 0.7853982
+
 [node name="chroma" type="ColorRect" parent="." unique_id=1346445086]
 visible = false
 material = SubResource("ShaderMaterial_qtpdn")
@@ -238,21 +308,14 @@ offset_top = -84.0
 offset_right = 1332.4883
 offset_bottom = 760.0
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1039712457]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 324.0
-offset_right = 579.0
-offset_bottom = 327.0
-rotation = 0.7853982
-
-[node name="dialogue" type="Control" parent="." unique_id=469706801 node_paths=PackedStringArray("text_label")]
+[node name="dialogue" type="Control" parent="." unique_id=469706801 node_paths=PackedStringArray("text_label", "next_button")]
 anchors_preset = 0
 offset_top = 177.49
 offset_right = 1153.0
 offset_bottom = 829.49
 script = ExtResource("5_224jd")
 text_label = NodePath("Label")
+next_button = NodePath("textbox_background/next_button")
 
 [node name="textbox_background" type="ColorRect" parent="dialogue" unique_id=1204891928]
 layout_mode = 0
@@ -260,7 +323,28 @@ offset_left = 129.0
 offset_top = 473.0
 offset_right = 998.0
 offset_bottom = 646.0
-color = Color(0.20392157, 0.20392157, 0.20392157, 0.49411765)
+color = Color(0.20392157, 0.20392157, 0.20392157, 0.75686276)
+
+[node name="next_button" type="Button" parent="dialogue/textbox_background" unique_id=1978072147]
+layout_mode = 0
+offset_left = 797.0
+offset_top = 3.2750244
+offset_right = 864.0
+offset_bottom = 34.275024
+text = "next -->"
+
+[node name="dialogue_choices" type="ColorRect" parent="dialogue" unique_id=2016417747]
+layout_mode = 0
+offset_left = 1013.91
+offset_top = 677.295
+offset_right = 1131.0
+offset_bottom = 850.29443
+color = Color(0.20392157, 0.20392157, 0.20392157, 0.75686276)
+
+[node name="choices" type="Control" parent="dialogue/dialogue_choices" unique_id=1983098688]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="dialogue" unique_id=633431630]
 layout_mode = 0
@@ -276,4 +360,5 @@ one_shot = true
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1588546487]
 libraries/ = SubResource("AnimationLibrary_1pnm5")
 
+[connection signal="pressed" from="dialogue/textbox_background/next_button" to="dialogue" method="_on_next_button_pressed"]
 [connection signal="timeout" from="inventory_hide_timer" to="." method="inventory_hide_timer_timeout"]

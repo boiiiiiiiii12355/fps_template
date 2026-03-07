@@ -29,7 +29,8 @@ func _input(event):
 		
 	if event.is_action_pressed("click"):
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			pass
 			
 	if event.is_action_pressed("restart"):
 		stats.vel = Vector3(0,0,0)
@@ -121,8 +122,10 @@ func input_tick():
 			elif object.is_in_group("npc"):
 				var npc : npc_base = object
 				var dialogue_controller : dialogue_control = hud.dialogue_controller
+				dialogue_controller.player_dialogue_cam_look_at(npc.head)
 				dialogue_controller.store_dialogue_data(npc.dialogue_data_block)
 				dialogue_controller.play_dialogue_section(0)
+				dialogue_controller.player_to_dialogue_transition()
 			else:
 				object.get_child(0).object_function(false)
 			

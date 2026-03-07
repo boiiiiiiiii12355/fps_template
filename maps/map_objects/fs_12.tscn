@@ -10,7 +10,7 @@ size = Vector3(0.07566162, 0.18178369, 0.72390157)
 [sub_resource type="BoxShape3D" id="BoxShape3D_72isp"]
 size = Vector3(0.16627441, 0.22262256, 0.77545446)
 
-[node name="fs_12" unique_id=598115776 node_paths=PackedStringArray("gun_ray_collection", "gun_shot_sound", "weapon_model", "muzzle_flash", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["interactable", "pickable"] instance=ExtResource("1_otxxy")]
+[node name="fs_12" unique_id=598115776 node_paths=PackedStringArray("gun_ray_collection", "gun_shot_sound", "weapon_model", "muzzle_flash", "fire_rate_timer", "animation_player", "ejection_area", "equip_timer", "pickup_area") groups=["pickable"] instance=ExtResource("1_otxxy")]
 collision_layer = 4
 script = ExtResource("2_72isp")
 gun_ray_collection = NodePath("gun_ray_collection")
@@ -76,18 +76,11 @@ shadow_enabled = true
 omni_range = 0.0
 omni_attenuation = 2.0
 
-[node name="item_light" type="OmniLight3D" parent="." index="3" unique_id=1760164262]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.11321273, 0.30939054)
-light_energy = 0.001
-light_size = 0.284
-shadow_enabled = true
-omni_range = 0.3905337
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="4" unique_id=1932294669 groups=["interactable", "pickable"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3" unique_id=1932294669 groups=["interactable", "pickable"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004088464, 0.08772877, 0.28773606)
 shape = SubResource("BoxShape3D_n6rpt")
 
-[node name="pickup_area" type="Area3D" parent="." index="5" unique_id=359731394]
+[node name="pickup_area" type="Area3D" parent="." index="4" unique_id=359731394]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011259437, 0.040984385, 0.5121591)
 collision_layer = 4
 collision_mask = 0
@@ -96,24 +89,24 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.012658648, 0.049180932, -0.21511452)
 shape = SubResource("BoxShape3D_72isp")
 
-[node name="equip_timer" type="Timer" parent="." index="6" unique_id=1477718819]
+[node name="equip_timer" type="Timer" parent="." index="5" unique_id=1477718819]
 one_shot = true
 
-[node name="fire_rate" type="Timer" parent="." index="7" unique_id=1674559542]
+[node name="fire_rate" type="Timer" parent="." index="6" unique_id=1674559542]
 wait_time = 1.5
 one_shot = true
 
-[node name="ejection_area" type="Node3D" parent="." index="8" unique_id=1838819716]
+[node name="ejection_area" type="Node3D" parent="." index="7" unique_id=1838819716]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.019153394, 0.11555814, 0.14835235)
 
 [node name="ejection_dir" type="Node3D" parent="ejection_area" index="0" unique_id=265370268]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.020198924, 0.0052442923, 0)
 
-[node name="gunshot" type="AudioStreamPlayer3D" parent="." index="9" unique_id=559901452]
+[node name="gunshot" type="AudioStreamPlayer3D" parent="." index="8" unique_id=559901452]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.010719381, -0.027113676)
 stream = ExtResource("2_n6rpt")
 
-[node name="gun_ray_collection" type="Node3D" parent="." index="10" unique_id=1379417040]
+[node name="gun_ray_collection" type="Node3D" parent="." index="9" unique_id=1379417040]
 transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0.11939304, 0.63684213)
 
 [node name="gun_ray" type="RayCast3D" parent="gun_ray_collection" index="0" unique_id=366544255]
