@@ -190,12 +190,13 @@ equip_pos = NodePath("../TwistPivot/equip_area")
 player_animation = NodePath("../GR_subject_203")
 gun_point = NodePath("../TwistPivot/view/gun_point")
 
-[node name="health" type="Node" parent="." unique_id=1769689478 node_paths=PackedStringArray("player_hitbox", "environment_damage_timer", "player_model", "player_ragdoll")]
+[node name="health" type="Node" parent="." unique_id=1769689478 node_paths=PackedStringArray("player_hitbox", "environment_damage_timer", "player_model", "player_ragdoll", "inventory")]
 script = ExtResource("19_k0k4f")
 player_hitbox = NodePath("../player_hitbox")
 environment_damage_timer = NodePath("../environment_dmg_timer")
 player_model = NodePath("../GR_subject_203")
 player_ragdoll = NodePath("../player_ragdoll")
+inventory = NodePath("../Inventory")
 
 [node name="CoyoteTime" type="Timer" parent="." unique_id=238687300]
 wait_time = 0.15

@@ -1,4 +1,5 @@
 extends Node
+class_name Player_Inventory
 
 var inventory_owner = null
 var owner_model : Node3D
@@ -61,13 +62,15 @@ func inventory_process():
 			last_selected_slot = selected_slot
 		
 	
+func player_death_drop():
+	drop(equipted_slot + 1)
 	
 func pickup(object : Object, slot : int):
 	if inventory_array[slot] == null:
 		inventory_array[slot] = object
 		hud.update_inventory_display()
 		
-var throw_speed = 10
+var throw_speed = 5
 func drop(slot : int):
 	if inventory_array[slot - 1] != null:
 		var throw_velocity = (inventory_owner.pickup_point.global_position - inventory_owner.pickup_hold_area.global_position) * throw_speed

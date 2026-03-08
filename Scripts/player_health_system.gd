@@ -6,6 +6,7 @@ class_name  player_hp_management
 @export var maximum_hp = 100
 @export var player_model : playermodel
 @export var player_ragdoll : ragdoll
+@export var inventory : Player_Inventory
 var player = owner
 var hp = maximum_hp
 var dead : bool = false
@@ -32,6 +33,7 @@ func spawn_dead_player():
 	owner.dead = true
 	cam.dead = true
 	var look_dir = Vector3(player_model.legs_point.global_position.x, 0, player_model.legs_point.global_position.z)
+	inventory.player_death_drop()
 	player_ragdoll.look_at(look_dir, Vector3(0, 1, 0), true)
 	player_ragdoll.start_phy()
 	player_model.player_dead()
