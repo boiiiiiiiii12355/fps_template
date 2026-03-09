@@ -10,6 +10,7 @@ var player_inventory : Array
 @export var animationplayer : AnimationPlayer
 @export var dialogue_controller : dialogue_control
 @export var player_hud_nodes : Control
+@export var shop_ui_node : shop_ui
 var ui_hp : float
 var req_selector_position : Vector2 = Vector2.ZERO
 

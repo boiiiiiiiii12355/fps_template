@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://dhmy08pwwf182"]
+
+[ext_resource type="Script" uid="uid://6v24l41o4hif" path="res://hud_elements/shop_ui.gd" id="1_d0vn6"]
+[ext_resource type="PackedScene" uid="uid://cv83xee8qwc4o" path="res://hud_elements/shop_item_buttons.tscn" id="1_d5m4i"]
+
+[sub_resource type="Animation" id="Animation_bw4uy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shop_item_list:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1237, -122)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shop_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d0vn6"]
+resource_name = "shop_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shop_item_list:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1237, -122), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:shop_state")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bw4uy"]
+_data = {
+&"RESET": SubResource("Animation_bw4uy"),
+&"shop_toggle": SubResource("Animation_d0vn6")
+}
+
+[node name="shop_ui" type="Control" unique_id=1482899485 node_paths=PackedStringArray("shop_items_list", "animation_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d0vn6")
+shop_items_list = NodePath("shop_item_list/ScrollContainer/item_list")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="shop_item_list" type="Control" parent="." unique_id=1839352278]
+anchors_preset = 0
+offset_left = -1237.0
+offset_top = -122.0
+offset_right = -1197.0
+offset_bottom = -82.0
+rotation = -1.4739642
+
+[node name="ColorRect" type="ColorRect" parent="shop_item_list" unique_id=273795996]
+layout_mode = 0
+offset_right = 22.03683
+offset_bottom = 1249.6501
+color = Color(1, 0, 0, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="shop_item_list" unique_id=1884238382]
+clip_contents = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 5.0
+offset_right = 15.458519
+offset_bottom = 1157.6228
+follow_focus = true
+scroll_hint_mode = 3
+tile_scroll_hint = true
+
+[node name="item_list" type="Control" parent="shop_item_list/ScrollContainer" unique_id=1912217031]
+custom_minimum_size = Vector2(1, 10000)
+layout_mode = 2
+
+[node name="shopitem1wrap" parent="shop_item_list/ScrollContainer/item_list" unique_id=2008089104 instance=ExtResource("1_d5m4i")]
+layout_mode = 0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1121446994]
+libraries/ = SubResource("AnimationLibrary_bw4uy")

@@ -198,7 +198,6 @@ offset_right = 197.0
 offset_bottom = 651.0
 draw_focus_border = true
 horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
 
 [node name="map_list" type="Control" parent="CanvasLayer/sp_maps_list/ScrollContainer" unique_id=977781043]
 layout_mode = 2

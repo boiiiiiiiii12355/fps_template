@@ -4,6 +4,7 @@ class_name  dialogue_control
 @export var text_label : Label
 @export var next_button : Button
 @export var dialogue_box_status : bool = false
+@export var shop_ui_node : shop_ui
 var hud : player_hud
 var player : Player
 var dialogue_storage : PackedStringArray
@@ -41,11 +42,16 @@ func _on_next_button_pressed() -> void:
 func play_dialogue_section(idx : int):
 	if ! dialogue_storage.is_empty():
 		print("has data")
-		text_label.text = dialogue_storage[idx]
-		text_label.visible_characters = 0
-		for i  in text_label.text.length():
-			text_label.visible_characters += 1
-			await get_tree().create_timer(0.05).timeout
+		if dialogue_storage[idx] == "shop.open":
+			shop_ui_node.shop_open()
+		elif dialogue_storage[idx] == "shop.close":
+			shop_ui_node.shop_close()
+		else:
+			text_label.text = dialogue_storage[idx]
+			text_label.visible_characters = 0
+			for i  in text_label.text.length():
+				text_label.visible_characters += 1
+				await get_tree().create_timer(0.05).timeout
 			
 	
 func player_to_dialogue_transition():
@@ -55,7 +61,7 @@ func player_to_dialogue_transition():
 	size_tween.tween_property(hud.player_hud_nodes, "scale", Vector2(1.2, 1.2), 0.5).set_ease(Tween.EASE_IN_OUT)
 	size_tween.tween_property(player.dialogue_cam, "fov", 50, 0.3)
 	size_tween.tween_property(player.player_cam, "fov", 50, 0.3)
-	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func dialogue_to_player_transition():
 	if !dialogue_storage.is_empty():
