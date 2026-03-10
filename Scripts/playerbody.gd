@@ -12,10 +12,13 @@ class_name playermodel
 @export var upper_chest_lookat : Node3D
 @export var copy_transform : CopyTransformModifier3D
 @export var head_remote_transform : RemoteTransform3D
-
+@export var hud : player_hud 
+@export var player_cam : Camera3D
+@export var dialogue_cam_root : Node3D
 var chest_angle : float = 0.0
 var rtc_blend_amount = 0.0
 var kick_blend_amount = 0.0
+var talking : bool = false
 var arms_action
 var stand_to_crouch = "parameters/stand_to_crouch/blend_amount"
 var arms_action_blend = "parameters/arms_action_blend/blend_amount"
@@ -25,6 +28,8 @@ var kick_oneshot = "parameters/kick_oneshot/request"
 var kick_timeseek = "parameters/kick_timeseek/seek_request"
 var falling_blend = "parameters/falling_blend/blend_amount"
 var fall_landing = "parameters/fall_landing/request"
+var dialogue_anim_seek = "parameters/dialogue_anim_seek/seek_request"
+var dialogue_pose_blend = "parameters/dialogue_pose_blend/blend_amount"
 
 #these are variables for physical slot nodes
 @export var equip_node : Node3D
@@ -127,6 +132,26 @@ func check_kick():
 		await animation_tree.animation_finished
 		kicking = false
 
+func dialogue_start():
+	animation_tree.set(dialogue_anim_seek, 0)
+	var dialogue_blend_tween : Tween = get_tree().create_tween()
+	var dialogue_cam_tween : Tween = get_tree().create_tween()
+	var dialogue_cam_rotation_tween : Tween = get_tree().create_tween()
+	dialogue_blend_tween.tween_method(set_dialogue_blend, 0, 1, 0.3)
+	dialogue_cam_tween.tween_property(player_cam, "position", dialogue_cam_root.position, 0.5)
+	dialogue_cam_rotation_tween.tween_property(player_cam, "global_rotation", dialogue_cam_root.get_child(0).global_rotation, 0.5)
+
+func dialogue_end():
+	var dialogue_blend_tween : Tween = get_tree().create_tween()
+	var dialogue_cam_tween : Tween = get_tree().create_tween()
+	var dialogue_cam_rotation_tween : Tween = get_tree().create_tween()
+	dialogue_blend_tween.tween_method(set_dialogue_blend, 1, 0, 0.3)
+	dialogue_cam_tween.tween_property(player_cam, "position", Vector3.ZERO, 0.2)
+	dialogue_cam_rotation_tween.tween_property(player_cam, "rotation" ,Vector3.ZERO, 0.5)
+	
+func set_dialogue_blend(value : float):
+	animation_tree.set(dialogue_pose_blend, value)
+	
 var interact_blend_var = 1.0
 func interact_detect():
 	interact_blend_var = lerp(interact_blend_var, 1.0, 0.1)
