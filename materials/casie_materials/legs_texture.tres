@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bpfnbjue1e304"]
+
+[ext_resource type="Texture2D" uid="uid://d2bvhi4qmhcmo" path="res://models/char_models/gltf_character_files/cassie_textures/cassie_legs_2048.png" id="1_q153j"]
+
+[resource]
+resource_name = "legs_texture"
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_q153j")

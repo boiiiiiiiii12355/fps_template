@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://denxm7iwttcy"]
+
+[resource]
+resource_name = "pads"
+cull_mode = 2
+albedo_color = Color(0.24999548, 0.24999548, 0.24999548, 1)

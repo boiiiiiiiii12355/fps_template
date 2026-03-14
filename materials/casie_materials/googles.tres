@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cpkwx66gaegqi"]
+
+[resource]
+resource_name = "googles"
+cull_mode = 2
+albedo_color = Color(0.10416165, 0.1736806, 0.25567812, 1)
+roughness = 0.5

@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c8og6kjr0vnse"]
+
+[ext_resource type="Texture2D" uid="uid://bx0vx1yimpuf3" path="res://models/char_models/gltf_character_files/cassie_textures/inner_clothes_2048.png" id="1_a6l0l"]
+[ext_resource type="Texture2D" uid="uid://lsywru01f0k8" path="res://models/char_models/gltf_character_files/cassie_textures/iner_clothes_normal_baked_4096.png" id="2_jarsr"]
+
+[resource]
+resource_name = "inner_clothes"
+cull_mode = 2
+albedo_texture = ExtResource("1_a6l0l")
+roughness = 0.5
+normal_enabled = true
+normal_texture = ExtResource("2_jarsr")

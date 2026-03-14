@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dvhmhi7c03lhg"]
+
+[resource]
+resource_name = "mouth_inner"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.90639156, 0.008400856, 0, 1)
+roughness = 0.5

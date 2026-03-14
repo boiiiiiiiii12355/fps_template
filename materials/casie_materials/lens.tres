@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://88dikd2p7jq2"]
+
+[resource]
+resource_name = "lens"
+cull_mode = 2
+albedo_color = Color(0.6942435, 0.90664726, 0.82582146, 1)
+metallic = 1.0
+roughness = 0.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bllbjlr3e1iyr"]
 
-[ext_resource type="PackedScene" uid="uid://csthcndft67mp" path="res://models/char_models/gltf_character_files/GR_subject_203.glb" id="1_77tj7"]
+[ext_resource type="PackedScene" uid="uid://ubevyqbmw67n" path="res://models/char_models/gltf_character_files/subject_203_v2.gltf" id="1_77tj7"]
 [ext_resource type="Script" uid="uid://dl8fs1dtfb77r" path="res://models/char_models/ragdoll_body.gd" id="2_e0rqu"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o6tax"]

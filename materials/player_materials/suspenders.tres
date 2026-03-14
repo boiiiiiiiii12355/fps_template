@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cyvuy1nuu4mwh"]
+
+[ext_resource type="Texture2D" uid="uid://qq8ou2c5cluf" path="res://models/char_models/gltf_character_files/subject_203 gltf/suspenders_texture_2048.png" id="1_nwqni"]
+[ext_resource type="Texture2D" uid="uid://fbb6401vdoqb" path="res://models/char_models/gltf_character_files/subject_203 gltf/suspenders_normal_baked.png" id="2_mjqp4"]
+
+[resource]
+resource_name = "suspenders"
+cull_mode = 2
+albedo_texture = ExtResource("1_nwqni")
+metallic_specular = 0.0
+normal_enabled = true
+normal_texture = ExtResource("2_mjqp4")
