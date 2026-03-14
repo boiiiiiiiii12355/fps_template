@@ -38,14 +38,13 @@ size = Vector3(0.5, 1.655, 0.5)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4pade"]
 size = Vector3(0.5, 0.4, 0.5)
 
-[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_body", "player_cam", "dialogue_cam_root", "dialogue_cam", "chest_point_target", "hp_system", "view", "inventory", "interact_ray", "pickup_hold_area", "hud", "preselect_timer")]
+[node name="player" type="CharacterBody3D" unique_id=1277926118 node_paths=PackedStringArray("mySkin", "myShape", "spring", "camera_spine", "player_cam", "dialogue_cam_root", "dialogue_cam", "chest_point_target", "hp_system", "view", "inventory", "interact_ray", "pickup_hold_area", "hud", "player_body", "preselect_timer")]
 collision_layer = 2
 script = ExtResource("1_a7j60")
 mySkin = NodePath("MeshInstance3D")
 myShape = NodePath("map_colision")
 spring = NodePath("TwistPivot/PitchPivot")
 camera_spine = NodePath("TwistPivot")
-player_body = NodePath("GR_subject_203")
 player_cam = NodePath("TwistPivot/view_offset/view")
 dialogue_cam_root = NodePath("TwistPivot/view_offset/dialogue_cam_root")
 dialogue_cam = NodePath("TwistPivot/view_offset/dialogue_cam_root/dialogue_cam")
@@ -57,9 +56,10 @@ inventory = NodePath("Inventory")
 interact_ray = NodePath("TwistPivot/view_offset/view/interact_ray")
 pickup_hold_area = NodePath("TwistPivot/pickup_area")
 hud = NodePath("HUD")
+player_body = NodePath("GR_subject_203")
 preselect_timer = NodePath("preselect_timer")
 
-[node name="GR_subject_203" parent="." unique_id=59022 node_paths=PackedStringArray("camera_spine", "hud", "player_cam", "dialogue_cam_root", "gun_ray") instance=ExtResource("4_k0k4f")]
+[node name="GR_subject_203" parent="." unique_id=127283181 node_paths=PackedStringArray("camera_spine", "hud", "player_cam", "dialogue_cam_root", "gun_ray") instance=ExtResource("4_k0k4f")]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 rotation_edit_mode = 0
 camera_spine = NodePath("../TwistPivot")
@@ -88,12 +88,6 @@ shape = SubResource("CapsuleShape3D_k0k4f")
 [node name="map_colision" type="CollisionShape3D" parent="." unique_id=967495515]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.81455994, 0)
 shape = SubResource("BoxShape3D_jijlf")
-
-[node name="player_light" type="OmniLight3D" parent="." unique_id=411037315]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2121724, -0.055907547)
-light_energy = 0.05
-light_indirect_energy = 0.0
-omni_range = 1.606
 
 [node name="TwistPivot" type="Node3D" parent="." unique_id=1112278182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.447349, -0.062200125)
@@ -139,7 +133,7 @@ target_position = Vector3(0, 0, -157.3)
 collision_mask = 13
 
 [node name="dialogue_cam_root" type="Node3D" parent="TwistPivot/view_offset" unique_id=1893487209]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.5622982, -0.11432254, 1.1183026)
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.39091623, -0.11432254, 0.7431146)
 
 [node name="dialogue_cam" type="Camera3D" parent="TwistPivot/view_offset/dialogue_cam_root" unique_id=1362784668]
 transform = Transform3D(0.9987629, -0.0010036408, 0.04971268, 0.00014911563, 0.9998522, 0.017190024, -0.04972264, -0.017161353, 0.9986156, 0, 0, 0)

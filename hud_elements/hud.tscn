@@ -315,18 +315,18 @@ shop_ui_node = NodePath("../shop_ui")
 
 [node name="textbox_background" type="ColorRect" parent="dialogue" unique_id=1204891928]
 layout_mode = 0
-offset_left = 129.0
-offset_top = 473.0
-offset_right = 998.0
-offset_bottom = 646.0
+offset_left = 1.0
+offset_top = 472.51
+offset_right = 706.0
+offset_bottom = 645.51
 color = Color(0.20392157, 0.20392157, 0.20392157, 0.75686276)
 
 [node name="next_button" type="Button" parent="dialogue/textbox_background" unique_id=1978072147]
 layout_mode = 0
-offset_left = 797.0
-offset_top = 3.2750244
-offset_right = 864.0
-offset_bottom = 34.275024
+offset_left = 632.0
+offset_top = 3.0
+offset_right = 699.0
+offset_bottom = 34.0
 mouse_filter = 1
 text = "next -->"
 
@@ -334,7 +334,7 @@ text = "next -->"
 layout_mode = 0
 offset_left = 1013.91
 offset_top = 677.295
-offset_right = 1131.0
+offset_right = 1130.9998
 offset_bottom = 850.29443
 color = Color(0.20392157, 0.20392157, 0.20392157, 0.75686276)
 
@@ -345,10 +345,10 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="dialogue" unique_id=633431630]
 layout_mode = 0
-offset_left = 147.0
-offset_top = 491.0
-offset_right = 983.0
-offset_bottom = 635.0
+offset_left = 15.0
+offset_top = 490.51
+offset_right = 851.0
+offset_bottom = 634.51
 text = "the big brown fox jumps over the the large fence"
 
 [node name="inventory_hide_timer" type="Timer" parent="." unique_id=343302850]

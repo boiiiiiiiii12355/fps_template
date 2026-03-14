@@ -7,7 +7,6 @@ class_name Player
 @export var spring : SpringArm3D
 @export var camera_dist = 0
 @export var camera_spine : Node3D
-@export var player_body : playermodel
 @export var player_cam : Camera3D
 @export var dialogue_cam_root : Node3D
 @export var dialogue_cam : Camera3D

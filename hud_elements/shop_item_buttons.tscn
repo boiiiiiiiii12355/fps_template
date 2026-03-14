@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://cv83xee8qwc4o"]
 
 [ext_resource type="Script" uid="uid://cup2ne6ogiix8" path="res://hud_elements/shop_item_buttons.gd" id="1_do1ni"]
+[ext_resource type="Texture2D" uid="uid://cpe3gv52gbqwg" path="res://textures/2.PNG" id="2_3rvpb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_do1ni"]
 radius = 4.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_do1ni"]
+size = Vector2(116.00001, 110.99999)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_do1ni"]
 bg_color = Color(0.78039217, 0, 0, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_do1ni"]
-size = Vector2(116, 31)
 
 [node name="shopitem1wrap" type="Control" unique_id=2008089104 node_paths=PackedStringArray("button")]
 custom_minimum_size = Vector2(1, 1)
@@ -19,6 +20,8 @@ offset_right = 100.0
 offset_bottom = 90.0
 script = ExtResource("1_do1ni")
 button = NodePath("button_phy/shop_item1")
+item_name = "no name"
+item_description = "this is not done yethey did you know thatin terms of coffee breed brazilian is actually be scientifically best brew? not only does it have a strong taste, it has a sweet aroma to it when brewed correctly. diffrent roasting methods can effect the taste and quality of the bean "
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1239267737]
 collision_layer = 0
@@ -28,30 +31,42 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_do1ni")
 
 [node name="button_phy" type="RigidBody2D" parent="." unique_id=2111028438]
+rotation = 1.5707964
 collision_layer = 0
 collision_mask = 0
 mass = 1000.0
 angular_damp = 10.0
 
-[node name="shop_item1" type="Button" parent="button_phy" unique_id=225298056]
-offset_right = 115.452225
-offset_bottom = 31.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_do1ni")
-text = "shop_item1"
+[node name="ColorRect" type="ColorRect" parent="button_phy" unique_id=541361888]
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="button_phy" unique_id=1123028832]
-position = Vector2(58, 15.5)
+position = Vector2(58.000008, 55.499996)
 shape = SubResource("RectangleShape2D_do1ni")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="button_phy" unique_id=1929228807]
 node_a = NodePath("..")
 node_b = NodePath("../../StaticBody2D")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=541361888]
-layout_mode = 0
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 2.0
-offset_bottom = 2.0
-color = Color(0, 0, 0, 1)
+[node name="shop_item1" type="Button" parent="button_phy" unique_id=225298056]
+offset_right = 115.452225
+offset_bottom = 31.0
+scale = Vector2(0.15402241, 0.15402241)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_do1ni")
+icon = ExtResource("2_3rvpb")
+
+[node name="Label" type="Label" parent="button_phy" unique_id=5905816]
+offset_left = 114.794846
+offset_top = 107.76958
+offset_right = 223.30113
+offset_bottom = 130.76958
+rotation = -1.567528
+text = "if you see this
+there is a bug"
+
+[connection signal="pressed" from="button_phy/shop_item1" to="." method="button_pressed"]

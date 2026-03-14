@@ -61,8 +61,10 @@ func play_dialogue_section(idx : int):
 func player_to_dialogue_transition():
 	dialogue_box_show()
 	var size_tween : Tween = get_tree().create_tween()
-	size_tween.tween_property(hud.player_hud_nodes, "scale", Vector2(1.2, 1.2), 0.5).set_ease(Tween.EASE_IN_OUT)
-	size_tween.tween_property(player.player_cam, "fov", 50, 0.3)
+	size_tween.set_ease(Tween.EASE_IN_OUT)
+	size_tween.set_trans(Tween.TRANS_CUBIC)
+	size_tween.tween_property(hud.player_hud_nodes, "scale", Vector2(1.2, 1.2), 1).set_ease(Tween.EASE_IN_OUT)
+	size_tween.tween_property(player.player_cam, "fov", 50, 1)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 
 func dialogue_to_player_transition():
@@ -70,8 +72,10 @@ func dialogue_to_player_transition():
 		dialogue_storage.clear()
 		dialogue_box_hide()
 		var size_tween : Tween = get_tree().create_tween()
-		size_tween.tween_property(hud.player_hud_nodes, "scale", Vector2(1, 1), 0.5).set_ease(Tween.EASE_IN_OUT)
-		size_tween.tween_property(player.player_cam, "fov", 75, 0.3)
+		size_tween.set_ease(Tween.EASE_IN_OUT)
+		size_tween.set_trans(Tween.TRANS_CUBIC)
+		size_tween.tween_property(hud.player_hud_nodes, "scale", Vector2(1, 1), 1).set_ease(Tween.EASE_IN_OUT)
+		size_tween.tween_property(player.player_cam, "fov", 75, 1)
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func player_dialogue_cam_look_at(object : Object):

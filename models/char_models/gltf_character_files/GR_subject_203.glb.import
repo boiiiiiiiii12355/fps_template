@@ -36,7 +36,7 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 materials/extract=1
 materials/extract_format=2
-materials/extract_path="res://materials"
+materials/extract_path="res://materials/player_materials"
 _subresources={
 "animations": {
 "FS_12_equip": {
@@ -43219,43 +43219,43 @@ _subresources={
 "materials": {
 "body_texture": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/body_texture.material",
-"use_external/path": "uid://ym8jo1ksndjo"
+"use_external/fallback_path": "res://materials/player_materials/body_texture.material",
+"use_external/path": "uid://sxdpsstohld5"
 },
 "clothes": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/clothes.material",
-"use_external/path": "uid://ca4nawgewynl3"
+"use_external/fallback_path": "res://materials/player_materials/clothes.material",
+"use_external/path": "uid://d2amffhru3hkl"
 },
 "eye_back": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/eye_back.material",
-"use_external/path": "uid://0rvgdruh7apa"
+"use_external/fallback_path": "res://materials/player_materials/eye_back.material",
+"use_external/path": "uid://bfey32y7elft5"
 },
 "head_texture": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/head_texture.material",
-"use_external/path": "uid://dwuro8j6mmjgl"
+"use_external/fallback_path": "res://materials/player_materials/head_texture.material",
+"use_external/path": "uid://dok4wuropcvbj"
 },
 "legs_texture": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/legs_texture.material",
-"use_external/path": "uid://ci387dn0nxvyo"
+"use_external/fallback_path": "res://materials/player_materials/legs_texture.material",
+"use_external/path": "uid://bmtbm6g6381x1"
 },
 "pads": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/pads.material",
-"use_external/path": "uid://djkpcy57fri0l"
+"use_external/fallback_path": "res://materials/player_materials/pads.material",
+"use_external/path": "uid://dtonmp6px4wkh"
 },
 "suspenders": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/suspenders.material",
-"use_external/path": "uid://cqedxy4lwuitp"
+"use_external/fallback_path": "res://materials/player_materials/suspenders.material",
+"use_external/path": "uid://daveqxww4lbu8"
 },
 "tmp_material": {
 "use_external/enabled": true,
-"use_external/fallback_path": "res://materials/tmp_material.material",
-"use_external/path": "uid://rie3xdiewcc8"
+"use_external/fallback_path": "res://materials/player_materials/tmp_material.material",
+"use_external/path": "uid://13pk27pyj1st"
 }
 }
 }

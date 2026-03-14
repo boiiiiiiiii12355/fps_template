@@ -2,6 +2,15 @@
 
 [ext_resource type="Script" uid="uid://6v24l41o4hif" path="res://hud_elements/shop_ui.gd" id="1_d0vn6"]
 [ext_resource type="PackedScene" uid="uid://cv83xee8qwc4o" path="res://hud_elements/shop_item_buttons.tscn" id="1_d5m4i"]
+[ext_resource type="Texture2D" uid="uid://p7b7r38xgpv2" path="res://hud_elements/ui_images/gear-clip-art-gear-16231642cc5150d75c670f3669b102df.png" id="3_bw4uy"]
+[ext_resource type="Texture2D" uid="uid://b7ibelg8t8ob4" path="res://hud_elements/ui_images/gear-mechanism-sprocket-mechanics-gears-4c35b75f1c0b80b5981ee37b01d615f7.png" id="4_awbwq"]
+[ext_resource type="Script" uid="uid://bcffd61cgqnxf" path="res://hud_elements/ui_const_animations.gd" id="5_csuk3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d0vn6"]
+font_size = 70
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(9.2, -7.395)
 
 [sub_resource type="Animation" id="Animation_bw4uy"]
 length = 0.001
@@ -28,6 +37,46 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shop_item_info:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.792526803190927]
+}
+
+[sub_resource type="Animation" id="Animation_awbwq"]
+resource_name = "shop_item_info_toggle"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shop_state")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shop_item_info:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.45062527, 1.866068),
+"update": 0,
+"values": [2.792526803190927, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_d0vn6"]
@@ -61,10 +110,11 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bw4uy"]
 _data = {
 &"RESET": SubResource("Animation_bw4uy"),
+&"shop_item_info_toggle": SubResource("Animation_awbwq"),
 &"shop_toggle": SubResource("Animation_d0vn6")
 }
 
-[node name="shop_ui" type="Control" unique_id=1482899485 node_paths=PackedStringArray("shop_items_list", "animation_player")]
+[node name="shop_ui" type="Control" unique_id=1482899485 node_paths=PackedStringArray("shop_items_list", "animation_player", "item_name_label", "item_description_text")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -74,6 +124,8 @@ grow_vertical = 2
 script = ExtResource("1_d0vn6")
 shop_items_list = NodePath("shop_item_list/ScrollContainer/item_list")
 animation_player = NodePath("AnimationPlayer")
+item_name_label = NodePath("shop_item_info/item_name")
+item_description_text = NodePath("shop_item_info/item_info_text")
 
 [node name="shop_item_list" type="Control" parent="." unique_id=1839352278]
 anchors_preset = 0
@@ -83,11 +135,25 @@ offset_right = -1197.0
 offset_bottom = -82.0
 rotation = -1.4739642
 
+[node name="background" type="ColorRect" parent="shop_item_list" unique_id=1824359673]
+layout_mode = 0
+offset_right = 343.75253
+offset_bottom = 1249.6501
+color = Color(0, 0, 0, 0.62352943)
+
+[node name="ColorRect2" type="ColorRect" parent="shop_item_list" unique_id=1248937691]
+layout_mode = 0
+offset_left = -4.102
+offset_right = 17.935001
+offset_bottom = 1251.797
+rotation = 0.0034906585
+color = Color(0, 0, 0, 1)
+
 [node name="ColorRect" type="ColorRect" parent="shop_item_list" unique_id=273795996]
 layout_mode = 0
 offset_right = 22.03683
 offset_bottom = 1249.6501
-color = Color(1, 0, 0, 1)
+color = Color(1, 1, 0, 1)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="shop_item_list" unique_id=1884238382]
 clip_contents = false
@@ -108,6 +174,81 @@ layout_mode = 2
 layout_mode = 0
 offset_right = 0.0
 offset_bottom = 0.0
+
+[node name="shop_item_info" type="Control" parent="." unique_id=1315854388]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.000366
+rotation = 2.7925267
+pivot_offset = Vector2(799, 651)
+
+[node name="background" type="ColorRect" parent="shop_item_info" unique_id=1626635905]
+layout_mode = 0
+offset_left = 800.00006
+offset_top = 648.0
+offset_right = 2112.0452
+offset_bottom = 1138.9313
+rotation = -1.2111673
+color = Color(0, 0, 0, 0.48235294)
+
+[node name="item_name" type="Label" parent="shop_item_info" unique_id=1536371712]
+layout_mode = 0
+offset_left = 734.00006
+offset_top = 613.0
+offset_right = 1100.0
+offset_bottom = 709.0
+rotation = -1.2124605
+text = "Item Name "
+label_settings = SubResource("LabelSettings_d0vn6")
+
+[node name="item_info_text" type="RichTextLabel" parent="shop_item_info" unique_id=185662265]
+layout_mode = 0
+offset_left = 979.99994
+offset_top = 276.0
+offset_right = 1163.6221
+offset_bottom = 598.0
+rotation = 0.36356854
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 3
+theme_override_constants/shadow_offset_y = 3
+text = "this is not done yet
+hey did you know that
+in terms of coffee breed brazilian is actually be scientifically best brew? not only does it have a strong taste, it has a sweet aroma to it when brewed correctly. diffrent roasting methods can effect the taste and quality of the bean "
+fit_content = true
+
+[node name="ColorRect2" type="ColorRect" parent="shop_item_info" unique_id=1351624610]
+layout_mode = 0
+offset_left = 799.759
+offset_top = 650.0
+offset_right = 2111.8027
+offset_bottom = 680.14996
+rotation = -1.2007865
+color = Color(0, 0, 0, 1)
+
+[node name="gear_small" type="Sprite2D" parent="shop_item_info" unique_id=1998692136]
+position = Vector2(936, 252.85547)
+scale = Vector2(0.11333335, 0.11333335)
+texture = ExtResource("3_bw4uy")
+
+[node name="gear_big" type="Sprite2D" parent="shop_item_info" unique_id=1293575034]
+position = Vector2(951.00006, 187.85548)
+rotation = 0.2497868
+scale = Vector2(0.038451508, 0.0384515)
+texture = ExtResource("4_awbwq")
+
+[node name="ColorRect" type="ColorRect" parent="shop_item_info" unique_id=907279646]
+layout_mode = 0
+offset_left = 800.00006
+offset_top = 647.99994
+offset_right = 2112.0452
+offset_bottom = 678.1499
+rotation = -1.2111673
+color = Color(1, 1, 0, 1)
+
+[node name="ui_const_animations" type="Node" parent="." unique_id=790829356 node_paths=PackedStringArray("item_info_gear1", "item_info_gear2")]
+script = ExtResource("5_csuk3")
+item_info_gear1 = NodePath("../shop_item_info/gear_small")
+item_info_gear2 = NodePath("../shop_item_info/gear_big")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1121446994]
 libraries/ = SubResource("AnimationLibrary_bw4uy")

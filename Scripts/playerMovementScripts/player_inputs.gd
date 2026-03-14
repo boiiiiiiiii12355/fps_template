@@ -11,6 +11,7 @@ class_name PlayerInputs
 @export var preselected_inventory_slot : int = 1
 @export var selected_inventory_slot : int = 1
 @export var hud : player_hud
+@export var player_body : playermodel
 
 var camera : Node3D
 var kick_charge : float = 0.0
@@ -122,6 +123,7 @@ func input_tick():
 			elif object.is_in_group("npc"):
 				var npc : npc_base = object
 				var dialogue_controller : dialogue_control = hud.dialogue_controller
+				npc.look_at_(self.player_body.head_tracker)
 				dialogue_controller.player_dialogue_cam_look_at(npc.head)
 				dialogue_controller.store_dialogue_data(npc.dialogue_data_block)
 				dialogue_controller.play_dialogue_section(0)

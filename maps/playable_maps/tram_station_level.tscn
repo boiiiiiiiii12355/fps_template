@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://dtcqajnjlqou5" path="res://maps/map_objects/p7_quiver_phy.tscn" id="6_uphtb"]
 [ext_resource type="PackedScene" uid="uid://bg0rv43fg4qdr" path="res://maps/map_objects/hurt_area.tscn" id="7_84bnf"]
 [ext_resource type="PackedScene" uid="uid://cglma2n2s2ajg" path="res://maps/map_objects/fs_12.tscn" id="7_ttvm0"]
-[ext_resource type="PackedScene" uid="uid://be36tngkvrmmg" path="res://tscns/dialogue_testing.tscn" id="9_hc6mv"]
 [ext_resource type="PackedScene" uid="uid://bh3xk8hxufios" path="res://maps/map_objects/door_wood.tscn" id="10_hc6mv"]
+[ext_resource type="PackedScene" uid="uid://chssi0i8kn5i1" path="res://tscns/cassidie_npc.tscn" id="10_joncr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2d02k"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -38,6 +38,12 @@ objects = NodePath("tram_station/objects")
 particles = NodePath("tram_station/particles")
 player = NodePath("player")
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2051946786]
+transform = Transform3D(-0.23344545, 0.30692762, -0.9226585, 0, 0.948876, 0.31564903, 0.9723699, 0.07368683, -0.2215108, 0, 0, 0)
+shadow_enabled = true
+shadow_bias = 0.878
+directional_shadow_max_distance = 1023.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1701510486]
 environment = SubResource("Environment_uphtb")
 
@@ -55,7 +61,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00018501282, 0.83493423, 0.
 transform = Transform3D(-0.13063994, -0.97841126, 0.16014013, 0.9904162, -0.13609466, -0.02353261, 0.044818886, 0.1555312, 0.9868138, -43.44008, -0.5640179, -17.38248)
 
 [node name="flashlight" parent="tram_station/objects" unique_id=1282861024 instance=ExtResource("5_3eqgb")]
-transform = Transform3D(-0.37211323, 0, -0.9281874, 0, 1, 0, 0.9281874, 0, -0.37211323, -42.235756, -0.57692915, -17.381699)
+transform = Transform3D(-0.24276847, 0, 0.9700843, 0, 1, 0, -0.9700843, 0, -0.24276847, -42.235756, -0.57692915, -17.381699)
 
 [node name="p7_quiver" parent="tram_station/objects" unique_id=351791850 instance=ExtResource("6_uphtb")]
 transform = Transform3D(-0.23019779, -0.96849275, -0.09502869, 0.3283627, 0.014620981, -0.9444384, 0.9160713, -0.24861158, 0.3146513, -43.125885, -0.39859188, -17.573101)
@@ -74,19 +80,6 @@ size = Vector3(2.2235107, 0.94021606, 0.6690674)
 
 [node name="entities" type="Node3D" parent="tram_station" unique_id=1649373229]
 
-[node name="dialogue_testing" parent="tram_station/entities" unique_id=908961405 instance=ExtResource("9_hc6mv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.253387, -1.5095289, -10.120253)
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1850443382]
-transform = Transform3D(0.97326714, -0.031313583, 0.22753139, -0.2285822, -0.22862992, 0.9462973, 0.022388523, -0.9730097, -0.22967571, -41.401146, 7.921081, 0)
-light_energy = 0.5
-shadow_enabled = true
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=1592845043]
-transform = Transform3D(0.71921986, 0.17524727, -0.6723176, 0.6944216, -0.15013517, 0.7037314, 0.022388516, -0.9730097, -0.2296757, -41.401146, 7.921081, 0)
-light_energy = 0.5
-shadow_enabled = true
-
 [node name="door_wood" parent="." unique_id=1031475536 instance=ExtResource("10_hc6mv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.513973, -0.6745939, -6.609885)
 
@@ -96,3 +89,6 @@ light_energy = 3.646
 shadow_enabled = true
 spot_range = 4.44656
 spot_angle = 30.102865
+
+[node name="Cassidie_npc" parent="." unique_id=2117830237 instance=ExtResource("10_joncr")]
+transform = Transform3D(0.93019986, 0, -0.3670534, 0, 1, 0, 0.3670534, 0, 0.93019986, -40.996357, -0.67213476, -16.452274)
