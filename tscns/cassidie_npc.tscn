@@ -11,7 +11,7 @@ head = NodePath("rig/Skeleton3D/head_track")
 head_look_at = NodePath("head_look_at")
 legs_look_at = NodePath("legs_look_at")
 
-[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(1147242005) index="0" unique_id=2092772688]
+[node name="Skeleton3D" parent="rig" parent_id_path=PackedInt32Array(1999972442) index="0" unique_id=947345373]
 bones/1/position = Vector3(-0.058620088, -0.095161766, 0.91285145)
 bones/1/rotation = Quaternion(0.74864256, 0.08794143, -0.102066085, 0.64914036)
 bones/2/rotation = Quaternion(-0.064255, 0.0043526394, 0.06736736, 0.9956475)
@@ -39,11 +39,11 @@ bones/66/rotation = Quaternion(-0.0039601605, 0.9326905, -0.36065438, 0.00113560
 bones/67/position = Vector3(0.037769917, 0.035657853, 0.08298846)
 bones/67/rotation = Quaternion(0.66231084, -0.65671045, 0.25582707, 0.2542211)
 
-[node name="spine_006" parent="rig/Skeleton3D" index="0" unique_id=1026425639]
-transform = Transform3D(0.95631963, 0.2914654, 0.02236488, -0.29122245, 0.9432975, 0.15930587, 0.02533542, -0.15886068, 0.98697567, 0.08170196, 1.671736, 0.09138212)
+[node name="spine_006" parent="rig/Skeleton3D" index="0" unique_id=1468430514]
+transform = Transform3D(0.9396466, 0.34141418, 0.022364173, -0.34048578, 0.92665523, 0.15930602, 0.033665482, -0.15730624, 0.98697567, 0.08170171, 1.6717361, 0.09138211)
 
 [node name="head_track" type="BoneAttachment3D" parent="rig/Skeleton3D" index="5" unique_id=544601786]
-transform = Transform3D(0.95631963, 0.2914654, 0.02236488, -0.29122245, 0.9432975, 0.15930587, 0.02533542, -0.15886068, 0.98697567, 0.08170196, 1.671736, 0.09138212)
+transform = Transform3D(0.9396466, 0.34141418, 0.022364173, -0.34048578, 0.92665523, 0.15930602, 0.033665482, -0.15730624, 0.98697567, 0.08170171, 1.6717361, 0.09138211)
 bone_name = "spine.006"
 bone_idx = 7
 

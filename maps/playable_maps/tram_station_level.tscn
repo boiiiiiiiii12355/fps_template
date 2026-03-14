@@ -40,9 +40,10 @@ player = NodePath("player")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2051946786]
 transform = Transform3D(-0.23344545, 0.30692762, -0.9226585, 0, 0.948876, 0.31564903, 0.9723699, 0.07368683, -0.2215108, 0, 0, 0)
+light_energy = 1.51
 shadow_enabled = true
-shadow_bias = 0.878
-directional_shadow_max_distance = 1023.0
+directional_shadow_mode = 0
+directional_shadow_max_distance = 8192.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1701510486]
 environment = SubResource("Environment_uphtb")
